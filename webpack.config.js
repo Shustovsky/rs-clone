@@ -1,13 +1,16 @@
 const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FileManagerPlugin = require('filemanager-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const baseConfig = {
     entry: './src/index.ts',
     module: {
         rules: [
+            {
+                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|mp3)$/i,
+                type: 'asset',
+            },
             {
                 test: /\.html$/i,
                 loader: 'html-loader',
@@ -36,7 +39,8 @@ const baseConfig = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public')
+        path: path.resolve(__dirname, 'public'),
+        assetModuleFilename: 'images/[hash][ext][query]',
     },
     resolve: {
         extensions: [ ".ts", ".js"],
@@ -46,21 +50,6 @@ const baseConfig = {
             filename: 'index.html',
             template: path.join(__dirname, 'src', 'template.html'),
             favicon: path.join(__dirname, 'src', 'assets', 'icons', 'favicon.ico'),
-        }),
-        new FileManagerPlugin({
-            events: {
-                onStart: {
-                    delete: ['public'],
-                },
-                onEnd: {
-                    copy: [
-                        {
-                            source: path.join('src', 'assets'),
-                            destination: 'public/assets',
-                        },
-                    ],
-                },
-            },
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
