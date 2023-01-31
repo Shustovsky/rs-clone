@@ -9,6 +9,14 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /\.html$/i,
+                loader: 'html-loader',
+            },
+            {
+                test: /\.ico$/,
+                loader: 'file-loader'
+            },
+            {
                 test: /\.ts$/,
                 use: 'ts-loader',
                 include: [path.resolve(__dirname, 'src')]
@@ -31,12 +39,13 @@ const baseConfig = {
         path: path.resolve(__dirname, 'public')
     },
     resolve: {
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+        extensions: [ ".ts", ".js"],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'template.html'),
             filename: 'index.html',
+            template: path.join(__dirname, 'src', 'template.html'),
+            favicon: path.join(__dirname, 'src', 'assets', 'icons', 'favicon.ico'),
         }),
         new FileManagerPlugin({
             events: {
