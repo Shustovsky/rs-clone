@@ -1,7 +1,7 @@
 import { HeaderView } from '../header/headerView';
 
 export class App {
-    header: HeaderView;
+    private readonly header: HeaderView;
 
     constructor() {
         this.header = new HeaderView();
