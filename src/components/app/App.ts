@@ -7,8 +7,8 @@ import { Workout } from '../../model/Workout';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
-        apiKey: 'AIzaSyA6_SztJbKk_gUv3OH7r2vB_DwbjJdRNPY',
-        databaseURL: 'https://rsclone-a8acb-default-rtdb.europe-west1.firebasedatabase.app',
+        apiKey: process.env.API_KEY,
+        databaseURL: process.env.DATABASE_URL,
     };
 
     private readonly app: FirebaseApp;

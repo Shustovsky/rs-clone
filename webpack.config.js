@@ -2,6 +2,7 @@ const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack')
 
 const baseConfig = {
     entry: './src/index.ts',
@@ -46,6 +47,7 @@ const baseConfig = {
         extensions: [ ".ts", ".js"],
     },
     plugins: [
+        new Dotenv(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.join(__dirname, 'src', 'template.html'),
