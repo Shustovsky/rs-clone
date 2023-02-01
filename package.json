@@ -41,10 +41,10 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "dotenv-webpack": "^8.0.1"
   },
   "dependencies": {
-    "dotenv-webpack": "^8.0.1",
     "firebase": "^9.16.0",
     "i18next": "^22.4.9",
     "uikit": "^3.15.22"
