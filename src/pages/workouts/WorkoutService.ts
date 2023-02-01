@@ -8,28 +8,22 @@ export class WorkoutService {
         this.dbRef = dbRef;
     }
 
-    public fetchWorkouts(callback: (workouts: Workout[]) => void): void {
-        get(child(this.dbRef, `workouts`))
+    public fetchWorkouts(): Promise<Workout[]> {
+        return get(child(this.dbRef, `workouts`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    const workoutWrappers: WorkoutWrapper[] = this.createWorkoutWrapperArray(snapshot.val());
-                    const workouts = workoutWrappers.map((workoutWrappers) => workoutWrappers.data);
-                    callback(workouts);
+                    return this.mapperWorkoutWrapperRecordsToWorkout(snapshot.val());
                 } else {
                     throw new Error('Workouts not found');
                 }
             })
             .catch((error) => {
                 console.error(error);
-                throw new Error('Workouts not found');
+                throw new Error('Fetch workouts from DB failed.');
             });
     }
 
-    private createWorkoutWrapperArray(val: any): WorkoutWrapper[] {
-        const workoutWrapperArray: WorkoutWrapper[] = [];
-        for (const valKey in val) {
-            workoutWrapperArray.push(val[valKey]);
-        }
-        return workoutWrapperArray;
+    private mapperWorkoutWrapperRecordsToWorkout(records: Record<string, WorkoutWrapper>): Workout[] {
+        return Object.values(records).map((workoutWrappers) => workoutWrappers.data);
     }
 }

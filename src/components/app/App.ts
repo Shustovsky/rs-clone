@@ -3,7 +3,6 @@ import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
 import { WorkoutService } from '../../pages/workouts/WorkoutService';
-import { Workout } from '../../model/Workout';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -21,7 +20,8 @@ export class App {
         this.workoutService = new WorkoutService(this.dbRef);
     }
 
-    public run() {
-        this.workoutService.fetchWorkouts((workouts: Workout[]) => console.log(workouts));
+    public async run() {
+        const workouts = await this.workoutService.fetchWorkouts();
+        console.log(workouts);
     }
 }
