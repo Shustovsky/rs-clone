@@ -8,8 +8,4 @@ html {
   scroll-behavior: smooth;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 1260px;
-  position: relative;
-}
+@import 'src/components/header/header.scss';

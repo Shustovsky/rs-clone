@@ -1,0 +1,17 @@
+.nav {
+    background-color: rgb(25, 25, 25);
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: ;
+
+    &_link {
+        border-radius: 18px;
+        color: white;
+    }
+    &_logo{}
+    &_login{
+        color: white;
+    }
+}
