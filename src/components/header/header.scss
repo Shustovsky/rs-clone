@@ -1,17 +1,42 @@
 .nav {
-    background-color: rgb(25, 25, 25);
+    background-color: $black-color;
     height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: 0 30px;
+
 
     &_link {
         border-radius: 18px;
-        color: white;
+        color: $white-color;
+
+        &:hover {
+            color: $black-color;
+            background-color: $white-color;
+
+        }
     }
-    &_logo{}
-    &_login{
-        color: white;
+
+    &_logo {
+    }
+
+    &_login {
+        background-color: $black-button-color;
+        padding: 0 20px;
+        color: $white-color;
+        text-transform: lowercase;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            color: $black-color;
+            background-color: $white-color;
+
+        }
     }
 }
+
+@import 'header-media';

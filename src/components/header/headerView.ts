@@ -1,8 +1,7 @@
-import headerTemplate from './header.template.html'
+import headerTemplate from './header.template.html';
 
 export class HeaderView {
     public createHeader() {
-        document.body.innerHTML = headerTemplate;
+        document.body.insertAdjacentHTML('afterbegin', headerTemplate);
     }
 }
-
