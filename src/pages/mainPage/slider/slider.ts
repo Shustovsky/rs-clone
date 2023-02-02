@@ -1,5 +1,6 @@
 import sliderTemplate from './slider.html';
 import './slider.scss';
+
 export class Slider {
     private readonly selector: string;
 
