@@ -1,6 +1,6 @@
 @import 'src/assets/style/variables.scss';
 
-.item {
+.main-slider-item {
     position: relative;
     user-select: none;
 
@@ -44,7 +44,7 @@
         }
 
         .bold {
-            font-weight: 700;
+            font-weight: bold;
         }
 
         p {
@@ -52,7 +52,6 @@
             font-size: 18px;
 
         }
-
 
         .stores {
             margin-top: 12px;
