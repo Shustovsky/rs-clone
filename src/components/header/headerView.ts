@@ -1,4 +1,4 @@
-import headerTemplate from './header.template.html';
+import headerTemplate from './header.html';
 import './header.scss';
 
 export class HeaderView {
