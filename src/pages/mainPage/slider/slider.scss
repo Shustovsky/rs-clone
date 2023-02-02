@@ -3,6 +3,7 @@
 .item {
     position: relative;
     user-select: none;
+
     .slide_img {
         object-fit: cover;
         width: 100vw;
@@ -53,7 +54,6 @@
         }
 
 
-
         .stores {
             margin-top: 12px;
             display: flex;
@@ -93,7 +93,7 @@
             }
         }
     }
-    .uk-slidenav{
+    .uk-slidenav {
         display: none;
     }
 }

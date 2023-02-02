@@ -1,12 +1,22 @@
-import headerTemplate from './mainPage.html';
-import './mainPage.scss';
+import { HeaderView } from '../../components/header/headerView';
+import { Slider } from './slider/slider';
 
 export class MainPageView {
-    public createMainPage() {
-        const header = <HTMLElement>document.querySelector('.header__nav');
+    private readonly header: HeaderView;
+    private readonly slider: Slider;
+
+    constructor() {
+        this.header = new HeaderView('#root');
+        this.slider = new Slider('#root main');
+    }
+
+    public render() {
+        this.header.createHeader();
+        const root = <HTMLBodyElement>document.querySelector('#root');
         const main = document.createElement('main');
         main.className = 'main__content';
-        main.innerHTML = headerTemplate;
-        header.after(main);
+        root.append(main);
+
+        this.slider.render();
     }
 }
