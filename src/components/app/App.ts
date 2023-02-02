@@ -2,10 +2,10 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
-import { WorkoutService } from '../../pages/workouts/workoutsService';
+import { WorkoutService } from '../../pages/workouts/workoutService';
+import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { WorkoutsController } from '../../pages/workouts/workouts.Controller';
 import { WorkoutsView } from '../../pages/workouts/workoutsView';
-import { HeaderView } from '../header/headerView';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -16,20 +16,20 @@ export class App {
     private readonly app: FirebaseApp;
     private readonly dbRef: DatabaseReference;
     private readonly workoutService: WorkoutService;
+    private readonly mainPage: MainPageView;
     private readonly workoutsController: WorkoutsController;
-    private readonly header: HeaderView;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
-        this.header = new HeaderView();
         this.workoutService = new WorkoutService(this.dbRef);
         const workoutsView = new WorkoutsView();
         this.workoutsController = new WorkoutsController(workoutsView, this.workoutService);
+        this.mainPage = new MainPageView();
     }
 
     public async run() {
-        this.header.createHeader();
-        this.workoutsController.drawWorkoutsPage();
+        this.mainPage.render();
+        // this.workoutsController.drawWorkoutsPage();
     }
 }
