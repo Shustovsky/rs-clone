@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
-import { WorkoutService } from '../../pages/workouts/workoutService';
+import { WorkoutService } from '../../pages/workouts/workoutsService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { WorkoutsController } from '../../pages/workouts/workouts.Controller';
 import { WorkoutsView } from '../../pages/workouts/workoutsView';
