@@ -11,8 +11,8 @@ export class WorkoutsController {
         this.workoutService = workoutService;
     }
 
-    public async drawWorkoutsPage() {
+    public async render() {
         const workouts: Workout[] = await this.workoutService.fetchWorkouts();
-        this.workoutView.drawWorkoutsPage(workouts);
+        this.workoutView.render(workouts);
     }
 }
