@@ -1,5 +1,39 @@
-@import 'src/assets/style/variables.scss';
+@import '../../assets/style/variables.scss';
 
-.activities_title {
-  font-size: 18px;
+.activities {
+  font-size: 20px;
+  margin: 60px 0px 30px 0px; 
 }
+
+.activities_stats {
+  width: 100%;
+  padding: 40px 30px 50px;
+  background: $light-grey-color;
+  .uk-divider-vertical {
+    height: 44px;
+    width: 20px;
+  }
+  .activities_stats_item {
+    padding: 0 10px;
+    .activity_value{
+      font-size: 20px;
+    }
+    .activities_cathegory {
+      font-size: 14px;
+    }
+  }
+}
+
+.activities_month {
+  margin-top: 40px;
+}
+
+.activities_month_img {
+  margin-right: 24px;
+}
+
+.activity_link {
+  text-decoration: none;
+  color: #666;
+}
+

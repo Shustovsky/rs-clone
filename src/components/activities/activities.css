@@ -1,0 +1,36 @@
+.activities {
+  font-size: 20px;
+  margin: 60px 0px 30px 0px;
+}
+
+.activities_stats {
+  width: 100%;
+  padding: 40px 30px 50px;
+  background: rgba(0, 0, 0, 0.05);
+}
+.activities_stats .uk-divider-vertical {
+  height: 44px;
+  width: 20px;
+}
+.activities_stats .activities_stats_item {
+  padding: 0 10px;
+}
+.activities_stats .activities_stats_item .activity_value {
+  font-size: 20px;
+}
+.activities_stats .activities_stats_item .activities_cathegory {
+  font-size: 14px;
+}
+
+.activities_month {
+  margin-top: 40px;
+}
+
+.activities_month_img {
+  margin-right: 24px;
+}
+
+.activity_link {
+  text-decoration: none;
+  color: #666;
+}/*# sourceMappingURL=activities.css.map */

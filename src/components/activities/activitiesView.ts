@@ -5,6 +5,7 @@ export class ActivitiesView {
     public createActivities() {
         const activities = document.createElement('div');
         activities.classList.add('activities_wrapper');
+        activities.classList.add('uk-container');
         activities.innerHTML = activitiesTemplate;
         document.body.append(activities);
     }
