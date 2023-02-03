@@ -55,7 +55,6 @@
 
         .stores {
             margin-top: 12px;
-            display: flex;
             column-gap: 10px;
 
             a {
@@ -69,7 +68,7 @@
 }
 
 @media(max-width: 1100px) {
-    .item {
+    .main-slider-item {
         .content {
             &_img {
                 left: 5%;
@@ -83,10 +82,11 @@
 }
 
 @media(max-width: 760px) {
-    .item {
+    .main-slider-item {
         .content {
+            padding-top: 10%;
             &_img {
-                top: 5%;
+                top: 3%;
                 left: 50%;
                 transform: translateX(-50%);
             }

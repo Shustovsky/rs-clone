@@ -1,7 +1,7 @@
-import sliderTemplate from './slider.html';
-import './slider.scss';
+import loginNowTemplate from './loginNow.html';
+import './loginNow.scss';
 
-export class Slider {
+export class LoginNow {
     private readonly selector: string;
 
     constructor(selector: string) {
@@ -11,7 +11,7 @@ export class Slider {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = sliderTemplate;
+        container.innerHTML = loginNowTemplate;
         root.append(container);
     }
 }
