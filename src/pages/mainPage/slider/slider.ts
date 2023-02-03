@@ -8,7 +8,7 @@ export class Slider {
         this.selector = selector;
     }
 
-    render() {
+    render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
         container.innerHTML = sliderTemplate;
