@@ -2,7 +2,7 @@ import './activities.scss';
 import activitiesTemplate from './activities.html';
 
 export class ActivitiesView {
-    public createActivities() {
+    public render() {
         const activities = document.createElement('div');
         activities.classList.add('activities_wrapper');
         activities.classList.add('uk-container');

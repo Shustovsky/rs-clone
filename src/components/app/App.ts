@@ -30,6 +30,6 @@ export class App {
         const workouts = await this.workoutService.fetchWorkouts();
         console.log(workouts);
         this.mainPage.render();
-        this.activities.createActivities();
+        this.activities.render();
     }
 }

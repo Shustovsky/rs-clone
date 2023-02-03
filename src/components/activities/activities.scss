@@ -9,9 +9,9 @@
   width: 100%;
   padding: 40px 30px 50px;
   background: $light-grey-color;
+  border-radius: 4px;
   .uk-divider-vertical {
     height: 44px;
-    width: 20px;
   }
   .activities_stats_item {
     padding: 0 10px;
@@ -34,6 +34,20 @@
 
 .activity_link {
   text-decoration: none;
-  color: #666;
+  color: $dark-grey-matte-color;
+}
+
+.activities_month_total {
+  display: grid;
+  grid-template-columns: 6fr 1fr 3fr 3fr 3fr 3fr;
+}
+
+.activities_month_items {
+  display: grid;
+  grid-template-columns: 6fr 1fr 3fr 3fr 3fr 3fr;
+  .activities_month_img {
+    width: 72px;
+    height: 72px;
+  }
 }
 
