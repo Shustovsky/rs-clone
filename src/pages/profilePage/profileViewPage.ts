@@ -1,5 +1,6 @@
 import { HeaderView } from '../../components/header/headerView';
 import { ActivitiesView } from './activities/activitiesView';
+import { mockData } from '../../mock/mockData';
 
 export class ProfilePageView {
     private readonly header: HeaderView;
@@ -16,6 +17,6 @@ export class ProfilePageView {
         const main = document.createElement('main');
         main.className = 'main__profile_content';
         root.append(main);
-        this.activities.render();
+        this.activities.render(mockData);
     }
 }
