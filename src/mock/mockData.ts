@@ -23,3 +23,13 @@ export interface IMockData {
     duration: number;
     favourited: boolean;
 }
+
+export const mockDataAccount = {
+    name: 'Dzmitry Smartsau',
+    location: 'Belarus',
+};
+
+export interface IMockDataAccount {
+    name: string;
+    location: string;
+}

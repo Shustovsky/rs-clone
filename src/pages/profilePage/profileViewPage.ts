@@ -1,13 +1,16 @@
 import { HeaderView } from '../../components/header/headerView';
 import { ActivitiesView } from './activities/activitiesView';
+import { SidebarView } from './sidebar/sidebarView';
 
 export class ProfilePageView {
     private readonly header: HeaderView;
     private readonly activities: ActivitiesView;
+    private readonly sidebar: SidebarView;
 
     constructor() {
         this.header = new HeaderView('#root');
         this.activities = new ActivitiesView('#root main');
+        this.sidebar = new SidebarView('#root main');
     }
 
     public render(): void {
@@ -17,5 +20,6 @@ export class ProfilePageView {
         main.className = 'main__profile_content';
         root.append(main);
         this.activities.render();
+        this.sidebar.render();
     }
 }
