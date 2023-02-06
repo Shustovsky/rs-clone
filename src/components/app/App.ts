@@ -2,9 +2,11 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
-import { WorkoutService } from '../../pages/workouts/WorkoutService';
+import { WorkoutService } from '../../pages/workouts/workoutsService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
+import { WorkoutsController } from '../../pages/workouts/workouts.Controller';
+import { WorkoutsView } from '../../pages/workouts/workoutsView';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -17,19 +19,21 @@ export class App {
     private readonly workoutService: WorkoutService;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
+    private readonly workoutsController: WorkoutsController;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
         this.workoutService = new WorkoutService(this.dbRef);
+        const workoutsView = new WorkoutsView();
+        this.workoutsController = new WorkoutsController(workoutsView, this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
     }
 
     public async run() {
-        const workouts = await this.workoutService.fetchWorkouts();
-        console.log(workouts);
         this.mainPage.render();
-        //this.profilePage.render();
+        // this.profilePage.render();
+        // this.workoutsController.render();
     }
 }

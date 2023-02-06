@@ -1,6 +1,5 @@
 import '../activities/activities.scss';
-import { mockData } from '../../../mock/mockData';
-import { IMockData } from '../../../mock/mockData';
+import { Workout } from '../../../model/Workout';
 
 export class ActivitiesView {
     private readonly selector: string;
@@ -8,7 +7,7 @@ export class ActivitiesView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render() {
+    public render(mockData: Workout[]) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const activities = <HTMLDivElement>document.createElement('div');
         activities.className = 'activities_wrapper uk-container';
@@ -23,35 +22,29 @@ export class ActivitiesView {
     }
 
     private createStatsItem(title: string, value: string, isDivider: boolean): string {
-        if (isDivider) {
-            return `<div class="activities_stats_item uk-flex uk-flex-column uk-flex-middle">
-          <div class="uk-text-bold activity_value activities_activity_value">${value}</div>
-          <div class="activities_cathegory">${title}</div>
-      </div>
-      <hr class="uk-divider-vertical">`;
-        }
-        return `<div class="activities_stats_item uk-flex uk-flex-column uk-flex-middle">
-        <div class="uk-text-bold activity_value activities_activity_value">${value}</div>
-        <div class="activities_cathegory">${title}</div>
-    </div>`;
+        const row = `<div class="activities_stats_item uk-flex uk-flex-column uk-flex-middle">
+      <div class="uk-text-bold activity_value activities_activity_value">${value}</div>
+      <div class="activities_cathegory">${title}</div>
+  </div>`;
+        return isDivider ? `<hr class="uk-divider-vertical">${row}` : row;
     }
 
-    private createStatsItems(mockData: IMockData[]): string {
-        const durationArr = mockData.map((workout: IMockData): number => workout.duration) as number[];
+    private createStatsItems(mockData: Workout[]): string {
+        const durationArr = mockData.map((workout: Workout): number => workout.duration) as number[];
         const duration = durationArr.reduce(
             (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
         );
         const durationTime = `${Math.floor(duration / 60)}h ${Math.round(duration % 60)}min`;
-        const parametres = [
-            { title: 'ACTIVITY', value: `${mockData.length}`, isDivider: true },
-            { title: 'RUNNING DISTANCE', value: '0.0km', isDivider: true },
-            { title: 'WORKOUT TIME', value: `${durationTime}`, isDivider: true },
-            { title: 'KCAL BURNED', value: '0', isDivider: true },
-            { title: 'TRAC SCORE', value: '0', isDivider: false },
+        const parameters = [
+            { title: 'ACTIVITY', value: `${mockData.length}` },
+            { title: 'RUNNING DISTANCE', value: '0.0km' },
+            { title: 'WORKOUT TIME', value: `${durationTime}` },
+            { title: 'KCAL BURNED', value: '0' },
+            { title: 'TRAC SCORE', value: '0' },
         ];
 
-        const statColumns = parametres
-            .map((stat) => this.createStatsItem(stat.title, stat.value, stat.isDivider))
+        const statColumns = parameters
+            .map((stat, index) => this.createStatsItem(stat.title, stat.value, index !== 0))
             .join('');
         return statColumns;
     }
