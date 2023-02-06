@@ -1,7 +1,6 @@
-import './workouts.scss';
 import { Workout } from '../../model/Workout';
-import { Title } from '../../components/common/title';
-import { WorkoutCardList } from '../../components/common/workoutCardList';
+import { Title } from '../../components/title/title';
+import { WorkoutCardList } from '../../components/worcoutcartList/workoutCardList';
 
 export class WorkoutsView {
     public render(workouts: Workout[]): void {

@@ -1,5 +1,5 @@
 import { Workout } from '../../model/Workout';
-import { WorkoutCard } from './workoutCard';
+import { WorkoutCard } from '../workoutCard/workoutCard';
 import './workoutCartList.scss';
 
 export class WorkoutCardList {

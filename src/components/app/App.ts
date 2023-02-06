@@ -30,6 +30,6 @@ export class App {
 
     public async run() {
         this.mainPage.render();
-        //this.workoutsController.render();
+        this.workoutsController.render();
     }
 }
