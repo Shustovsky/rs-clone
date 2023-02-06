@@ -1,0 +1,20 @@
+@import '../../assets/style/variables';
+
+.workouts {
+  &__page-title {
+    margin: 20px auto 0;
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $black-color;
+  }
+
+  &__count-title {
+    transform: translateY(-20px);
+    display: inline-block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.44;
+    color: $black-color;
+  }
+}
