@@ -4,6 +4,7 @@ import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
 import { WorkoutService } from '../../pages/workouts/workoutsService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
+import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
 import { WorkoutsController } from '../../pages/workouts/workouts.Controller';
 import { WorkoutsView } from '../../pages/workouts/workoutsView';
 
@@ -17,6 +18,7 @@ export class App {
     private readonly dbRef: DatabaseReference;
     private readonly workoutService: WorkoutService;
     private readonly mainPage: MainPageView;
+    private readonly profilePage: ProfilePageView;
     private readonly workoutsController: WorkoutsController;
 
     constructor() {
@@ -26,10 +28,12 @@ export class App {
         const workoutsView = new WorkoutsView();
         this.workoutsController = new WorkoutsController(workoutsView, this.workoutService);
         this.mainPage = new MainPageView();
+        this.profilePage = new ProfilePageView();
     }
 
     public async run() {
         this.mainPage.render();
-        this.workoutsController.render();
+        //this.profilePage.render();
+        //this.workoutsController.render();
     }
 }
