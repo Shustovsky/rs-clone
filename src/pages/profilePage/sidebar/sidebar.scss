@@ -1,14 +1,21 @@
 @import '../../../assets/style/variables.scss';
 
-.account-img {
-  width: 142px;
-  height: 142px;
-  border-radius: 50%;
-  border: 1px solid $black-color;
-  background: $black-color;
-  margin-right: 20px;
+* {
+  box-sizing: border-box;
 }
 
+.profile_sidebar_basic {
+  background: $light-grey-color;
+  padding: 30px 40px;
+  .account-img {
+    width: 142px;
+    height: 142px;
+    border-radius: 50%;
+    border: 1px solid $black-color;
+    background: $black-color;
+    margin-right: 20px;
+  }
+}
 
 .profile-sidebar_info {
   .padding-right {
@@ -18,6 +25,25 @@
     height: 18px;
     width: 10px;
     border-left: 1px solid $black-color;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.profile-sidebar_link {
+  text-decoration: none;
+  color: $black-color;
+  font-weight: bold;
+  .profile-sidebar-cathegory {
+     padding: 30px 40px;
+     
+  }
+  .checked {
+    border-left: 6px solid $black-color ;
+    padding-left: 34px;
+  }
+  .unchecked {
+    background: $light-grey-color;
   }
 }
 

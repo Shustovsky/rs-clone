@@ -82,7 +82,7 @@ export const mockData = [
 ];
 
 export const mockDataAccount = {
-    name: 'Dzmitry Smartsau',
+    name: 'Name Surname',
     location: 'Belarus',
 };
 
