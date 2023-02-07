@@ -1,6 +1,6 @@
-import './workoutsTitle.scss';
+import './workoutListTitle.scss';
 
-export class WorkoutsTitle {
+export class WorkoutListTitle {
     private readonly selector: string;
 
     constructor(selector: string) {

@@ -2,11 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference } from '@firebase/database';
-import { WorkoutService } from '../../pages/workouts/workoutsService';
+import { WorkoutService } from '../../service/workoutService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
-import { WorkoutsController } from '../../pages/workouts/workouts.Controller';
-import { WorkoutsView } from '../../pages/workouts/workoutsView';
+import { WorkoutListController } from '../../pages/workoutListPage/workoutListController';
+import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
+import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
+import { mockData } from '../../mock/mockData';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -16,24 +18,27 @@ export class App {
 
     private readonly app: FirebaseApp;
     private readonly dbRef: DatabaseReference;
-    private readonly workoutService: WorkoutService;
+    private readonly workoutsService: WorkoutService;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
-    private readonly workoutsController: WorkoutsController;
+    private readonly workoutsController: WorkoutListController;
+    private readonly workoutView: WorkoutView;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
-        this.workoutService = new WorkoutService(this.dbRef);
-        const workoutsView = new WorkoutsView();
-        this.workoutsController = new WorkoutsController(workoutsView, this.workoutService);
+        this.workoutsService = new WorkoutService(this.dbRef);
+        const workoutsView = new WorkoutListView();
+        this.workoutsController = new WorkoutListController(workoutsView, this.workoutsService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
+        this.workoutView = new WorkoutView();
     }
 
     public async run() {
         this.mainPage.render();
-        // this.profilePage.render();
-        // this.workoutsController.render();
+        //this.profilePage.render();
+        //this.workoutsController.render();
+        //this.workoutView.render(mockData[0]);
     }
 }
