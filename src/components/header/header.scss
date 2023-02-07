@@ -3,6 +3,7 @@
 .header {
     &__nav {
         position: sticky;
+        z-index: 1;
         top: 0;
         background-color: $black-color;
         height: 64px;
