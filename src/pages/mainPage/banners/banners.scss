@@ -1,0 +1,67 @@
+@import "src/assets/style/variables.scss";
+
+.banners {
+    margin-top: 4%;
+    max-width: 1265px;
+    padding: 0;
+    padding-left: 10px;
+
+    &__item {
+        &_wrapper {
+            padding-right: 5%;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(275deg, #000, transparent 65%);
+        }
+
+        .uk-light {
+            height: 260px;
+        }
+
+        &_img {
+            img {
+                width: 138px;
+            }
+        }
+
+        &_dscr {
+            max-width: 390px;
+            height: 100%;
+
+            h3 {
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            p {
+                color: $white-color;
+
+            }
+
+            .banners__item_btn {
+                color: $black-color;
+                background-color: $white-color;
+                font-weight: bold;
+                text-transform: uppercase;
+                width: 150px;
+
+                &:hover {
+                    color: $white-color;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 980px) {
+    .banners {
+        &_container {
+            flex-direction: column;
+        }
+
+        &__item {
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+}
