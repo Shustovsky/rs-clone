@@ -1,11 +1,15 @@
 @import '../../../../assets/style/variables';
 
 .workout {
+  &__wrapper-description {
+    width: 65%;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   &__info {
-    display: flex;
-    justify-content: left;
     align-items: center;
-    width: 45%;
+    width: 60%;
   }
   &__interests-title {
     text-transform: uppercase;
@@ -23,8 +27,17 @@
 
   &__difficulty,
   &__traner-name,
-  &__time {
+  &__time,
+  &__description,
+  &__kcal-text {
     color: $black-color;
+  }
+
+  &__kcal {
+    font-weight: bold;
+  }
+  &__description {
+    font-size: 18px;
   }
 }
 

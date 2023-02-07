@@ -15,7 +15,7 @@ export class WorkoutView {
     public render(workout: Workout): void {
         const root = <HTMLBodyElement>document.querySelector('#root');
         const main = document.createElement('main');
-        main.className = 'workout uk-container';
+        main.className = 'workout uk-container uk-flex';
         root.append(main);
 
         const introVideo = document.createElement('div');
