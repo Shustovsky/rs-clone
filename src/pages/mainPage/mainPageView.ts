@@ -26,9 +26,9 @@ export class MainPageView {
         main.className = 'main__content';
         root.append(main);
 
-        // this.slider.render();
+        this.slider.render();
         this.loginNow.render();
-        // this.community.render();
+        this.community.render();
         this.banners.render();
     }
 }
