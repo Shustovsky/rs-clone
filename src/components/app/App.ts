@@ -39,6 +39,6 @@ export class App {
         this.mainPage.render();
         //this.profilePage.render();
         //this.workoutsController.render();
-        //this.workoutView.render(mockData[0]);
+        // this.workoutView.render(mockData[0]);
     }
 }
