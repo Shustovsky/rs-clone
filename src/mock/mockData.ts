@@ -82,12 +82,12 @@ export const mockData = [
     },
 ];
 
-export const mockDataAccount = {
+export const Account = {
     name: 'Name Surname',
     location: 'Belarus',
 };
 
-export interface IMockDataAccount {
+export interface IAccount {
     name: string;
     location: string;
 }

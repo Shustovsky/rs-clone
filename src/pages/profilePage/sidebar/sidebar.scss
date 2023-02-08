@@ -1,9 +1,5 @@
 @import '../../../assets/style/variables.scss';
 
-* {
-  box-sizing: border-box;
-}
-
 .profile_sidebar_basic {
   background: $light-grey-color;
   padding: 30px 40px;
@@ -30,21 +26,5 @@
   }
 }
 
-.profile-sidebar_link {
-  text-decoration: none;
-  color: $black-color;
-  font-weight: bold;
-  .profile-sidebar-cathegory {
-     padding: 30px 40px;
-     
-  }
-  .checked {
-    border-left: 6px solid $black-color ;
-    padding-left: 34px;
-  }
-  .unchecked {
-    background: $light-grey-color;
-  }
-}
 
 

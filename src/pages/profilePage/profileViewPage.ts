@@ -2,7 +2,7 @@ import { HeaderView } from '../../components/header/headerView';
 import { ActivitiesView } from './activities/activitiesView';
 import { mockData } from '../../mock/mockData';
 import { SidebarView } from './sidebar/sidebarView';
-import { mockDataAccount } from '../../mock/mockData';
+import { Account } from '../../mock/mockData';
 
 export class ProfilePageView {
     private readonly header: HeaderView;
@@ -21,7 +21,7 @@ export class ProfilePageView {
         const main = document.createElement('main');
         main.className = 'main__profile_content';
         root.append(main);
-        this.sidebar.render(mockDataAccount);
+        this.sidebar.render(Account);
         this.activities.render(mockData);
     }
 }
