@@ -1,12 +1,12 @@
-import { WorkoutService } from './workoutsService';
-import { WorkoutsView } from './workoutsView';
+import { WorkoutService } from '../../service/workoutService';
+import { WorkoutListView } from './workoutListView';
 import { Workout } from '../../model/Workout';
 
-export class WorkoutsController {
-    private workoutView: WorkoutsView;
+export class WorkoutListController {
+    private workoutView: WorkoutListView;
     private workoutService: WorkoutService;
 
-    constructor(workoutView: WorkoutsView, workoutService: WorkoutService) {
+    constructor(workoutView: WorkoutListView, workoutService: WorkoutService) {
         this.workoutView = workoutView;
         this.workoutService = workoutService;
     }

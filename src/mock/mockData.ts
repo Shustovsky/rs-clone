@@ -1,6 +1,7 @@
 export const mockData = [
     {
         id: '020c109b-7b03-462c-a55e-8824989e7bae',
+        calories: 456,
         title: 'Planks All Day',
         subtitle: 'Core Values',
         description: 'Strong core. Strong everything.',
