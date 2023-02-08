@@ -82,7 +82,7 @@ export const mockData = [
     },
 ];
 
-export const Account = {
+export const account = {
     name: 'Name Surname',
     location: 'Belarus',
 };
