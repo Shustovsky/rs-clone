@@ -1,4 +1,8 @@
 import { Section, Workout } from '../../../../model/Workout';
+import './overview.scss';
+import circuit from '../../../../../src/assets/icons/circuit.svg';
+import warmUp from '../../../../../src/assets/icons/warm_up.svg';
+import coolDown from '../../../../../src/assets/icons/cool_down.svg';
 
 export class WorkoutOverview {
     private readonly selector: string;
@@ -12,15 +16,16 @@ export class WorkoutOverview {
         overviewWrapper.className = 'workout__wrapper-overview';
 
         const overviewTitle = document.createElement('div');
-        overviewTitle.className = 'workout__wrapper-overview';
+        overviewTitle.className = 'workout__overview-title';
         overviewTitle.textContent = 'overview';
 
         overviewWrapper.append(overviewTitle);
 
         const sectionWrapper = this.createSections(workout);
         overviewWrapper.append(sectionWrapper);
-    }
 
+        document.querySelector(this.selector)?.append(overviewWrapper);
+    }
 
     public createSections(workout: Workout): HTMLElement {
         const sectionWrapper = document.createElement('div');
@@ -32,7 +37,7 @@ export class WorkoutOverview {
         console.log(sections);
 
         sections.forEach((section) => {
-            let sectionElement = this.createSection(section);
+            const sectionElement = this.createSection(section);
             sectionWrapper.append(sectionElement);
         });
         return sectionWrapper;
@@ -40,21 +45,20 @@ export class WorkoutOverview {
 
     createSection(section: Section): HTMLElement {
         const duration = Math.round(section.duration / 60);
-        // const imgSrc = `../../../../src/assets/icons/${section.kind}.svg`;
 
-        const imgSrc = '../../../../src/assets/icons/circuit.svg';
+        const imgSrc = section.kind === 'warm_up' ? warmUp : section.kind === 'circuit' ? circuit : coolDown;
 
-        const kind = section.kind === 'warm_up'? 'Warm Up'
-            : section.kind === 'circuit' ? 'Circuit' : 'Cool Down'
+        const kind = section.kind === 'warm_up' ? 'Warm Up' : section.kind === 'circuit' ? 'Circuit' : 'Cool Down';
 
         const sectionElement = document.createElement('div');
+        sectionElement.className = 'workout__section uk-flex';
         sectionElement.innerHTML = `<div>
-                                        <img src=${imgSrc} alt='#'>
+                                        <img src='${imgSrc}' alt=${section.kind}>
                                     </div>
-                                    <div>палочка</div>
-                                    <div>
-                                         <div>${kind}</div>
-                                         <div>${duration}</div>
+                                    <div class='workout__line ${section.kind} uk-flex'></div>
+                                    <div class='workout__wrapper-time'>
+                                         <div class='workout__time-text'>${kind}</div>
+                                         <div class='workout__section-time'>${duration} MIN</div>
                                     </div>`;
         return sectionElement;
     }

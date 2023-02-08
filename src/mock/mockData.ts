@@ -767,10 +767,12 @@ export const mockData = [
                     seekable: false,
                     previewVideoUrl: null,
                     videoUrl: null,
-                    spokenDuration: 'https://pumatrac.s3.amazonaws.com/trainers/833b2b34-094d-4b6d-b964-d9771cef9653_30sec_EN.mp3',
+                    spokenDuration:
+                        'https://pumatrac.s3.amazonaws.com/trainers/833b2b34-094d-4b6d-b964-d9771cef9653_30sec_EN.mp3',
                     cues: [],
                 }],
-            }],
+            }]
+        ,
         favourited: true,
     },
 ];
