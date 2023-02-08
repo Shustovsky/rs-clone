@@ -7,6 +7,7 @@ export interface Workout {
     title: string;
     subtitle: string;
     description: string;
+    calories: number;
     difficulty: string;
     duration: number;
     goal: Goal;

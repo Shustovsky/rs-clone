@@ -1,0 +1,11 @@
+@import '../../assets/style/variables';
+
+.workout {
+  &__intro-video {
+    width: 42%;
+  }
+
+  &__intro-content {
+    width: 58%;
+  }
+}

@@ -1,0 +1,46 @@
+@import '../../../../assets/style/variables';
+
+.workout {
+  &__wrapper-description {
+    width: 65%;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__info {
+    align-items: center;
+    width: 60%;
+  }
+  &__interests-title {
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 1.31;
+    font-weight: bold;
+    color: $black-color;
+  }
+
+  &__interests-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: $black-color;
+  }
+
+  &__difficulty,
+  &__traner-name,
+  &__time,
+  &__description,
+  &__kcal-text {
+    color: $black-color;
+  }
+
+  &__kcal {
+    font-weight: bold;
+  }
+  &__description {
+    font-size: 18px;
+  }
+}
+
+.uk-divider-vertical {
+  height: 44px;
+}
