@@ -36,9 +36,9 @@ export class App {
     }
 
     public async run() {
-        this.mainPage.render();
+        // this.mainPage.render();
         //this.profilePage.render();
         //this.workoutsController.render();
-        // this.workoutView.render(mockData[0]);
+        this.workoutView.render(mockData[0]);
     }
 }

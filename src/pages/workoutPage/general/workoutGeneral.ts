@@ -19,6 +19,6 @@ export class WorkoutGeneral {
         document.querySelector(this.selector)?.append(generalWrapper);
 
         this.workoutDescription.render(workout);
-        //this.workoutOverview.render(workout);
+        this.workoutOverview.render(workout);
     }
 }

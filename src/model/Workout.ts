@@ -58,20 +58,20 @@ export interface Exercise {
     kind: string;
     templateId: string;
     title: string;
-    subtitle: string;
+    subtitle: string | null;
     scorePerUnit: number;
     amount: number;
     countdown: boolean;
     loopVideo: boolean;
     imageUrl: string;
-    pauseImageUrl: string;
-    spokenTitleUrl: string;
-    previewVideoLength: number;
-    videoLength: number;
+    pauseImageUrl: string | null;
+    spokenTitleUrl: string | null;
+    previewVideoLength: number | null;
+    videoLength: number | null;
     hasAudioTrack: boolean;
     seekable: boolean;
-    previewVideoUrl: string;
-    videoUrl: string;
+    previewVideoUrl: string | null;
+    videoUrl: string | null;
     spokenDuration: string;
     cues: Cue[];
 }
@@ -80,7 +80,7 @@ export interface Section {
     id: string;
     order: number;
     kind: string;
-    title: string;
+    title: string | null;
     duration: number;
     exercises: Exercise[];
 }
