@@ -27,7 +27,7 @@ export class WorkoutOverview {
         document.querySelector(this.selector)?.append(overviewWrapper);
     }
 
-    public createSections(workout: Workout): HTMLElement {
+    private createSections(workout: Workout): HTMLElement {
         const sectionWrapper = document.createElement('div');
         sectionWrapper.className = 'workout__wrapper-section';
 
@@ -43,17 +43,15 @@ export class WorkoutOverview {
         return sectionWrapper;
     }
 
-    createSection(section: Section): HTMLElement {
+    private createSection(section: Section): HTMLElement {
         const duration = Math.round(section.duration / 60);
-
-        const imgSrc = section.kind === 'warm_up' ? warmUp : section.kind === 'circuit' ? circuit : coolDown;
-
-        const kind = section.kind === 'warm_up' ? 'Warm Up' : section.kind === 'circuit' ? 'Circuit' : 'Cool Down';
+        const imgSrc = this.getSectionKindImg(section);
+        const kind = this.getSectionKindText(section);
 
         const sectionElement = document.createElement('div');
         sectionElement.className = 'workout__section uk-flex';
         sectionElement.innerHTML = `<div>
-                                        <img src='${imgSrc}' alt=${section.kind}>
+                                        <img src='${imgSrc}' alt='${section.kind}'>
                                     </div>
                                     <div class='workout__line ${section.kind} uk-flex'></div>
                                     <div class='workout__wrapper-time'>
@@ -61,5 +59,27 @@ export class WorkoutOverview {
                                          <div class='workout__section-time'>${duration} MIN</div>
                                     </div>`;
         return sectionElement;
+    }
+
+    private getSectionKindImg(section: Section) {
+        switch (section.kind) {
+            case 'warm_up':
+                return warmUp;
+            case 'circuit':
+                return circuit;
+            case 'cool_down':
+                return coolDown;
+        }
+    }
+
+    private getSectionKindText(section: Section) {
+        switch (section.kind) {
+            case 'warm_up':
+                return 'Warm Up';
+            case 'circuit':
+                return 'Circuit';
+            case 'cool_down':
+                return 'Cool Down';
+        }
     }
 }
