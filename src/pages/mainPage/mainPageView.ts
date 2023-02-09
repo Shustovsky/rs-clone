@@ -3,7 +3,7 @@ import { Slider } from './slider/slider';
 import { LoginNow } from './loginNow/loginNow';
 import { Community } from './community/community';
 import { Banners } from './banners/banners';
-import { Footer } from './footer/footer';
+import { Footer } from '../../components/footer/footer';
 
 export class MainPageView {
     private readonly header: HeaderView;

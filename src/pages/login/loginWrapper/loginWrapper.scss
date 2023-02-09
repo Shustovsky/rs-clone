@@ -1,0 +1,20 @@
+@import "src/assets/style/variables.scss";
+
+.login_background {
+    min-height: 93vh;
+
+    .login_container {
+        margin: 3%;
+
+    }
+}
+
+@media (max-width: 980px) {
+    .login_container {
+        flex-direction: column;
+
+        .uk-first-column {
+            padding: 0;
+        }
+    }
+}

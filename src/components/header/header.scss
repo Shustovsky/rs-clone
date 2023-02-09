@@ -13,8 +13,14 @@
         padding: 0 30px;
 
         &_link {
+            width: 155px;
+            padding: 0 16px;
+            height: 36px;
             border-radius: 18px;
             color: $white-color;
+            text-transform: none;
+            font-weight: bold;
+            line-height: 30px;
 
             &:hover {
                 color: $black-color;
