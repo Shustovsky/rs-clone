@@ -1,0 +1,47 @@
+@import '../../../../assets/style/variables';
+
+.workout {
+  &__wrapper-section-exercises {
+    margin-top: 80px;
+  }
+
+  &__wrapper-exercises {
+    gap: 55px;
+  }
+
+  &__exercise-section-item {
+    gap: 15px;
+  }
+
+  &__exercise-block {
+    gap: 25px;
+  }
+
+  &__exercise-title {
+    width: 30%;
+  }
+
+  &__exercise-section {
+    width: 70%;
+  }
+
+  &__wrapper-section-img {
+    width: 102px;
+  }
+
+  &__section-img {
+    width: 100%;
+  }
+
+  &__exercise-title {
+    text-transform: uppercase;
+    color: $black-color;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__description-exercise-text {
+    color: $black-color;
+    font-size: 18px;
+  }
+}

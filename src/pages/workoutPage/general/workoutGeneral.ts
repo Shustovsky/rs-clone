@@ -1,16 +1,19 @@
 import { Workout } from '../../../model/Workout';
 import { WorkoutOverview } from './overview/workoutOverview';
 import { WorkoutDescription } from './description/workoutDescription';
+import { WorkoutSectionExerciseView } from './workoutSectionExercise/workoutSectionExerciseView';
 
 export class WorkoutGeneral {
     private readonly selector: string;
     private readonly workoutDescription: WorkoutDescription;
     private readonly workoutOverview: WorkoutOverview;
+    private readonly workoutSectionExerciseView: WorkoutSectionExerciseView;
 
     constructor(selector: string) {
         this.selector = selector;
         this.workoutDescription = new WorkoutDescription('#root .workout__general-wrapper');
         this.workoutOverview = new WorkoutOverview('#root .workout__general-wrapper');
+        this.workoutSectionExerciseView = new WorkoutSectionExerciseView('#root .workout__intro-content');
     }
 
     render(workout: Workout) {
@@ -20,5 +23,6 @@ export class WorkoutGeneral {
 
         this.workoutDescription.render(workout);
         this.workoutOverview.render(workout);
+        this.workoutSectionExerciseView.render(workout);
     }
 }
