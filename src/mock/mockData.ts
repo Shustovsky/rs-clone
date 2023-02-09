@@ -776,3 +776,13 @@ export const mockData = [
         favourited: true,
     },
 ];
+
+export const account = {
+    name: 'Name Surname',
+    location: 'Belarus',
+};
+
+export interface IAccount {
+    name: string;
+    location: string;
+}
