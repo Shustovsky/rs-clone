@@ -1,5 +1,5 @@
 import { DatabaseReference, child, get } from '@firebase/database';
-import { Workout, WorkoutWrapper } from '../../model/Workout';
+import { Workout, WorkoutWrapper } from '../model/Workout';
 
 export class WorkoutService {
     private readonly dbRef: DatabaseReference;
