@@ -25,23 +25,77 @@
       <input class="uk-input" type="search" placeholder="Male">
     </div>
     <div class="form_row_half">
-      <input class="uk-input" type="date" value="1990-16-06" min="1950-01-01" max="2030-01-01">
+      <input class="uk-input uk-date" type="date">
     </div>
   </div>
   <div class="form_row uk-flex form_row_margin">
     <div class="form_row_half uk-flex">
-      <input class="uk-input input_number" type="number" min="4" max="7">
+      <input class="uk-input input_number" type="number" value="0" min="4" max="7">
       <span class="input_separator">'</span>
-      <input class="uk-input input_number" type="number" min="0" max="11">
+      <input class="uk-input input_number" type="number" value="0" min="0" max="11">
       <span class="input_separator">"</span>
       <div class="account_unit">ft</div>
     </div>
     <div class="form_row_half">
-      <input class="uk-input input_number_half" type="number" min="66" max="439">
+      <input class="uk-input input_number_half" type="number" value="0" min="66" max="439">
       <div class="account_unit">lbs</div>
     </div>
   </div>
-  <h3 account>CHANGE PASSWORD</h3>
-  
-
+  <h3 class="account_password_title">CHANGE PASSWORD</h3>
+  <div class="form_row uk-flex form_row_margin">
+    <div class="form_row_half">
+      <input class="uk-input" type="password" placeholder="Current password">
+    </div>
+    <div class="form_row_half">
+    </div>
+  </div>
+  <div class="form_row uk-flex">
+    <div class="form_row_half">
+      <input class="uk-input" type="password" placeholder="New password">
+    </div>
+    <div class="form_row_half">
+      <input class="uk-input" type="password" placeholder="Confirm new password">
+    </div>
+  </div>
+  <h3 class="account_title">PRIVACY</h3>
+  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio1" checked> <strong>Private</strong> Only me</label>
+    </div>
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio1"> <strong>Public</strong> Everyone</label>
+    </div>
+</div>
+<h3 class="account_title">UNITS</h3>
+  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio2"> <strong>METRIC</strong></label>
+    </div>
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio2" checked> <strong>IMPERIAL</strong></label>
+    </div>
+</div>
+<h3 class="account_title margin_account_title">PUMATRAC OFFERS</h3>
+<p class="account_paragraph">Opt in to see custom PUMATRAC offers and discounts when you visit other websites, and to allwo third-party tracking.</p>
+  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio3" checked> <strong>ON</strong></label>
+    </div>
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio3"> <strong>OFF</strong></label>
+    </div>
+</div>
+<h3 class="account_title margin_account_title">EMAIL RETARGETING</h3>
+<p class="account_paragraph">Yes, I want to be the first to hear about the latest special offers, product drops and more straight to my inbox.</p>
+  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap form_row_margin_below">
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio4" checked> <strong>ON</strong></label>
+    </div>
+    <div class="form_row_half input_border">
+      <label><input class="uk-radio" type="radio" name="radio4"> <strong>OFF</strong></label>
+    </div>
+</div>
+<div class="account_wrapper_button">
+  <button class="button_save uk-button uk-button-secondary">SAVE PREDERENCES</button>
+</div>
 </form>
