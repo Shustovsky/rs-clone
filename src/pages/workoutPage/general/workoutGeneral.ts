@@ -15,10 +15,10 @@ export class WorkoutGeneral {
 
     render(workout: Workout) {
         const generalWrapper = document.createElement('div');
-        generalWrapper.className = 'workout__general-wrapper';
+        generalWrapper.className = 'workout__general-wrapper uk-flex';
         document.querySelector(this.selector)?.append(generalWrapper);
 
         this.workoutDescription.render(workout);
-        //this.workoutOverview.render(workout);
+        this.workoutOverview.render(workout);
     }
 }

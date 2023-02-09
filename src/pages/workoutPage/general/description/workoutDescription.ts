@@ -25,7 +25,9 @@ export class WorkoutDescription {
                                  <div>
                                       <div class='workout__description'>${workout.description}</div>
                                       <div class='workout__kcal-text'>Estimated 
-                                        <span class='workout__kcal'>${workout.calories ? workout.calories : 0} kcal</span>
+                                        <span class='workout__kcal'>${
+                                            workout.calories || 0
+                                        } kcal</span>
                                       </div>
                                  </div>
                                  <div>
