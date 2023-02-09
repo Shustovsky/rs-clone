@@ -19,9 +19,6 @@ export class LoginView {
 
     public render(): void {
         const root = <HTMLBodyElement>document.querySelector('#root');
-        root.innerHTML = '';
-        this.header.createHeader();
-        this.hideLoginButton();
         const main = document.createElement('main');
         main.className = 'login';
         root.append(main);
@@ -29,10 +26,5 @@ export class LoginView {
         this.loginWrapper.render();
         this.loginContent.render();
         this.loginApp.render();
-    }
-
-    private hideLoginButton(): void {
-        const btn = <HTMLButtonElement>document.querySelector('.header__nav_login');
-        btn.style.visibility = 'hidden';
     }
 }
