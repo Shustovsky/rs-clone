@@ -26,6 +26,6 @@ export class ProfilePageView {
         root.append(main);
         this.sidebar.render(account);
         this.activities.render(mockData);
-        this.account.render();
+        this.account.render(account);
     }
 }
