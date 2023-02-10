@@ -8,7 +8,7 @@ import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
 import { WorkoutListController } from '../../pages/workoutListPage/workoutListController';
 import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
 import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
-import { mockData } from '../../mock/mockData';
+import { WorkoutController } from '../../pages/workoutPage/workoutController';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -18,27 +18,29 @@ export class App {
 
     private readonly app: FirebaseApp;
     private readonly dbRef: DatabaseReference;
-    private readonly workoutsService: WorkoutService;
+
+    private readonly workoutService: WorkoutService;
+    private readonly workoutListController: WorkoutListController;
+    private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
-    private readonly workoutsController: WorkoutListController;
-    private readonly workoutView: WorkoutView;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
-        this.workoutsService = new WorkoutService(this.dbRef);
+        this.workoutService = new WorkoutService(this.dbRef);
         const workoutsView = new WorkoutListView();
-        this.workoutsController = new WorkoutListController(workoutsView, this.workoutsService);
+        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
-        this.workoutView = new WorkoutView();
+        const workoutView = new WorkoutView();
+        this.workoutController = new WorkoutController(this.workoutService, workoutView);
     }
 
     public async run() {
         this.mainPage.render();
         //this.profilePage.render();
-        //this.workoutsController.render();
-        // this.workoutView.render(mockData[0]);
+        //this.workoutListController.render();
+        // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
     }
 }
