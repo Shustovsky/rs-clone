@@ -9,7 +9,6 @@ export class LoginView {
     private readonly loginContent: LoginContent;
     private readonly loginApp: LoginApp;
 
-
     constructor() {
         this.header = new HeaderView('#root');
         this.loginWrapper = new LoginWrapper('#root main');

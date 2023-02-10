@@ -3,9 +3,27 @@
 .workout {
   &__intro-video {
     width: 42%;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
   }
 
   &__intro-content {
     width: 58%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .workout {
+    flex-direction: column;
+
+    &__intro-video {
+      width: 100%;
+      position: relative;
+    }
+
+    &__intro-content {
+      width: 100%;
+    }
   }
 }
