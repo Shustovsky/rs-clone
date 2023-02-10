@@ -34,8 +34,6 @@ export class WorkoutOverview {
         const sections = workout.sections;
         sections.sort((a, b) => a.order - b.order);
 
-        console.log(sections);
-
         sections.forEach((section) => {
             const sectionElement = this.createSection(section);
             sectionWrapper.append(sectionElement);
