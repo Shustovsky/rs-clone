@@ -16,16 +16,22 @@
   </div>
   <div class="form_row uk-flex form_row_margin_below">
     <div class="form_row_half">
-      <input class="uk-input" type="search" placeholder="Country*">
+      <input class="uk-input search_country" id="autoComplete" type="search" placeholder="Country*">
     </div>
     <div class="form_row_half"></div>
   </div>
   <div class="form_row uk-flex form_row_margin">
     <div class="form_row_half">
-      <input class="uk-input" type="search" placeholder="Male">
+      <select class="uk-select" aria-label="Select">
+        <option disabled selected>Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Non binary</option>
+    </select>
     </div>
     <div class="form_row_half">
-      <input class="uk-input uk-date" type="date">
+      <input class="uk-input uk-date litepicker" type="date">
+      <span class="icon_calendar" uk-icon="icon: calendar"></span>
     </div>
   </div>
   <div class="form_row uk-flex form_row_margin">
@@ -96,6 +102,6 @@
     </div>
 </div>
 <div class="account_wrapper_button">
-  <button class="button_save uk-button uk-button-secondary">SAVE PREDERENCES</button>
+  <button class="button_save uk-button uk-button-secondary">SAVE PREFERENCES</button>
 </div>
 </form>

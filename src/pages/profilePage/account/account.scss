@@ -75,6 +75,7 @@
 
 .uk-radio:checked {
   background-color: $black-color;
+  pointer-events: none;
 }
 
 .radio_button_gap {
@@ -92,4 +93,27 @@
 .button_save {
   font-size: 16px;
   padding: 0 40px
+}
+
+input::-webkit-calendar-picker-indicator{
+  display: none;
+}
+
+.form_row_half {
+  position: relative;
+  .icon_calendar {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+.autocomplete {
+  height: 50px;
+  padding-left: 10px;
+  overflow-y: scroll;
+  border: 1px solid $light-grey-color;
+  background: $muted-grey;
 }
