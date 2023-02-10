@@ -27,10 +27,8 @@ export class App {
     private readonly profilePage: ProfilePageView;
     private readonly workoutsController: WorkoutListController;
     private readonly workoutView: WorkoutView;
-    private readonly loginView: LoginView;
     private readonly loginService: LoginService;
     private readonly loginController: LoginController;
-    private readonly loginValidator: LoginValidator;
 
 
     constructor() {
@@ -42,10 +40,9 @@ export class App {
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutView = new WorkoutView();
-        this.loginView = new LoginView();
+
         this.loginService = new LoginService(this.firebaseConfig);
-        this.loginValidator = new LoginValidator();
-        this.loginController = new LoginController(this.loginView, this.loginService, this.loginValidator);
+        this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
     }
 
     public async run() {
