@@ -1,107 +1,71 @@
-<h3 class="account">ABOUT YOU</h3>
-<p class="account_text">The details you enter below will be used to calculate the calories you burn as accurately as possible, and to find events near you.</p>
-<div class="account-img_wrapper uk-flex uk-flex-middle">
-    <div class="account-img"></div>
-    <span>Add profile picture</span>
-    <input type="file" class="input_add_img">
-</div>
-<form class="profile_form">
-  <div class="form_row uk-flex form_row_margin">
-    <div class="form_row_half">
-      <input class="uk-input" type="text" placeholder="First and Last Name">
+    <div class="form_row uk-flex form_row_margin">
+        <div class="form_row_half uk-flex">
+            <input class="uk-input input_number" type="number" value="0" min="4" max="7">
+            <span class="input_separator">'</span>
+            <input class="uk-input input_number" type="number" value="0" min="0" max="11">
+            <span class="input_separator">"</span>
+            <div class="account_unit">ft</div>
+        </div>
+        <div class="form_row_half">
+            <input class="uk-input input_number_half" type="number" value="0" min="66" max="439">
+            <div class="account_unit">lbs</div>
+        </div>
     </div>
-    <div class="form_row_half">
-      <input class="uk-input" type="email" placeholder="email">
+    <h3 class="account_password_title account_title">CHANGE PASSWORD</h3>
+    <div class="form_row uk-flex form_row_margin">
+        <div class="form_row_half">
+            <input class="uk-input" type="password" placeholder="Current password">
+        </div>
+        <div class="form_row_half">
+        </div>
     </div>
-  </div>
-  <div class="form_row uk-flex form_row_margin_below">
-    <div class="form_row_half">
-      <input class="uk-input search_country" id="autoComplete" type="search" placeholder="Country*">
+        <div class="form_row uk-flex">
+            <div class="form_row_half">
+            <input class="uk-input" type="password" placeholder="New password">
+        </div>
+        <div class="form_row_half">
+            <input class="uk-input" type="password" placeholder="Confirm new password">
+        </div>
     </div>
-    <div class="form_row_half"></div>
-  </div>
-  <div class="form_row uk-flex form_row_margin">
-    <div class="form_row_half">
-      <select class="uk-select" aria-label="Select">
-        <option disabled selected>Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Non binary</option>
-    </select>
+    <h3 class="account_title">PRIVACY</h3>
+    <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio1" checked> <strong class="label_padding">Private</strong> Only me</label>
+        </div>
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio1"> <strong class="label_padding">Public</strong> Everyone</label>
+        </div>
     </div>
-    <div class="form_row_half">
-      <input class="uk-input uk-date litepicker" type="date">
-      <span class="icon_calendar" uk-icon="icon: calendar"></span>
+    <h3 class="account_title">UNITS</h3>
+    <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio2"> <strong class="label_padding">METRIC</strong></label>
+        </div>
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio2" checked> <strong class="label_padding">IMPERIAL</strong></label>
+        </div>
     </div>
-  </div>
-  <div class="form_row uk-flex form_row_margin">
-    <div class="form_row_half uk-flex">
-      <input class="uk-input input_number" type="number" value="0" min="4" max="7">
-      <span class="input_separator">'</span>
-      <input class="uk-input input_number" type="number" value="0" min="0" max="11">
-      <span class="input_separator">"</span>
-      <div class="account_unit">ft</div>
+    <h3 class="account_title margin_account_title">PUMATRAC OFFERS</h3>
+    <p class="account_paragraph">Opt in to see custom PUMATRAC offers and discounts when you visit other websites, and to allwo third-party tracking.</p>
+    <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio3" checked> <strong class="label_padding">ON</strong></label>
+        </div>
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio3"> <strong class="label_padding">OFF</strong></label>
+        </div>
     </div>
-    <div class="form_row_half">
-      <input class="uk-input input_number_half" type="number" value="0" min="66" max="439">
-      <div class="account_unit">lbs</div>
+    <h3 class="account_title margin_account_title">EMAIL RETARGETING</h3>
+    <p class="account_paragraph">Yes, I want to be the first to hear about the latest special offers, product drops and more straight to my inbox.</p>
+    <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap form_row_margin_below">
+        <div class="form_row_half input_border">
+          <label><input class="uk-radio" type="radio" name="radio4" checked> <strong class="label_padding">ON</strong></label>
+        </div>
+        <div class="form_row_half input_border">
+            <label><input class="uk-radio" type="radio" name="radio4"> <strong class="label_padding">OFF</strong></label>
+        </div>
     </div>
-  </div>
-  <h3 class="account_password_title">CHANGE PASSWORD</h3>
-  <div class="form_row uk-flex form_row_margin">
-    <div class="form_row_half">
-      <input class="uk-input" type="password" placeholder="Current password">
+    <div class="account_wrapper_button">
+        <button class="button_save uk-button uk-button-secondary">SAVE PREFERENCES</button>
     </div>
-    <div class="form_row_half">
-    </div>
-  </div>
-  <div class="form_row uk-flex">
-    <div class="form_row_half">
-      <input class="uk-input" type="password" placeholder="New password">
-    </div>
-    <div class="form_row_half">
-      <input class="uk-input" type="password" placeholder="Confirm new password">
-    </div>
-  </div>
-  <h3 class="account_title">PRIVACY</h3>
-  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio1" checked> <strong>Private</strong> Only me</label>
-    </div>
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio1"> <strong>Public</strong> Everyone</label>
-    </div>
-</div>
-<h3 class="account_title">UNITS</h3>
-  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio2"> <strong>METRIC</strong></label>
-    </div>
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio2" checked> <strong>IMPERIAL</strong></label>
-    </div>
-</div>
-<h3 class="account_title margin_account_title">PUMATRAC OFFERS</h3>
-<p class="account_paragraph">Opt in to see custom PUMATRAC offers and discounts when you visit other websites, and to allwo third-party tracking.</p>
-  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap">
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio3" checked> <strong>ON</strong></label>
-    </div>
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio3"> <strong>OFF</strong></label>
-    </div>
-</div>
-<h3 class="account_title margin_account_title">EMAIL RETARGETING</h3>
-<p class="account_paragraph">Yes, I want to be the first to hear about the latest special offers, product drops and more straight to my inbox.</p>
-  <div class="uk-margin uk-child-width-auto uk-flex radio_button_gap form_row_margin_below">
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio4" checked> <strong>ON</strong></label>
-    </div>
-    <div class="form_row_half input_border">
-      <label><input class="uk-radio" type="radio" name="radio4"> <strong>OFF</strong></label>
-    </div>
-</div>
-<div class="account_wrapper_button">
-  <button class="button_save uk-button uk-button-secondary">SAVE PREFERENCES</button>
-</div>
 </form>
