@@ -64,6 +64,7 @@ export class WorkoutSectionExerciseView {
             exerciseDescription.append(exerciseTitle);
 
             const exerciseTime = document.createElement('div');
+            exerciseTime.className = 'workout__exercise-time';
             exerciseTime.textContent = `${item.amount} SEC`;
             exerciseDescription.append(exerciseTime);
 

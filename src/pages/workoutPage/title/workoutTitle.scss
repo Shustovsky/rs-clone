@@ -1,6 +1,12 @@
 @import '../../../assets/style/variables';
 
 .workout {
+  &__wrapper-title {
+    margin-left: 50px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid $light-grey-color;
+  }
+
   &__title {
     margin-top: 60px;
     font-size: 40px;
@@ -15,5 +21,23 @@
     line-height: 1.29;
     text-transform: uppercase;
     color: $black-color;
+  }
+}
+
+@media (max-width: 1000px) {
+  .workout {
+
+    &__wrapper-title {
+      margin-left: 0;
+    }
+
+    &__title {
+      margin: 75px 0 0 50px;
+      font-size: 32px;
+    }
+
+    &__subtitle {
+      margin-left: 50px;
+    }
   }
 }

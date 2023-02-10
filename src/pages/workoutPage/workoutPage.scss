@@ -10,6 +10,20 @@
 
   &__intro-content {
     width: 58%;
-    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .workout {
+    flex-direction: column;
+
+    &__intro-video {
+      width: 100%;
+      position: relative;
+    }
+
+    &__intro-content {
+      width: 100%;
+    }
   }
 }

@@ -2,6 +2,7 @@ import { Workout } from '../../../model/Workout';
 import { WorkoutOverview } from './overview/workoutOverview';
 import { WorkoutDescription } from './description/workoutDescription';
 import { WorkoutSectionExerciseView } from './workoutSectionExercise/workoutSectionExerciseView';
+import './workoutGeneral.scss';
 
 export class WorkoutGeneral {
     private readonly selector: string;
