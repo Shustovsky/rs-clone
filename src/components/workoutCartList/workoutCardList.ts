@@ -8,7 +8,7 @@ export class WorkoutCardList {
 
     constructor(selector: string) {
         this.selector = selector;
-        this.workoutCard = new WorkoutCard('.workouts__wrapper-list')
+        this.workoutCard = new WorkoutCard('.workouts__wrapper-list');
     }
 
     public render(workouts: Workout[]): void {

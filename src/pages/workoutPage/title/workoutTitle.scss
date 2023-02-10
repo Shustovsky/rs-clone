@@ -1,0 +1,19 @@
+@import '../../../assets/style/variables';
+
+.workout {
+  &__title {
+    font-size: 40px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $black-color;
+  }
+
+  &__subtitle {
+    font-size: 28px;
+    line-height: 1.29;
+    text-transform: uppercase;
+    color: $black-color;
+  }
+
+}
