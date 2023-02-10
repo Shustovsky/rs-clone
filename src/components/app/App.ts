@@ -33,8 +33,7 @@ export class App {
         this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
-        const workoutView = new WorkoutView();
-        this.workoutController = new WorkoutController(this.workoutService, workoutView);
+        this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
     }
 
     public async run() {
