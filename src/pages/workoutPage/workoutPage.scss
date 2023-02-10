@@ -3,9 +3,13 @@
 .workout {
   &__intro-video {
     width: 42%;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
   }
 
   &__intro-content {
     width: 58%;
+    margin-left: 50px;
   }
 }

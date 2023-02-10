@@ -2,6 +2,7 @@
 
 .workout {
   &__title {
+    margin-top: 60px;
     font-size: 40px;
     line-height: 1.2;
     text-transform: uppercase;
@@ -15,5 +16,4 @@
     text-transform: uppercase;
     color: $black-color;
   }
-
 }
