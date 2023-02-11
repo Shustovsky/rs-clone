@@ -780,9 +780,11 @@ export const mockData = [
 export const account = {
     name: 'Name Surname',
     location: 'Belarus',
+    password: 'qwerty12345'
 };
 
 export interface IAccount {
     name: string;
     location: string;
+    password: string;
 }

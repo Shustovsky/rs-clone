@@ -15,7 +15,7 @@ export class ProfilePageView {
         this.header = new HeaderView('#root');
         this.activities = new ActivitiesView('#root main');
         this.sidebar = new SidebarView('#root main');
-        this.accountDelete = new AccountDeleteView('#root main')
+        this.accountDelete = new AccountDeleteView('#root main');
     }
 
     public render(): void {
@@ -26,6 +26,6 @@ export class ProfilePageView {
         root.append(main);
         this.sidebar.render(account);
         this.activities.render(mockData);
-        this.accountDelete.render()
+        this.accountDelete.render(account);
     }
 }

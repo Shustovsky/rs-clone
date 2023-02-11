@@ -1,5 +1,11 @@
 @import '../../../assets/style/variables.scss';
 
+.accountDelete_wrapper {
+  max-width: 578px;
+  padding: 60px 40px;
+}
+
+
 .account_delete_title {
   font-size: 20px;
   line-height: 1.35;
@@ -9,20 +15,28 @@
 
 .margin_larger {
   margin-top: 70px;
-  margin-bottom: 10px;
+}
+
+.help_title {
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 
 .account_delete_reason {
   height: 36px;
   border-radius: 500px;
-  border: 1px solid #dfe0e1;
+  border: 1px solid $light-blue;
   padding: 0 16px;
   margin: 0 10px 15px 0;
 }
 
-.other_text {
-  margin-right: 12px;
+.account_delete_other {
+  padding-top: 16px;
+  .other_text {
+    margin-right: 12px;
+  }
 }
+
 
 .input_wrapper {
   width: 100%;
@@ -38,25 +52,30 @@
   }
 }
 
-.button_save {
-  font-size: 16px;
-  padding: 5px 40px;
-  line-height: 42px;
-  font-weight: 700;
-  color: $black-color;
-  background: $white-color;
-  border: 1px solid $black-color;
-  border-radius: 4px;
-  width: 100%;
-  &:hover {
-    background-color: $black-color;
-    color: $white-color;
-    border: none;
-    transition: 0.3s;
+
+.account_wrapper_button {
+  padding-bottom: 80px;
+  .button_save {
+    font-size: 16px;
+    padding: 5px 40px;
+    line-height: 42px;
+    font-weight: 700;
+    color: $black-color;
+    background: $white-color;
+    border: 1px solid $black-color;
+    border-radius: 4px;
+    width: 100%;
+    &:hover {
+      background-color: $black-color;
+      color: $white-color;
+      border: none;
+      transition: 0.3s;
+    }
   }
 }
 
+
 .uk-divider {
-  border: 1px solid $dark-grey-matte-color;
+  border: 1px solid $light-grey-color;
   margin: 40px 0;
 }
