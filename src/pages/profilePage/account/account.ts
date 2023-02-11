@@ -59,17 +59,17 @@ export class AccountView {
             element: document.querySelector('.litepicker') as HTMLInputElement,
         });
 
-        const input = document.querySelector('.search_country');
+        const input = <HTMLInputElement>document.querySelector('.search_country');
         picker.setDate(account.birthday);
         autocomplete({
-            input: input as HTMLInputElement,
+            input: input,
             fetch: function (text, update) {
                 text = text.toLowerCase();
                 const suggestions = countries.filter((n) => n.label.toLowerCase().startsWith(text));
                 update(suggestions);
             },
             onSelect: function (item) {
-                (input as HTMLInputElement).value = item.label as string;
+                input.value = item.label as string;
             },
         });
     }

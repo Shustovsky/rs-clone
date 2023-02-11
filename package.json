@@ -46,7 +46,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@tarekraafat/autocomplete.js": "^10.2.7",
     "autocompleter": "^8.0.2",
     "firebase": "^9.16.0",
     "i18next": "^22.4.9",
