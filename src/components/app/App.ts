@@ -38,7 +38,10 @@ export class App {
 
     public async run() {
         this.mainPage.render();
+
         this.profilePage.render();
+        // this.workoutsController.render();
+        //this.profilePage.render();
         //this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
     }

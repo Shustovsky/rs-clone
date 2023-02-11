@@ -1,0 +1,155 @@
+@import 'src/assets/style/variables.scss';
+
+.account {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.account_text {
+  margin-top: 0;
+  margin-bottom: 50px;
+  line-height: 1.5
+}
+
+.account_title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35
+}
+
+.account-img_wrapper {
+  position: relative;
+  gap: 40px;
+  margin-bottom: 50px;
+  .account-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: $black-color;
+  }
+  .profile_add {
+    border-bottom: 1px solid $black-color;
+  }
+  .input_add_img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}
+
+.form_row {
+  gap: 8px;
+  .form_row_half {
+    position: relative;
+    width: 50%;
+    .account_unit {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%) ;
+    }
+  }
+}
+
+.label_padding {
+  padding-left: 8px;
+  line-height: 1.31;
+  font-weight: 700;
+}
+
+.form_row_margin {
+  margin-bottom: 12px;
+}
+
+.form_row_margin_below {
+  margin-bottom: 40px;
+}
+
+.input_number {
+  width: 3.5em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input_number_half {
+  width: 100%;
+}
+
+.account_password_title {
+  margin: 70px 0 30px 0;
+}
+
+.form_row_half {
+  position: relative;
+  width: 50%;
+}
+
+.input_border {
+  border: 1px solid $muted-grey;
+  padding: 8px 20px;
+}
+
+.uk-radio:checked {
+  background-color: $black-color;
+  pointer-events: none;
+}
+
+.radio_button_gap {
+  gap: 8px;
+}
+
+.margin_account_title {
+  margin-bottom: 10px;
+}
+
+.account_paragraph {
+  margin: 0 0 22px 0;
+}
+
+.button_save {
+  font-size: 16px;
+  padding: 5px 40px;
+  line-height: 42px;
+  font-weight: 700;
+  &:hover {
+    background-color: $white-color;
+    color: $black-color;
+    border: 1px solid $black-color;
+    transition: 0.3s;
+  }
+}
+
+input::-webkit-calendar-picker-indicator{
+  display: none;
+}
+
+.form_row_half {
+  position: relative;
+  .icon_calendar {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
+
+.autocomplete {
+  height: 50px;
+  padding-left: 10px;
+  overflow-y: scroll;
+  border: 1px solid $light-grey-color;
+  background: $muted-grey;
+}
