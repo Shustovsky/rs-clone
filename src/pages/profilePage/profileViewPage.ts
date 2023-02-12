@@ -1,10 +1,10 @@
 import { HeaderView } from '../../components/header/headerView';
 import { ActivitiesView } from './activities/activitiesView';
 import { AccountView } from './account/account';
-import { mockData } from '../../mock/mockData';
 import { SidebarView } from './sidebar/sidebarView';
 import { account } from '../../mock/mockData';
 import { AccountDeleteView } from './accountDelete/accountDeletView';
+import { SwitcherView } from './switcher/switcherView';
 
 export class ProfilePageView {
     private readonly header: HeaderView;
@@ -12,6 +12,7 @@ export class ProfilePageView {
     private readonly sidebar: SidebarView;
     private readonly account: AccountView;
     private readonly accountDelete: AccountDeleteView;
+    private readonly switcher: SwitcherView;
 
     constructor() {
         this.header = new HeaderView('#root');
@@ -19,6 +20,7 @@ export class ProfilePageView {
         this.activities = new ActivitiesView('#root main');
         this.account = new AccountView('#root main');
         this.accountDelete = new AccountDeleteView('#root main');
+        this.switcher = new SwitcherView('#root main');
     }
 
     public render(): void {
@@ -28,8 +30,6 @@ export class ProfilePageView {
         main.className = 'main__profile_content';
         root.append(main);
         this.sidebar.render(account);
-        this.activities.render(mockData);
-        this.account.render(account);
-        this.accountDelete.render(account);
+        this.switcher.render();
     }
 }
