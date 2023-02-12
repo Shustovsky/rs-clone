@@ -1033,6 +1033,7 @@ export const mockData = [
 export const account = {
     name: 'Name Surname',
     location: 'Belarus',
+    password: 'qwerty12345',
     mail: 'qwerty@gmail.com',
     sex: 'Male',
     country: 'Belarus',

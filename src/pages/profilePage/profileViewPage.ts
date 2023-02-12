@@ -4,18 +4,21 @@ import { AccountView } from './account/account';
 import { mockData } from '../../mock/mockData';
 import { SidebarView } from './sidebar/sidebarView';
 import { account } from '../../mock/mockData';
+import { AccountDeleteView } from './accountDelete/accountDeletView';
 
 export class ProfilePageView {
     private readonly header: HeaderView;
     private readonly activities: ActivitiesView;
     private readonly sidebar: SidebarView;
     private readonly account: AccountView;
+    private readonly accountDelete: AccountDeleteView;
 
     constructor() {
         this.header = new HeaderView('#root');
         this.sidebar = new SidebarView('#root main');
         this.activities = new ActivitiesView('#root main');
         this.account = new AccountView('#root main');
+        this.accountDelete = new AccountDeleteView('#root main');
     }
 
     public render(): void {
@@ -27,5 +30,6 @@ export class ProfilePageView {
         this.sidebar.render(account);
         this.activities.render(mockData);
         this.account.render(account);
+        this.accountDelete.render(account);
     }
 }
