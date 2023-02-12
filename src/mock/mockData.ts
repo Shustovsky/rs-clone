@@ -1043,7 +1043,6 @@ export const account = {
 export interface IAccount {
     name: string;
     location: string;
-    password: string;
     mail: string;
     sex: string;
     country: string;

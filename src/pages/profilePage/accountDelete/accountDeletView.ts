@@ -28,7 +28,7 @@ export class AccountDeleteView {
         <h3 class="account_delete_title margin_larger">CURRENT PASSWORD</h3>
         <p class="help_title">Enter your current password to verify the deletion of your account:</p>
         <div class="form_row_half">
-            <input class="uk-input input_background" type="password" value=${account.password}>
+            <input class="uk-input input_background" type="password">
         </div>
         <hr class="uk-divider">
         <div class="account_wrapper_button">
