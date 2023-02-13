@@ -22,6 +22,18 @@
   align-items: center;
 }
 
+.wrapper-error {
+  width: 100%;
+  height: calc(100vh - 64px);
+  align-items: center;
+}
+
+.error {
+  font-size: 32px;
+  text-transform: uppercase;
+  color: $black-color;
+}
+
 @media (max-width: 1000px) {
   .workout {
     flex-direction: column;

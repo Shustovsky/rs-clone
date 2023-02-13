@@ -51,4 +51,13 @@ export class WorkoutView {
     public deleteLoader(): void {
         document.querySelector(' #root .mask-loader')?.remove();
     }
+
+    public createErrorBlock(): void {
+        const root = <HTMLBodyElement>document.querySelector('#root');
+
+        const error = <HTMLElement>document.createElement('div');
+        error.className = 'wrapper-error uk-flex uk-flex-center';
+        error.innerHTML = `<div class='error'>workout not found</div>`;
+        root.append(error);
+    }
 }
