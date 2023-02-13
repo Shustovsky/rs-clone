@@ -20,7 +20,10 @@ export class LoginController {
             if (this.validateEmail(email) && this.validatePassword(password)) {
                 this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token === undefined) {
-                        this.loginView.createButtonError('login_submit');
+                        this.loginView.createButtonError(
+                            'login_submit',
+                            'The e-mail or password are incorrect. Please try again.'
+                        );
                     } else {
                         this.loginView.deleteButtonError('login_submit');
                         console.log(token);
@@ -38,16 +41,17 @@ export class LoginController {
                 this.validateMatchPassword(password, passwordRepeat) &&
                 this.validateInputCheck(input)
             ) {
-                this.loginService.signUpWithEmailAndPassowrd(email.value, password.value).then((token) => {
-                    if (token === undefined) {
-                        this.loginView.createButtonError('signup_submit');
+                this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
+                    if (token) {
+                        this.loginView.createButtonError(
+                            'signup_submit',
+                            'It was not possible to create the new user. The email address is already used.'
+                        );
                     } else {
                         this.loginView.deleteButtonError('signup_submit');
                         console.log(token);
                     }
                 });
-                this.validateEmail(email);
-                this.validatePassword(password);
 
                 //TODO переход в личный кабинет
             }

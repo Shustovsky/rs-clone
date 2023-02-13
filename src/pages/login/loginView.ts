@@ -57,8 +57,14 @@ export class LoginView {
     public bindEmailHandler(callback: (email: HTMLInputElement) => void): void {
         const emails: NodeListOf<HTMLInputElement> = document.querySelectorAll(`input[type='email']`);
         emails.forEach((email) => {
-            email.addEventListener('input', () => {
+            email.addEventListener('blur', () => {
+                email.dataset.touched = "true";
                 callback(email);
+            });
+            email.addEventListener('input', () => {
+                if (email.dataset.touched === "true") {
+                    callback(email);
+                }
             });
         });
     }
@@ -66,8 +72,14 @@ export class LoginView {
     public bindPasswordHandler(callback: (password: HTMLInputElement) => void): void {
         const passwords: NodeListOf<HTMLInputElement> = document.querySelectorAll(`input[type='password']`);
         passwords.forEach((password) => {
-            password.addEventListener('input', () => {
+            password.addEventListener('blur', () => {
+                password.dataset.touched = "true";
                 callback(password);
+            });
+            password.addEventListener('input', () => {
+                if (password.dataset.touched === "true") {
+                    callback(password);
+                }
             });
         });
     }
@@ -97,13 +109,13 @@ export class LoginView {
         inputError?.remove();
     }
 
-    public createButtonError(btnName: string) {
+    public createButtonError(btnName: string, message: string) {
         const btn = <HTMLButtonElement>document.getElementById(btnName);
         const inputError = <HTMLDivElement>document.getElementById(`${btn.id}-error`);
 
         if (!inputError) {
             const error = document.createElement('div');
-            error.textContent = 'The e-mail or password are incorrect. Please try again.';
+            error.textContent = message;
             error.id = `${btn.id}-error`;
             error.className = `message-error`;
             btn.after(error);

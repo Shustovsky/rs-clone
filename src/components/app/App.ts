@@ -30,7 +30,6 @@ export class App {
     private readonly loginService: LoginService;
     private readonly loginController: LoginController;
 
-
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
@@ -41,7 +40,7 @@ export class App {
         this.profilePage = new ProfilePageView();
         this.workoutView = new WorkoutView();
 
-        this.loginService = new LoginService(this.firebaseConfig);
+        this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
     }
 
