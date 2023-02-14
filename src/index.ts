@@ -8,6 +8,7 @@ import { App } from './components/app/App';
 import i18next from 'i18next';
 import enLang from './assets/langs/en.json';
 import ruLang from './assets/langs/ru.json';
+import '../src/assets/fonts/fonts.css'
 
 uikit.use(Icons as Plugin);
 
@@ -19,7 +20,6 @@ i18next.init({
         ru: ruLang,
     },
 });
-i18next.changeLanguage('ru')
 
 const app = new App();
 app.run();
