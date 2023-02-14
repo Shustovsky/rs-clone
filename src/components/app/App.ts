@@ -9,6 +9,10 @@ import { WorkoutListController } from '../../pages/workoutListPage/workoutListCo
 import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
 import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
 import { WorkoutController } from '../../pages/workoutPage/workoutController';
+import { LoginView } from '../../pages/login/loginView';
+import { LoginService } from '../../pages/login/loginService';
+import { LoginController } from '../../pages/login/loginController';
+import { LoginValidator } from '../../pages/login/loginValidationService';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -24,6 +28,8 @@ export class App {
     private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
+    private readonly loginService: LoginService;
+    private readonly loginController: LoginController;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
@@ -34,6 +40,9 @@ export class App {
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
+        this.loginService = new LoginService(this.firebaseConfig.apiKey);
+        this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
+
     }
 
     public async run() {
