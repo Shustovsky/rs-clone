@@ -1,0 +1,75 @@
+@import '../../../assets/style/variables.scss';
+
+.switcher_wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.uk-tab > * > .tabs_padding {
+  padding: 30px 40px;
+  background: $light-grey-color;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.31;
+}
+
+.uk-tab > .uk-active > a {
+  border-left: 6px solid $black-color;
+  background: $white-color;
+}
+
+@media(max-width: 960px) {
+  .uk-tab > * {
+    padding-left: 0;
+    width: 33.33333333%;
+}
+  .uk-tab > .uk-active > a {
+  border: none;
+  border-top: 3px solid $black-color;
+}
+
+.uk-tab {
+  justify-content: center;
+}
+
+.uk-tab > * {
+  padding-left: 0;
+  width: 33.33333333333%;
+}
+
+.accountDelete_wrapper {
+  padding-left: 20px;
+}
+
+.account_wrapper {
+  padding-left: 20px;
+}
+
+.activities_wrapper {
+  padding: 0 20px;
+}
+
+}
+
+@media(max-width: 760px) {
+
+  .activities_stats {
+    flex-wrap: wrap;
+  }
+
+  .activities_stats .activities_stats_item {
+    padding: 0 15px;
+    width: 50%;
+}
+
+.activities_stats .uk-divider-vertical {
+  display: none;
+}
+
+}
+
+
+
+
+

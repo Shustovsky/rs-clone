@@ -10,7 +10,7 @@ export class AccountDeleteView {
     public render(account: IAccount) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const accountDelete = <HTMLDivElement>document.createElement('div');
-        accountDelete.className = 'accountDelete_wrapper uk-container';
+        accountDelete.className = 'accountDelete_wrapper';
 
         accountDelete.innerHTML = `<h3 class="account_delete_title">REASON FOR DELETION</h3>
         <div class="account_delete_reasons uk-flex uk-flex-wrap">
