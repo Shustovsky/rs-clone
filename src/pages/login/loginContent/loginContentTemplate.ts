@@ -39,7 +39,13 @@ export const loginContentTemplate = (): string => {
                         </button>
                         <div class="login_checkbox">
                             <input id="termsAndPrivacy" class="uk-checkbox" type="checkbox" required>
-                            <label for="termsAndPrivacy">${t('login.agreeTermsPart1')} <a href=\"https://pumatrac.puma.com/terms/\" target=\"_blank\">${t('login.agreeTermsPart2')}</a> ${t('login.agreeTermsPart3')} <a href=\"https://pumatrac.puma.com/privacy/\" target=\"_blank\">${t('login.agreeTermsPart4')}</a>${t('login.agreeTermsPart5')}</label>
+                            <label for="termsAndPrivacy">${t(
+                                'login.agreeTermsPart1'
+                            )} <a href="https://pumatrac.puma.com/terms/" target="_blank">${t(
+        'login.agreeTermsPart2'
+    )}</a> ${t('login.agreeTermsPart3')} <a href="https://pumatrac.puma.com/privacy/" target="_blank">${t(
+        'login.agreeTermsPart4'
+    )}</a>${t('login.agreeTermsPart5')}</label>
                         </div>
                         <div class="login_checkbox">
                             <input id="advertisement" class="uk-checkbox" type="checkbox">

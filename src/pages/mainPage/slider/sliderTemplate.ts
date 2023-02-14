@@ -63,7 +63,9 @@ export const sliderTemplate = (): string => {
                     <div class="uk-panel">
                         <img class="slide_img" src="${slide3}" alt="slide 3">
                         <div class="content uk-position-center-right uk-position-large uk-text-left">
-                            <h2 uk-slider-parallax="x: 100,-100"><span class=\"bold\">${t('main.karateGirlTailoredPart1')}</span> ${t('main.karateGirlTailoredPart2')}</h2>
+                            <h2 uk-slider-parallax="x: 100,-100"><span class="bold">${t(
+                                'main.karateGirlTailoredPart1'
+                            )}</span> ${t('main.karateGirlTailoredPart2')}</h2>
                             <h4 class="bold" uk-slider-parallax="x: 200,-200">${t('main.strictWomanOur')}</h4>
                             <p uk-slider-parallax="x: 200,-200">${t('main.strictWomanWorkouts')}</p>
                             <button class="content_btn uk-button uk-button-default bold">${t('main.startNow')}</button>
