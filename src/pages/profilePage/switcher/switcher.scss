@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.margin_reset {
+  margin: 0;
+}
+
 .uk-tab > * > .tabs_padding {
   padding: 30px 40px;
   background: $light-grey-color;
@@ -19,12 +23,51 @@
   background: $white-color;
 }
 
+.profile_tabs {
+  width: 33.33333333%;
+  position: sticky;
+  top: 64px;
+  min-height: calc(100vh - 64px);
+  height: 100%;
+}
+
+@media(max-width: 1050px) {
+
+  .activities_stats {
+    padding: 30px 10px 40px;
+}
+
+}
+
 @media(max-width: 960px) {
+
+  .activities_stats {
+    padding: 30px 20px 40px;
+}
+
   .uk-tab > * {
     padding-left: 0;
     width: 33.33333333%;
 }
-  .uk-tab > .uk-active > a {
+
+.profile_tabs {
+  width: 100%;
+  min-height: 0;
+  position: relative;
+  top: 0;
+  height: auto;
+}
+
+.profile_sidebar_basic {
+  align-items: center;
+}
+
+.btn_logout_container {
+  display: flex;
+  justify-content: center;
+}
+  
+.uk-tab > .uk-active > a {
   border: none;
   border-top: 3px solid $black-color;
 }
@@ -65,6 +108,75 @@
 
 .activities_stats .uk-divider-vertical {
   display: none;
+}
+
+.account_paragraph {
+  font-size: 14px;
+}
+
+.form_row_margin {
+  flex-wrap: wrap;
+  .form_row_half {
+    width: 100%;
+  }
+}
+
+.form_row {
+  flex-wrap: wrap;
+  .form_row_half {
+    width: 100%;
+  }
+}
+
+.radio_button_gap {
+  flex-wrap: wrap;
+}
+
+}
+
+@media(max-width: 680px) {
+
+  .uk-tab > * > .tabs_padding {
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.btn_logout_container .btn_logout {
+  padding: 0 25px 2px;
+ 
+}
+
+.form_row_half {
+  width: 100%;
+}
+
+.account_delete_reason {
+  font-size: 12px;
+}
+
+.accountDelete_wrapper {
+  padding: 60px 20px;
+}
+
+}
+
+@media(max-width: 450px) {
+
+  .uk-tab > * > .tabs_padding {
+    padding: 20px 0;
+    font-size: 11px;
+}
+
+.activities_stats .activities_stats_item {
+  padding:0;
+}
+
+.activities_stats .activities_stats_item .activity_value {
+  font-size: 16px;
+}
+
+.activities_stats .activities_stats_item .activities_cathegory {
+  font-size: 12px;
 }
 
 }
