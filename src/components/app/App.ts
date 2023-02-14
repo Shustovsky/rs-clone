@@ -42,11 +42,11 @@ export class App {
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
-
     }
 
     public async run() {
-        this.mainPage.render();
+        // this.mainPage.render();
+        this.loginController.render();
         // this.profilePage.render();
         // this.workoutsController.render();
         //this.profilePage.render();

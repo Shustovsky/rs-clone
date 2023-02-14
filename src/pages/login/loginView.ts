@@ -1,6 +1,7 @@
 import { LoginWrapper } from './loginWrapper/loginWrapper';
 import { LoginContent } from './loginContent/loginContent';
 import { LoginApp } from './loginApp/loginApp';
+import { t } from 'i18next';
 
 export class LoginView {
     private readonly loginWrapper: LoginWrapper;
@@ -58,11 +59,11 @@ export class LoginView {
         const emails: NodeListOf<HTMLInputElement> = document.querySelectorAll(`input[type='email']`);
         emails.forEach((email) => {
             email.addEventListener('blur', () => {
-                email.dataset.touched = "true";
+                email.dataset.touched = 'true';
                 callback(email);
             });
             email.addEventListener('input', () => {
-                if (email.dataset.touched === "true") {
+                if (email.dataset.touched === 'true') {
                     callback(email);
                 }
             });
@@ -73,11 +74,11 @@ export class LoginView {
         const passwords: NodeListOf<HTMLInputElement> = document.querySelectorAll(`input[type='password']`);
         passwords.forEach((password) => {
             password.addEventListener('blur', () => {
-                password.dataset.touched = "true";
+                password.dataset.touched = 'true';
                 callback(password);
             });
             password.addEventListener('input', () => {
-                if (password.dataset.touched === "true") {
+                if (password.dataset.touched === 'true') {
                     callback(password);
                 }
             });
@@ -85,8 +86,8 @@ export class LoginView {
     }
 
     public createInputError(input: HTMLInputElement, message: string) {
-        const warningNull = 'This field is required';
-        const warningMessage = `${input.type} ${message}`;
+        const warningNull = t('login.required');
+        const warningMessage = `${input.placeholder} ${message}`;
 
         input.classList.add('uk-form-danger');
 
@@ -134,7 +135,7 @@ export class LoginView {
 
         if (!inputError) {
             const error = document.createElement('div');
-            error.textContent = 'Please agree to our Terms & Conditions.';
+            error.textContent = t('login.please_agree');
             error.id = `${input.id}-error`;
             error.className = `message-error`;
             container?.append(error);

@@ -1,4 +1,4 @@
-import headerTemplate from './header.html';
+import { headerTemplate } from './headerTemplate';
 import './header.scss';
 
 export class HeaderView {
@@ -12,7 +12,7 @@ export class HeaderView {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const header = <HTMLElement>document.createElement('nav');
         header.className = 'header__nav';
-        header.innerHTML = headerTemplate;
+        header.innerHTML = headerTemplate();
         root.append(header);
     }
 }

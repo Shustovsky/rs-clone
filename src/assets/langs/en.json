@@ -1,0 +1,63 @@
+{
+  "translation": {
+    "header": {
+      "login": "Login",
+      "shop": "Shop PUMA.com"
+    },
+    "main": {
+      "slide1_join": "join the movement",
+      "slide1_train": "Train with world-class trainers and athletes <br>\n 120+ free workouts",
+      "slide1_levelUp": "Level up your running game. <br>\n Achieve your goals with PUMATRAC.",
+      "download": "Download the app now",
+      "appStore": "Download on the App Store",
+      "googlePlay": "Get it on Google Play",
+      "slide2_workout": "Workout from home",
+      "slide2_or": "or wherever you are",
+      "slide2_achieve": "Achieve all your running and training aims <br in one place with the PUMATRAC App.",
+      "slide3_tailored": "<span class=\"bold\">Tailored</span> to you",
+      "slide3_our": "our experts guide you every step of the way",
+      "slide3_workouts": "Workouts for different levels led by expert fitness coaches.\n Strength & Endurance, Mobility, Stretching, Dancing, Pilates, HIIT, Low Impact Training and\n Boxing Workouts",
+      "start_now": "Start Now",
+      "login_now": "<span class=\"bold\">Login now</span> for access to over 100+ free workouts",
+      "community_shop": "Shop PUMA Training",
+      "community_header": "PUMATRAC community<br>\n share your workout picture to get featured",
+      "community_paragraph": "Mention us on Instagram with @puma #pumatrac",
+      "download_now": "DOWNLOAD NOW",
+      "banners_over": "Over 100+ free workouts and world class trainers at your fingertips to motivate you",
+      "banners_train": "Train Like A Pro",
+      "banners_gear": "Gear up on the latest <br> performance apparel",
+      "shop_now": "Shop now"
+    },
+    "login": {
+      "login_in": "Login",
+      "sign_up": "sign up",
+      "e-mail": "E-Mail",
+      "password": "Password",
+      "password_repeat": "Repeat password",
+      "back": "Back to PUMATRAC",
+      "agree_terms": "I have agreed to the <a href=\"https://pumatrac.puma.com/terms/\" target=\"_blank\">Terms of Service</a> and I have read the <a href=\"https://pumatrac.puma.com/privacy/\" target=\"_blank\">Privacy Policy</a>.(mandatory)",
+      "agree_receive": "I agree to receive activity-based advertisement.(voluntary)",
+      "agree_offers": "Yes, I want to be the first to hear about the latest special offers, product drops and more straight to my inbox. (voluntary)",
+      "login_incorrect": "The e-mail or password are incorrect. Please try again.",
+      "signup_incorrect": "It was not possible to create the new user. The email address is already used.",
+      "email_incorrect": "is not correct",
+      "password_incorrect": "must have at least 6 characters",
+      "repeat_incorrect": "must match",
+      "required": "This field is required",
+      "please_agree": "Please agree to our Terms & Conditions.",
+      "app_over": "Over 100+ workouts from 30 world class athletes and trainers",
+      "app_ai": "AI engine offering intelligent training, tailored to you",
+      "app_available": "Available for free on iOS and Android with Watch support"
+
+
+    },
+    "footer": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms &amp; Conditions",
+      "contact": "Contact",
+      "imprint": "Imprint &amp; Legal Data",
+      "cookie": "Cookie Settings",
+      "FAQ": "FAQ"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import loginAppTemplate from './loginApp.html';
+import { loginAppTemplate } from './loginAppTemplate';
 import './loginApp.scss';
 
 export class LoginApp {
@@ -11,7 +11,7 @@ export class LoginApp {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = loginAppTemplate;
+        container.innerHTML = loginAppTemplate();
         root.append(container);
     }
 }

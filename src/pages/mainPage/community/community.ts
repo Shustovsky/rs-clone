@@ -1,4 +1,4 @@
-import communityTemplate from './community.html';
+import { communityTemplate } from './communityTemplate';
 import './community.scss';
 
 export class Community {
@@ -11,7 +11,7 @@ export class Community {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = communityTemplate;
+        container.innerHTML = communityTemplate();
         root.append(container);
     }
 }

@@ -1,4 +1,4 @@
-import sliderTemplate from './slider.html';
+import { sliderTemplate } from './sliderTemplate';
 import './slider.scss';
 
 export class Slider {
@@ -11,7 +11,7 @@ export class Slider {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = sliderTemplate;
+        container.innerHTML = sliderTemplate();
         root.append(container);
     }
 }

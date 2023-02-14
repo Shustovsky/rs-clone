@@ -1,6 +1,7 @@
 import { LoginView } from './loginView';
 import { LoginService } from './loginService';
 import { LoginValidator } from './loginValidationService';
+import { t } from 'i18next';
 
 export class LoginController {
     private loginView: LoginView;
@@ -19,14 +20,11 @@ export class LoginController {
         this.loginView.bindLoginHandler((email, password) => {
             if (this.validateEmail(email) && this.validatePassword(password)) {
                 this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
-                    if (token === undefined) {
-                        this.loginView.createButtonError(
-                            'login_submit',
-                            'The e-mail or password are incorrect. Please try again.'
-                        );
-                    } else {
+                    if (token) {
                         this.loginView.deleteButtonError('login_submit');
                         console.log(token);
+                    } else {
+                        this.loginView.createButtonError('login_submit', t('login.login_incorrect'));
                     }
                 });
             }
@@ -43,13 +41,10 @@ export class LoginController {
             ) {
                 this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token) {
-                        this.loginView.createButtonError(
-                            'signup_submit',
-                            'It was not possible to create the new user. The email address is already used.'
-                        );
-                    } else {
                         this.loginView.deleteButtonError('signup_submit');
                         console.log(token);
+                    } else {
+                        this.loginView.createButtonError('signup_submit', t('login.signup_incorrect'));
                     }
                 });
 
@@ -70,7 +65,7 @@ export class LoginController {
             this.loginView.deleteInputError(email);
             return true;
         } else {
-            this.loginView.createInputError(email, 'is not correct');
+            this.loginView.createInputError(email, t('login.email_incorrect'));
             return false;
         }
     }
@@ -80,7 +75,7 @@ export class LoginController {
             this.loginView.deleteInputError(password);
             return true;
         } else {
-            this.loginView.createInputError(password, 'must have at least 6 characters');
+            this.loginView.createInputError(password, t('login.password_incorrect'));
             return false;
         }
     }
@@ -90,7 +85,7 @@ export class LoginController {
             this.loginView.deleteInputError(passwordRepeat);
             return true;
         } else {
-            this.loginView.createInputError(passwordRepeat, 'must match');
+            this.loginView.createInputError(passwordRepeat, t('login.repeat_incorrect'));
             return false;
         }
     }
