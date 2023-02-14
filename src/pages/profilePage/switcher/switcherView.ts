@@ -76,7 +76,6 @@ export class SwitcherView {
         tabsWrapper.append(logoutBtn);
         const footer = document.querySelector('.footer') as HTMLElement;
         const mainContent = document.querySelector('.main_content_switcher') as HTMLDivElement;
-        console.log(mainContent);
         mainContent.append(footer);
     }
 }
