@@ -19,9 +19,6 @@ i18next.init({
         ru: ruLang,
     },
 });
-console.log(i18next.t('main.key'));
-i18next.changeLanguage('ru');
-// console.log(i18next.t('main.key'));
 
 const app = new App();
 app.run();
