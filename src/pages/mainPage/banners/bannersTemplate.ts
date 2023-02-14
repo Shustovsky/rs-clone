@@ -17,8 +17,8 @@ export const bannersTemplate = (): string => {
                             <img src="${phoneWatch}" alt="phoneWatch">
                         </div>
                         <div class="banners__item_dscr uk-flex uk-flex-column uk-flex-center uk-flex-left">
-                            <h3>${t('main.download_now')}</h3>
-                            <p>${t('main.banners_over')}</p>
+                            <h3>${t('main.downloadNow')}</h3>
+                            <p>${t('main.bannersOver')}</p>
                             <div class="stores uk-flex uk-grid-small">
                                 <a href="https://apps.apple.com/us/app/pumatrac-training-running/id698298978"
                                    title="${t('main.appStore')}" target="_blank">
@@ -37,10 +37,10 @@ export const bannersTemplate = (): string => {
                          data-src="${bgBanner2}" uk-img>
                         <div class="banners__item_wrapper uk-flex uk-flex-right">
                             <div class="banners__item_dscr uk-flex uk-flex-column uk-flex-center ">
-                                <h3>${t('main.banners_train')}</h3>
-                                <p>${t('main.banners_gear')}</p>
+                                <h3>${t('main.bannersTrain')}</h3>
+                                <p>${t('main.bannersGearPart1')} <br> ${t('main.bannersGearPart2')}</p>
                                 <a class="banners__item_btn uk-button uk-button-default" href="https://go.puma.com/svobs-ci">
-                                    ${t('main.shop_now')}
+                                    ${t('main.shopNow')}
                                 </a>
                             </div>
                         </div>

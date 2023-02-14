@@ -22,9 +22,8 @@ export class LoginController {
                 this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token) {
                         this.loginView.deleteButtonError('login_submit');
-                        console.log(token);
                     } else {
-                        this.loginView.createButtonError('login_submit', t('login.login_incorrect'));
+                        this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
                     }
                 });
             }
@@ -44,7 +43,7 @@ export class LoginController {
                         this.loginView.deleteButtonError('signup_submit');
                         console.log(token);
                     } else {
-                        this.loginView.createButtonError('signup_submit', t('login.signup_incorrect'));
+                        this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
                     }
                 });
 
@@ -65,7 +64,7 @@ export class LoginController {
             this.loginView.deleteInputError(email);
             return true;
         } else {
-            this.loginView.createInputError(email, t('login.email_incorrect'));
+            this.loginView.createInputError(email, t('login.emailIncorrect'));
             return false;
         }
     }
@@ -75,7 +74,7 @@ export class LoginController {
             this.loginView.deleteInputError(password);
             return true;
         } else {
-            this.loginView.createInputError(password, t('login.password_incorrect'));
+            this.loginView.createInputError(password, t('login.passwordIncorrect'));
             return false;
         }
     }
@@ -85,7 +84,7 @@ export class LoginController {
             this.loginView.deleteInputError(passwordRepeat);
             return true;
         } else {
-            this.loginView.createInputError(passwordRepeat, t('login.repeat_incorrect'));
+            this.loginView.createInputError(passwordRepeat, t('login.repeatIncorrect'));
             return false;
         }
     }

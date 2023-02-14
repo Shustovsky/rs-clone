@@ -10,7 +10,7 @@ export const footerTemplate = (): string => {
             <a href="mailto:pumatrachelp@puma.com" target="_blank" class="footer__item">${t('footer.contact')}</a>
             <a href="https://about.puma.com/en/imprint" target="_blank" class="footer__item">${t('footer.imprint')}</a>
             <a href="#" class="footer__item">${t('footer.cookie')}</a>
-            <a href="https://pumatrac.puma.com/faq/" target="_blank" class="footer__item">${t('footer.FAQ')}</a>
+            <a href="https://pumatrac.puma.com/faq/" target="_blank" class="footer__item">${t('footer.faq')}</a>
             <a href="https://rs.school/js/" target="_blank" class="footer__item rsschool">
                 <img src="../../assets/icons/rs_school_js.svg" alt="rs school logo">
                 <div class="rsschool_drop uk-card uk-card-body uk-card-default"

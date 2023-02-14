@@ -14,8 +14,8 @@ import people10 from '../../../assets/img/peoples/10.jpg';
 export const communityTemplate = (): string => {
     return `
         <div class="community uk-container">
-            <h4>${t('main.community_header')}</h4>
-            <p>${t('main.community_paragraph')}</p>
+            <h4>${t('main.communityHeaderPart1')} <br> ${t('main.communityHeaderPart2')}</h4>
+            <p>${t('main.communityParagraph')}</p>
             <div uk-slider="finite: true">
                 <div class="uk-position-relative">
                     <div class="uk-slider-container uk-light">
@@ -40,9 +40,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
 
                                         </div>
@@ -69,9 +67,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -97,9 +93,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -123,9 +117,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -149,9 +141,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -177,9 +167,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -204,9 +192,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -230,9 +216,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -261,9 +245,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -288,9 +270,7 @@ export const communityTemplate = (): string => {
                                             </div>
                                             <div class="modal__container_button uk-width-1-3@m">
                                                 <a class="header__nav_login uk-button uk-button-default"
-                                                   href="https://go.puma.com/svobs-ci-kf">${t(
-                                                       'main.community_shop'
-                                                   )}</a>
+                                                   href="https://go.puma.com/svobs-ci-kf">${t('main.communityShop')}</a>
                                             </div>
                                         </div>
                                     </div>

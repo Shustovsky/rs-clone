@@ -135,7 +135,7 @@ export class LoginView {
 
         if (!inputError) {
             const error = document.createElement('div');
-            error.textContent = t('login.please_agree');
+            error.textContent = t('login.pleaseAgree');
             error.id = `${input.id}-error`;
             error.className = `message-error`;
             container?.append(error);

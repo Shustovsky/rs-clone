@@ -14,9 +14,13 @@ export const sliderTemplate = (): string => {
                     <div class="uk-panel">
                         <img class="slide_img" src="${slide1}" alt="slide 1">
                         <div class="content uk-position-center-right uk-position-large uk-text-left">
-                            <h2 uk-slider-parallax="x: 100,-100">${t('main.slide1_join')}</h2>
-                            <h4 uk-slider-parallax="x: 200,-200">${t('main.slide1_train')}</h4>
-                            <p uk-slider-parallax="x: 200,-200">${t('main.slide1_levelUp')}</p>
+                            <h2 uk-slider-parallax="x: 100,-100">${t('main.runManJoin')}</h2>
+                            <h4 uk-slider-parallax="x: 200,-200">${t('main.runManTrainPart1')} <br> ${t(
+        'main.runManTrainPart2'
+    )}</h4>
+                            <p uk-slider-parallax="x: 200,-200">${t('main.runManLevelUpPart1')} <br> ${t(
+        'main.runManLevelUpPart2'
+    )}</p>
                             <h4 uk-slider-parallax="x: 200,-200">${t('main.download')}</h4>
                             <div class="stores uk-flex">
                                 <a href="https://apps.apple.com/us/app/pumatrac-training-running/id698298978"
@@ -36,9 +40,11 @@ export const sliderTemplate = (): string => {
                         <img class="slide_img" src="${slide2}" alt="slide 2">
                         <img class="content_img" src="${gadgets}" alt="gadgets">
                         <div class="content uk-position-center-right uk-position-large uk-text-left">
-                            <h2 class="bold" uk-slider-parallax="x: 100,-100">${t('main.slide2_workout')}</h2>
-                            <h2 uk-slider-parallax="x: 100,-100">${t('main.slide2_or')}</h2>
-                            <p uk-slider-parallax="x: 200,-200">${t('main.slide2_achieve')}</p>
+                            <h2 class="bold" uk-slider-parallax="x: 100,-100">${t('main.karateGirlWorkout')}</h2>
+                            <h2 uk-slider-parallax="x: 100,-100">${t('main.karateGirlOr')}</h2>
+                            <p uk-slider-parallax="x: 200,-200">${t('main.karateGirlAchievePart1')} <br> ${t(
+        'main.karateGirlAchievePart2'
+    )}</p>
                             <h4 uk-slider-parallax="x: 200,-200">${t('main.download')}</h4>
                            <div class="stores uk-flex">
                                 <a href="https://apps.apple.com/us/app/pumatrac-training-running/id698298978"
@@ -57,10 +63,10 @@ export const sliderTemplate = (): string => {
                     <div class="uk-panel">
                         <img class="slide_img" src="${slide3}" alt="slide 3">
                         <div class="content uk-position-center-right uk-position-large uk-text-left">
-                            <h2 uk-slider-parallax="x: 100,-100">${t('main.slide3_tailored')}</h2>
-                            <h4 class="bold" uk-slider-parallax="x: 200,-200">${t('main.slide3_our')}</h4>
-                            <p uk-slider-parallax="x: 200,-200">${t('main.slide3_workouts')}</p>
-                            <button class="content_btn uk-button uk-button-default bold">${t('main.start_now')}</button>
+                            <h2 uk-slider-parallax="x: 100,-100"><span class=\"bold\">${t('main.karateGirlTailoredPart1')}</span> ${t('main.karateGirlTailoredPart2')}</h2>
+                            <h4 class="bold" uk-slider-parallax="x: 200,-200">${t('main.strictWomanOur')}</h4>
+                            <p uk-slider-parallax="x: 200,-200">${t('main.strictWomanWorkouts')}</p>
+                            <button class="content_btn uk-button uk-button-default bold">${t('main.startNow')}</button>
                         </div>
                     </div>
                 </li>
