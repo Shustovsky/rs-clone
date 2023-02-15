@@ -1,5 +1,6 @@
 import { Section, Workout } from '../../../../model/Workout';
 import './workoutSectionExercise.scss';
+import { t } from 'i18next';
 
 export class WorkoutSectionExerciseView {
     private readonly selector: string;
@@ -65,7 +66,7 @@ export class WorkoutSectionExerciseView {
 
             const exerciseTime = document.createElement('div');
             exerciseTime.className = 'workout__exercise-time';
-            exerciseTime.textContent = `${item.amount} SEC`;
+            exerciseTime.textContent = `${item.amount} ${t('workout.sec')}`;
             exerciseDescription.append(exerciseTime);
 
             const wrapperSectionImg = document.createElement('div');
@@ -88,11 +89,11 @@ export class WorkoutSectionExerciseView {
     private getSectionKindText(section: Section) {
         switch (section.kind) {
             case 'warm_up':
-                return 'Warm Up';
+                return t('workout.warmUp');
             case 'circuit':
-                return 'Circuit';
+                return t('workout.circuit');
             case 'cool_down':
-                return 'Cool Down';
+                return t('workout.coolDown');
         }
     }
 }

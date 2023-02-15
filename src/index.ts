@@ -19,6 +19,6 @@ i18next.init({
         ru: ruLang,
     },
 });
-
+i18next.changeLanguage('ru');
 const app = new App();
 app.run();

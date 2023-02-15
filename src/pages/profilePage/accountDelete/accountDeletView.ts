@@ -1,5 +1,6 @@
 import '../accountDelete/accountDelete.scss';
 import { IAccount } from '../../../mock/mockData';
+import { t } from 'i18next';
 
 export class AccountDeleteView {
     private readonly selector: string;
@@ -12,12 +13,12 @@ export class AccountDeleteView {
         const accountDelete = <HTMLDivElement>document.createElement('div');
         accountDelete.className = 'accountDelete_wrapper';
 
-        accountDelete.innerHTML = `<h3 class="account_delete_title">REASON FOR DELETION</h3>
+        accountDelete.innerHTML = `<h3 class="account_delete_title">${t('profile.reasonDelete')}</h3>
         <div class="account_delete_reasons uk-flex uk-flex-wrap">
-            <div class="account_delete_reason uk-flex uk-flex-middle">I have a duplicate account</div>
-            <div class="account_delete_reason uk-flex uk-flex-middle">PUMATRAC was not what I expected</div>
-            <div class="account_delete_reason uk-flex uk-flex-middle">I experience technical issues</div>
-            <div class="account_delete_reason uk-flex uk-flex-middle">Privacy concerns</div>
+            <div class="account_delete_reason uk-flex uk-flex-middle">${t('profile.reasonDuplicate')}</div>
+            <div class="account_delete_reason uk-flex uk-flex-middle">${t('profile.reasonNotExpected')}</div>
+            <div class="account_delete_reason uk-flex uk-flex-middle">${t('profile.reasonExperience')}</div>
+            <div class="account_delete_reason uk-flex uk-flex-middle">${t('profile.reasonPrivacy')}</div>
         </div>
         <div class="account_delete_other uk-flex uk-flex-middle">
             <span class="other_text">Other:</span>
@@ -25,14 +26,14 @@ export class AccountDeleteView {
                 <input type="text" class="uk-input input_background" value=${account.mail}>
             </div>
         </div>
-        <h3 class="account_delete_title margin_larger">CURRENT PASSWORD</h3>
-        <p class="help_title">Enter your current password to verify the deletion of your account:</p>
+        <h3 class="account_delete_title margin_larger">${t('profile.passwordCurrent')}</h3>
+        <p class="help_title">${t('profile.enterPassword')}</p>
         <div class="form_row_half">
             <input class="uk-input input_background" type="password">
         </div>
         <hr class="uk-divider">
         <div class="account_wrapper_button">
-          <button class="button_save uk-button uk-button-secondary">DELETE ACCOUNT</button>
+          <button class="button_save uk-button uk-button-secondary">${t('profile.deleteAccount')}</button>
         </div>`;
         root.append(accountDelete);
     }
