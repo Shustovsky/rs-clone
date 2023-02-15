@@ -67,7 +67,8 @@ export class App {
     }
 
     private rerenderPage(): void {
-        document.body.innerHTML = '';
+        const root = <HTMLBodyElement>document.getElementById('root');
+        root.innerHTML = '';
         this.run();
     }
 }
