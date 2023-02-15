@@ -38,8 +38,7 @@ export class App {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
         this.workoutService = new WorkoutService(this.dbRef);
-        const workoutsView = new WorkoutListView();
-        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
+        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());

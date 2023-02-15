@@ -144,11 +144,7 @@ export class TrainPageView {
     }
 
     private reRender() {
-        const description = document.querySelector('#root .train__wrapper-description');
-        if (description) {
-            description.remove();
-        }
-
+        document.querySelector('#root .train__wrapper-description')?.remove();
         this.createDescriptionBlock();
     }
 }
