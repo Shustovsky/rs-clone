@@ -1,0 +1,74 @@
+{
+  "translation": {
+    "header": {
+      "login": "Login",
+      "shop": "Shop PUMA.com"
+    },
+    "main": {
+      "runManJoin": "join the movement",
+      "runManTrainPart1": "Train with world-class trainers and athletes",
+      "runManTrainPart2": "120+ free workouts",
+      "runManLevelUpPart1": "Level up your running game.",
+      "runManLevelUpPart2": "Achieve your goals with PUMATRAC.",
+      "download": "Download the app now",
+      "appStore": "Download on the App Store",
+      "googlePlay": "Get it on Google Play",
+      "karateGirlWorkout": "Workout from home",
+      "karateGirlOr": "or wherever you are",
+      "karateGirlAchievePart1": "Achieve all your running and training aims",
+      "karateGirlAchievePart2": "in one place with the PUMATRAC App.",
+      "karateGirlTailoredPart1": "Tailored",
+      "karateGirlTailoredPart2": "to you",
+      "strictWomanOur": "our experts guide you every step of the way",
+      "strictWomanWorkouts": "Workouts for different levels led by expert fitness coaches. Strength & Endurance, Mobility, Stretching, Dancing, Pilates, HIIT, Low Impact Training and Boxing Workouts",
+      "startNow": "Start Now",
+      "loginNowPart1": "Login now",
+      "loginNowPart2": "for access to over 100+ free workouts",
+      "communityShop": "Shop PUMA Training",
+      "communityHeaderPart1": "PUMATRAC community",
+      "communityHeaderPart2": "share your workout picture to get featured",
+      "communityParagraph": "Mention us on Instagram with @puma #pumatrac",
+      "downloadNow": "DOWNLOAD NOW",
+      "bannersOver": "Over 100+ free workouts and world class trainers at your fingertips to motivate you",
+      "bannersTrain": "Train Like A Pro",
+      "bannersGearPart1": "Gear up on the latest",
+      "bannersGearPart2": "performance apparel",
+      "shopNow": "Shop now"
+    },
+    "login": {
+      "logIn": "Login",
+      "signUp": "sign up",
+      "eMail": "E-Mail",
+      "password": "Password",
+      "passwordRepeat": "Repeat password",
+      "back": "Back to PUMATRAC",
+      "agreeTermsPart1": "I have agreed to the ",
+      "agreeTermsPart2": "Terms of Service",
+      "agreeTermsPart3": "and I have read the",
+      "agreeTermsPart4": "Privacy Policy",
+      "agreeTermsPart5": ".(mandatory)",
+      "agreeReceive": "I agree to receive activity-based advertisement.(voluntary)",
+      "agreeOffers": "Yes, I want to be the first to hear about the latest special offers, product drops and more straight to my inbox. (voluntary)",
+      "loginIncorrect": "The e-mail or password are incorrect. Please try again.",
+      "signupIncorrect": "It was not possible to create the new user. The email address is already used.",
+      "emailIncorrect": "is not correct",
+      "passwordIncorrect": "must have at least 6 characters",
+      "repeatIncorrect": "must match",
+      "required": "This field is required",
+      "pleaseAgree": "Please agree to our Terms & Conditions.",
+      "appOver": "Over 100+ workouts from 30 world class athletes and trainers",
+      "appAI": "AI engine offering intelligent training, tailored to you",
+      "appAvailable": "Available for free on iOS and Android with Watch support"
+
+
+    },
+    "footer": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms &amp; Conditions",
+      "contact": "Contact",
+      "imprint": "Imprint &amp; Legal Data",
+      "cookie": "Cookie Settings",
+      "faq": "FAQ"
+    }
+  }
+}

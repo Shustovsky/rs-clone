@@ -11,6 +11,10 @@ import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
 import { WorkoutController } from '../../pages/workoutPage/workoutController';
 import { TrainPageView } from '../../pages/trainPage/trainPageView';
 import { TrainPageController } from '../../pages/trainPage/trainPageController';
+import { LoginView } from '../../pages/login/loginView';
+import { LoginService } from '../../pages/login/loginService';
+import { LoginController } from '../../pages/login/loginController';
+import { LoginValidator } from '../../pages/login/loginValidationService';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -26,6 +30,8 @@ export class App {
     private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
+    private readonly loginService: LoginService;
+    private readonly loginController: LoginController;
     private readonly trainController: TrainPageController;
 
     constructor() {
@@ -37,6 +43,8 @@ export class App {
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
+        this.loginService = new LoginService(this.firebaseConfig.apiKey);
+        this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
     }
 
@@ -44,10 +52,14 @@ export class App {
         this.mainPage.render();
 
         // this.profilePage.render();
+        // this.mainPage.render();
+        //this.loginController.render();
+        // this.profilePage.render();
         // this.workoutsController.render();
         //this.profilePage.render();
         // this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
+        // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
     }
 }

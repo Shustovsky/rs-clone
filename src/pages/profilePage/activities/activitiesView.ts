@@ -10,7 +10,7 @@ export class ActivitiesView {
     public render(mockData: Workout[]) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const activities = <HTMLDivElement>document.createElement('div');
-        activities.className = 'activities_wrapper uk-container';
+        activities.className = 'activities_wrapper';
         const title = document.createElement('h1');
         title.textContent = 'ACTIVITIES';
         title.className = 'activities uk-article-title uk-text-bold';

@@ -1,4 +1,4 @@
-import loginNowTemplate from './loginNow.html';
+import { loginNowTemplate } from './loginNowTemplate';
 import './loginNow.scss';
 
 export class LoginNow {
@@ -11,7 +11,7 @@ export class LoginNow {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = loginNowTemplate;
+        container.innerHTML = loginNowTemplate();
         root.append(container);
     }
 }

@@ -14,7 +14,7 @@ export class AccountView {
     public render(account: IAccount) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const profile = <HTMLDivElement>document.createElement('div');
-        profile.className = 'account_wrapper uk-container';
+        profile.className = 'account_wrapper';
         profile.innerHTML = `<h3 class="account">ABOUT YOU</h3>
         <p class="account_text">The details you enter below will be used to calculate the calories you burn as accurately as possible, and to find events near you.</p>
         <div class="account-img_wrapper uk-flex uk-flex-middle">

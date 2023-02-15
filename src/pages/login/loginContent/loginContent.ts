@@ -1,4 +1,4 @@
-import loginContentTemplate from './loginContent.html';
+import { loginContentTemplate } from './loginContentTemplate';
 import './loginContent.scss';
 
 export class LoginContent {
@@ -11,7 +11,7 @@ export class LoginContent {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = loginContentTemplate;
+        container.innerHTML = loginContentTemplate();
         root.append(container);
     }
 }

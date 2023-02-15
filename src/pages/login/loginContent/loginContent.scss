@@ -16,13 +16,13 @@
 
         .uk-active > a {
             border-bottom: 2px solid $black-color;
+            border-left: none;
         }
     }
 
     .uk-switcher {
         padding: 5% 27% 5%;
         margin-bottom: 0;
-        //width: 360px;
 
         .login__password {
             color: $black-color;
@@ -98,6 +98,12 @@
                 }
             }
         }
+    }
+
+    .message-error {
+        font-size: 14px;
+        color: #b62906;
+        text-align: left;
     }
 }
 

@@ -12,7 +12,14 @@ export class WorkoutController {
     }
 
     public async render(id: string) {
-        const workout: Workout = await this.workoutService.fetchWorkout(id);
-        this.workoutView.render(workout);
+        this.workoutView.createLoader();
+        try {
+            const workout: Workout = await this.workoutService.fetchWorkout(id);
+            this.workoutView.render(workout);
+        } catch (e) {
+            this.workoutView.createErrorBlock();
+        } finally {
+            this.workoutView.deleteLoader();
+        }
     }
 }
