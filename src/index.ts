@@ -1,5 +1,4 @@
 import './assets/style/normalize.min.css';
-import 'uikit/dist/css/uikit.min.css';
 import uikit from 'uikit';
 import { Plugin } from 'uikit/dist/js/uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
