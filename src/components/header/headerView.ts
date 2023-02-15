@@ -29,6 +29,8 @@ export class HeaderView {
 
             history.pushState('', '', url);
             window.dispatchEvent(new Event('changeLanguage'));
-        });
-    }
+        })
+    };
+
+
 }

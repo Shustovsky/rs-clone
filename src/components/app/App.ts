@@ -50,11 +50,13 @@ export class App {
     public async run() {
         // this.mainPage.render();
         // this.loginController.render();
-        // this.profilePage.render();
+        this.profilePage.render();
         // this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
+
     }
+
 
     private rerenderPage(): void {
         const root = <HTMLBodyElement>document.getElementById('root');
@@ -62,14 +64,14 @@ export class App {
         this.run();
     }
 
-    private initLanguageListeners() {
+    private initLanguageListeners(): void {
         window.addEventListener('popstate', () => {
             updateLanguage();
             this.rerenderPage();
-        });
+        })
         window.addEventListener('changeLanguage', () => {
             updateLanguage();
             this.rerenderPage();
-        });
+        })
     }
 }
