@@ -95,7 +95,7 @@ export class TrainPageView {
         } else {
             const mediaWrapper = <HTMLElement>document.createElement('div');
             mediaWrapper.className = 'train__wrapper-media uk-flex uk-flex-center';
-            mediaWrapper.innerHTML = `<img class='train__video' src='${exercise.imageUrl}'>`;
+            mediaWrapper.innerHTML = `<img class='train__video' src='${exercise.imageUrl}' alt='exercise'>`;
             wrapperDescription?.append(mediaWrapper);
         }
     }
@@ -106,13 +106,15 @@ export class TrainPageView {
         const nextExercise = <HTMLElement>document.createElement('div');
         nextExercise.className = 'train__next-exercise uk-flex uk-flex-column ';
 
-        const nextExerciseText = <HTMLElement>document.createElement('div');
-        nextExerciseText.className = 'train__next-exercise-text';
-        nextExerciseText.textContent = 'next up:';
+        if (this.nextExercise) {
+            const nextExerciseText = <HTMLElement>document.createElement('div');
+            nextExerciseText.className = 'train__next-exercise-text';
+            nextExerciseText.textContent = 'next up:';
+            nextExercise.append(nextExerciseText);
 
-        nextExercise.append(nextExerciseText);
-        const nextExerciseDescriptionBlock = this.createNextExerciseDescriptionBlock();
-        nextExercise.append(nextExerciseDescriptionBlock);
+            const nextExerciseDescriptionBlock = this.createNextExerciseDescriptionBlock();
+            nextExercise.append(nextExerciseDescriptionBlock);
+        }
         wrapperDescription?.append(nextExercise);
     }
 
