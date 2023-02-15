@@ -27,7 +27,7 @@ export class WorkoutService {
         return get(child(this.dbRef, `workouts/${id}`))
             .then((snapshot) => {
                 if (snapshot.exists()) {
-                    let record = <WorkoutWrapper>snapshot.val();
+                    const record = <WorkoutWrapper>snapshot.val();
                     return record.data;
                 } else {
                     throw new Error('Workout not found');

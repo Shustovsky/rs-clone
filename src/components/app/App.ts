@@ -9,6 +9,8 @@ import { WorkoutListController } from '../../pages/workoutListPage/workoutListCo
 import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
 import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
 import { WorkoutController } from '../../pages/workoutPage/workoutController';
+import { TrainPageView } from '../../pages/trainPage/trainPageView';
+import { TrainPageController } from '../../pages/trainPage/trainPageController';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -24,6 +26,7 @@ export class App {
     private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
+    private readonly trainController: TrainPageController;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
@@ -34,15 +37,17 @@ export class App {
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
+        this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
     }
 
     public async run() {
-        this.mainPage.render();
+        // this.mainPage.render();
 
-        this.profilePage.render();
+        // this.profilePage.render();
         // this.workoutsController.render();
         //this.profilePage.render();
-        //this.workoutListController.render();
+        // this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
+        this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
     }
 }

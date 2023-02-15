@@ -1,18 +1,18 @@
 import { WorkoutService } from '../../service/workoutService';
-import { WorkoutView } from './workoutPageView';
 import { Workout } from '../../model/Workout';
+import { TrainPageView } from './trainPageView';
 
-export class WorkoutController {
+export class TrainPageController {
     workoutService: WorkoutService;
-    workoutView: WorkoutView;
+    trainPageView: TrainPageView;
 
-    constructor(workoutService: WorkoutService, workoutView: WorkoutView) {
+    constructor(workoutService: WorkoutService, trainPageView: TrainPageView) {
         this.workoutService = workoutService;
-        this.workoutView = workoutView;
+        this.trainPageView = trainPageView;
     }
 
     public async render(id: string) {
         const workout: Workout = await this.workoutService.fetchWorkout(id);
-        this.workoutView.render(workout);
+        this.trainPageView.render(workout);
     }
 }
