@@ -1,6 +1,7 @@
 import { headerTemplate } from './headerTemplate';
 import './header.scss';
 import i18next from 'i18next';
+import { SearchParams } from '../../utils/language';
 
 export class HeaderView {
     private readonly selector: string;
@@ -24,7 +25,7 @@ export class HeaderView {
         btn.addEventListener('click', () => {
             const toggleLanguage = i18next.language === 'en' ? 'ru' : 'en';
             const url = new URL(window.location.href);
-            url.searchParams.set('lang', toggleLanguage);
+            url.searchParams.set(SearchParams.lang, toggleLanguage);
 
             history.pushState('', '', url);
             window.dispatchEvent(new Event('changeLanguage'));
