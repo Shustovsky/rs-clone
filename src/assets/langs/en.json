@@ -2,7 +2,8 @@
   "translation": {
     "header": {
       "login": "Login",
-      "shop": "Shop PUMA.com"
+      "shop": "Shop PUMA.com",
+      "lang": "EN"
     },
     "main": {
       "runManJoin": "join the movement",

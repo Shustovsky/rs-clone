@@ -13,6 +13,7 @@ import { LoginView } from '../../pages/login/loginView';
 import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
+import i18next, { changeLanguage } from 'i18next';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -45,13 +46,28 @@ export class App {
     }
 
     public async run() {
-        // this.mainPage.render();
-        this.loginController.render();
+        this.mainPage.render();
+        // this.loginController.render();
         // this.profilePage.render();
         // this.workoutsController.render();
         //this.profilePage.render();
         //this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
+        this.changeLanguage();
+    }
+
+    private changeLanguage(): void {
+        const btn = <HTMLButtonElement>document.querySelector('.header__nav_lang');
+        btn.onclick = () => {
+            const toggleLanguage = i18next.language === 'en' ? 'ru' : 'en';
+            changeLanguage(toggleLanguage);
+            this.rerenderPage();
+        };
+    }
+
+    private rerenderPage(): void {
+        document.body.innerHTML = '';
+        this.run();
     }
 }

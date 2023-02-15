@@ -8,7 +8,7 @@ export class HeaderView {
         this.selector = selector;
     }
 
-    public createHeader() {
+    public createHeader(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const header = <HTMLElement>document.createElement('nav');
         header.className = 'header__nav';
