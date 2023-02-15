@@ -1,13 +1,14 @@
 import { changeLanguage } from 'i18next';
 
-enum SearchParams {
+const DEFAULT_LANG = 'en'
+
+export enum SearchParams {
     lang = 'lang',
-    DEFAULT_LANG = 'en'
 }
 
 export const getLanguageFromLocation = (): string => {
     const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get(SearchParams.lang) || SearchParams.DEFAULT_LANG;
+    return searchParams.get(SearchParams.lang) || DEFAULT_LANG;
 }
 
 export const updateLanguage = async (): Promise<void> => {
