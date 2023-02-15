@@ -1,4 +1,4 @@
-import bannersTemplate from './banners.html';
+import { bannersTemplate } from './bannersTemplate';
 import './banners.scss';
 
 export class Banners {
@@ -11,7 +11,7 @@ export class Banners {
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('div');
-        container.innerHTML = bannersTemplate;
+        container.innerHTML = bannersTemplate();
         root.append(container);
     }
 }

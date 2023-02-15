@@ -5,7 +5,7 @@ export class LoginService {
         this.apiKey = apiKey;
     }
 
-    public authWithEmailAndPassword(email: string, password: string): Promise<void> {
+    public authWithEmailAndPassword(email: string, password: string): Promise<string> {
         return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
