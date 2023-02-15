@@ -2,15 +2,22 @@ const path = require('path');
 const {merge} = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack')
+const Dotenv = require('dotenv-webpack');
 
 const baseConfig = {
     entry: './src/index.ts',
     module: {
         rules: [
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|mp3)$/i,
+                test: /\.(eot|svg|png|jpg|gif|mp3)$/i,
                 type: 'asset',
+            },
+            {
+                test: /\.(ttf|woff|woff2)$/i,
+                type: 'asset',
+                generator: {
+                    filename: './fonts/[name][ext]',
+                },
             },
             {
                 test: /\.html$/i,
@@ -44,7 +51,7 @@ const baseConfig = {
         assetModuleFilename: 'images/[hash][ext][query]',
     },
     resolve: {
-        extensions: [ ".ts", ".js"],
+        extensions: [".ts", ".js"],
     },
     plugins: [
         new Dotenv(),

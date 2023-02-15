@@ -1,4 +1,4 @@
-import { loginWrapperTemplate } from './loginWrapperTemplate';
+import loginWrapperTemplate from './loginWrapperTemplate.html';
 import './loginWrapper.scss';
 
 export class LoginWrapper {
@@ -10,6 +10,6 @@ export class LoginWrapper {
 
     render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
-        root.innerHTML = loginWrapperTemplate();
+        root.innerHTML = loginWrapperTemplate;
     }
 }
