@@ -22,6 +22,18 @@ const baseConfig = {
             {
                 test: /\.html$/i,
                 loader: 'html-loader',
+                options: {
+                    sources: {
+                        list: [
+                            "...",
+                            {
+                                tag: 'div',
+                                attribute: 'data-src',
+                                type: 'src',
+                            },
+                        ],
+                    },
+                },
             },
             {
                 test: /\.ico$/,
