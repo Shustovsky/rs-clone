@@ -41,7 +41,6 @@ export class LoginController {
                 this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token) {
                         this.loginView.deleteButtonError('signup_submit');
-                        console.log(token);
                     } else {
                         this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
                     }

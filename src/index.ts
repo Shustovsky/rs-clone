@@ -8,7 +8,7 @@ import { App } from './components/app/App';
 import i18next from 'i18next';
 import enLang from './assets/langs/en.json';
 import ruLang from './assets/langs/ru.json';
-import '../src/assets/fonts/fonts.css';
+import './assets/fonts/fonts.scss';
 
 uikit.use(Icons as Plugin);
 
