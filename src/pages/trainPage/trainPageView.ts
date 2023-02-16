@@ -15,7 +15,7 @@ export class TrainPageView {
         main.className = 'train uk-flex uk-flex-center uk-flex-middle';
         root.append(main);
 
-        const trainContainer = <HTMLElement>document.createElement('div');
+        const trainContainer = <HTMLDivElement>document.createElement('div');
         trainContainer.className = 'train__container ';
         trainContainer.innerHTML = trainLogo;
         main.append(trainContainer);
@@ -133,7 +133,7 @@ export class TrainPageView {
 
         nextExerciseDescriptionBlock.innerHTML = `
                             <div  class='train__next-exercise-wrapper-img'>
-                                <img class='train__next-exercise-img' src='${exercise.imageUrl}'>
+                                <img class='train__next-exercise-img' src='${exercise.imageUrl}' alt='next exercise'>
                             </div>
                             <div class='train__next-exercise-description'>
                                 <div class='train__next-exercise-title'>${exercise.title}</div>
@@ -143,7 +143,7 @@ export class TrainPageView {
         return nextExerciseDescriptionBlock;
     }
 
-    private reRender() {
+    private reRender(): void {
         document.querySelector('#root .train__wrapper-description')?.remove();
         this.createDescriptionBlock();
     }
