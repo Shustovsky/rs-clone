@@ -26,9 +26,7 @@ export class TrainPageView {
     private init(workout: Workout): void {
         this.workout = workout;
         this.currentExercise = this.getInitialExercise(workout);
-        console.log(this.currentExercise);
         this.nextExercise = this.getNextExercise(workout);
-        console.log(this.nextExercise);
     }
 
     private getInitialExercise(workout: Workout): Exercise {
@@ -44,7 +42,6 @@ export class TrainPageView {
             .sort((a, b) => a.order - b.order)
             .map((value) => value.exercises.sort((a, b) => a.order - b.order))
             .flat();
-        console.log(exercises);
 
         const currentExercise = <Exercise>this.currentExercise;
         const currentExerciseIndex = exercises.indexOf(currentExercise);
