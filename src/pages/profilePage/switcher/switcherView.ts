@@ -64,7 +64,8 @@ export class SwitcherView {
         <div>`;
         root.append(switcher);
         const liActivities = document.querySelector('.li_activities') as HTMLLIElement;
-        liActivities.append(activitiesWrapper);
+        const historyWorkout = document.querySelector('.activities_month') as HTMLDivElement;
+        liActivities.append(activitiesWrapper, historyWorkout);
         const liAccount = document.querySelector('.li_account') as HTMLLIElement;
         liAccount.append(accountWrapper);
         const liAccountDelete = document.querySelector('.li_account_delete') as HTMLLIElement;
