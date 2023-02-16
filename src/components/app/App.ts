@@ -9,6 +9,8 @@ import { WorkoutListController } from '../../pages/workoutListPage/workoutListCo
 import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
 import { WorkoutView } from '../../pages/workoutPage/workoutPageView';
 import { WorkoutController } from '../../pages/workoutPage/workoutController';
+import { TrainPageView } from '../../pages/trainPage/trainPageView';
+import { TrainPageController } from '../../pages/trainPage/trainPageController';
 import { LoginView } from '../../pages/login/loginView';
 import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
@@ -31,30 +33,30 @@ export class App {
     private readonly profilePage: ProfilePageView;
     private readonly loginService: LoginService;
     private readonly loginController: LoginController;
+    private readonly trainController: TrainPageController;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
         this.workoutService = new WorkoutService(this.dbRef);
-        const workoutsView = new WorkoutListView();
-        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
+        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
-
         this.initLanguageListeners();
+        this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
     }
 
     public async run() {
-        this.mainPage.render();
+        // this.mainPage.render();
         // this.loginController.render();
-        // this.profilePage.render();
+        this.profilePage.render();
         // this.workoutsController.render();
-        //this.profilePage.render();
-        //this.workoutListController.render();
+        // this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
+        // this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
 
     }
