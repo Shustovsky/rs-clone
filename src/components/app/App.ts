@@ -44,7 +44,7 @@ export class App {
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
 
-        this.initLanguageListeners();
+        this.initListeners();
     }
 
     public async run() {
@@ -64,7 +64,7 @@ export class App {
         this.run();
     }
 
-    private initLanguageListeners(): void {
+    private initListeners(): void {
         window.addEventListener('popstate', () => {
             updateLanguage();
             this.rerenderPage();
