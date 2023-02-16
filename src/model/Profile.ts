@@ -29,7 +29,6 @@ export class ProfileWorkout {
     calories: number;
     duration: number;
     score: number;
-    count: number;
 
     constructor(
         id: string,
@@ -40,7 +39,6 @@ export class ProfileWorkout {
         calories: number,
         duration: number,
         score: number,
-        count: number
     ) {
         this.id = id;
         this.date = date;
@@ -50,6 +48,5 @@ export class ProfileWorkout {
         this.calories = calories;
         this.duration = duration;
         this.score = score;
-        this.count = count;
     }
 }
