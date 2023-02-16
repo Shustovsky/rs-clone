@@ -7,11 +7,12 @@ import { App } from './components/app/App';
 import i18next from 'i18next';
 import enLang from './assets/langs/en.json';
 import ruLang from './assets/langs/ru.json';
+import { getLanguageFromLocation } from './utils/language';
 
 uikit.use(Icons as Plugin);
 
 i18next.init({
-    lng: 'en',
+    lng: getLanguageFromLocation(),
     debug: true,
     resources: {
         en: enLang,

@@ -15,6 +15,7 @@ import { LoginView } from '../../pages/login/loginView';
 import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
+import { updateLanguage } from '../../utils/language';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -44,15 +45,13 @@ export class App {
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
+        this.initLanguageListeners();
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
     }
 
     public async run() {
         this.mainPage.render();
-
-        // this.profilePage.render();
-        // this.mainPage.render();
-        //this.loginController.render();
+        // this.loginController.render();
         // this.profilePage.render();
         // this.workoutsController.render();
         //this.profilePage.render();
@@ -60,5 +59,24 @@ export class App {
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
+
+    }
+
+
+    private rerenderPage(): void {
+        const root = <HTMLBodyElement>document.getElementById('root');
+        root.innerHTML = '';
+        this.run();
+    }
+
+    private initLanguageListeners() {
+        window.addEventListener('popstate', () => {
+            updateLanguage();
+            this.rerenderPage();
+        })
+        window.addEventListener('changeLanguage', () => {
+            updateLanguage();
+            this.rerenderPage();
+        })
     }
 }
