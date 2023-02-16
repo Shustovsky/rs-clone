@@ -6,7 +6,6 @@ export enum SearchParams {
     lang = 'lang',
 }
 
-
 export const getLanguageFromLocation = (): string => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get(SearchParams.lang) || DEFAULT_LANG;

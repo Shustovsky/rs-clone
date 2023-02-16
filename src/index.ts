@@ -19,6 +19,5 @@ i18next.init({
         ru: ruLang,
     },
 });
-
 const app = new App();
 app.run();

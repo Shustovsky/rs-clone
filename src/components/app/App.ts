@@ -39,14 +39,16 @@ export class App {
         this.app = initializeApp(this.firebaseConfig);
         this.dbRef = ref(getDatabase());
         this.workoutService = new WorkoutService(this.dbRef);
-        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
+        const workoutsView = new WorkoutListView();
+        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
-        this.initLanguageListeners();
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
+
+        this.initListeners();
     }
 
     public async run() {
@@ -68,7 +70,7 @@ export class App {
         this.run();
     }
 
-    private initLanguageListeners() {
+    private initListeners(): void {
         window.addEventListener('popstate', () => {
             updateLanguage();
             this.rerenderPage();

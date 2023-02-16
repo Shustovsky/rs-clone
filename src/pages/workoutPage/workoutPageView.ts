@@ -4,6 +4,7 @@ import { WorkoutGeneral } from './general/workoutGeneral';
 import '../workoutPage/workoutPage.scss';
 import { WorkoutVideoView } from './workoutVideo/workoutVideoView';
 import { WorkoutBtnStartView } from './workoutBtnStart/workoutBtnStartView';
+import { t } from 'i18next';
 
 export class WorkoutView {
     private readonly workoutTitle: WorkoutTitle;
@@ -57,7 +58,7 @@ export class WorkoutView {
 
         const error = <HTMLElement>document.createElement('div');
         error.className = 'wrapper-error uk-flex uk-flex-center';
-        error.innerHTML = `<div class='error'>workout not found</div>`;
+        error.innerHTML = `<div class='error'>${t('workout.notFound')}</div>`;
         root.append(error);
     }
 }
