@@ -38,9 +38,9 @@ export class SwitcherView {
         this.accountDelete.render(account);
         this.logout.render();
         this.footer.render();
-        const accountWrapper = document.querySelector('.account_wrapper') as HTMLDivElement;
-        const activitiesWrapper = document.querySelector('.activities_wrapper') as HTMLDivElement;
-        const accountDeleteWrapper = document.querySelector('.accountDelete_wrapper') as HTMLDivElement;
+        const accountWrapper = <HTMLDivElement>document.querySelector('.account_wrapper');
+        const activitiesWrapper = <HTMLDivElement>document.querySelector('.activities_wrapper');
+        const accountDeleteWrapper = <HTMLDivElement>document.querySelector('.accountDelete_wrapper');
 
         switcher.innerHTML = `<div class="uk-child-width-1-1@s uk-grid">
         <div>
@@ -63,20 +63,20 @@ export class SwitcherView {
         </div>
         <div>`;
         root.append(switcher);
-        const liActivities = document.querySelector('.li_activities') as HTMLLIElement;
-        const historyWorkout = document.querySelector('.activities_month') as HTMLDivElement;
+        const liActivities = <HTMLLIElement>document.querySelector('.li_activities');
+        const historyWorkout = <HTMLDivElement>document.querySelector('.activities_month');
         liActivities.append(activitiesWrapper, historyWorkout);
-        const liAccount = document.querySelector('.li_account') as HTMLLIElement;
+        const liAccount = <HTMLLIElement>document.querySelector('.li_account');
         liAccount.append(accountWrapper);
-        const liAccountDelete = document.querySelector('.li_account_delete') as HTMLLIElement;
+        const liAccountDelete = <HTMLLIElement>document.querySelector('.li_account_delete');
         liAccountDelete.append(accountDeleteWrapper);
-        const tabsWrapper = document.querySelector('.profile_tabs') as HTMLDivElement;
-        const logoutBtn = document.querySelector('.btn_logout_container') as HTMLDivElement;
-        const sidebarWrapper = document.querySelector('.profile_sidebar_basic') as HTMLDivElement;
+        const tabsWrapper = <HTMLDivElement>document.querySelector('.profile_tabs');
+        const logoutBtn = <HTMLDivElement>document.querySelector('.btn_logout_container');
+        const sidebarWrapper = <HTMLDivElement>document.querySelector('.profile_sidebar_basic');
         tabsWrapper.insertBefore(sidebarWrapper, tabsWrapper.firstChild);
         tabsWrapper.append(logoutBtn);
-        const footer = document.querySelector('.footer') as HTMLElement;
-        const mainContent = document.querySelector('.main_content_switcher') as HTMLDivElement;
+        const footer = <HTMLElement>document.querySelector('.footer');
+        const mainContent = <HTMLDivElement>document.querySelector('.main_content_switcher');
         mainContent.append(footer);
     }
 }

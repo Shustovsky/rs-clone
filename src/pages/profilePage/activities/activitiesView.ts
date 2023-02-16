@@ -21,7 +21,7 @@ export class ActivitiesView {
         )}</div>`;
         activities.insertBefore(title, activities.firstChild);
         root.append(activities);
-        const monthWorkouts = document.createElement('div') as HTMLDivElement;
+        const monthWorkouts = <HTMLDivElement>document.createElement('div');
         monthWorkouts.className = 'activities_month';
         monthWorkouts.innerHTML = this.createHistoryTrainingsBlock(workoutsDone);
         root.append(monthWorkouts);
