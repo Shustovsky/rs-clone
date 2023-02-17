@@ -1,5 +1,6 @@
 import './sidebar.scss';
 import { IAccount } from '../../../mock/mockData';
+import { t } from 'i18next';
 
 export class SidebarView {
     private readonly selector: string;
@@ -20,7 +21,9 @@ export class SidebarView {
         <div class="account-img"></div>
         <h2 class="profile_sidebar_name">${account.name}</h2>
         <div class="profile-sidebar_info uk-flex uk-flex-middle">
-          <span class="padding-right"><strong>0</strong> TRAC Score</span><hr class="uk-divider-vertical"><span>${account.location}</span>
+          <span class="padding-right"><strong>0</strong> ${t(
+              'profile.score'
+          )}</span><hr class="uk-divider-vertical"><span>${account.location}</span>
         </div>
       </div>
     `;

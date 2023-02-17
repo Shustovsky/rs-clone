@@ -3,6 +3,7 @@ import './overview.scss';
 import circuit from '../../../../../src/assets/icons/circuit.svg';
 import warmUp from '../../../../../src/assets/icons/warm_up.svg';
 import coolDown from '../../../../../src/assets/icons/cool_down.svg';
+import { t } from 'i18next';
 
 export class WorkoutOverview {
     private readonly selector: string;
@@ -17,7 +18,7 @@ export class WorkoutOverview {
 
         const overviewTitle = document.createElement('div');
         overviewTitle.className = 'workout__overview-title';
-        overviewTitle.textContent = 'overview';
+        overviewTitle.textContent = t('workout.overview');
 
         overviewWrapper.append(overviewTitle);
 
@@ -54,7 +55,7 @@ export class WorkoutOverview {
                                     <div class='workout__line ${section.kind} uk-flex'></div>
                                     <div class='workout__wrapper-time'>
                                          <div class='workout__time-text'>${kind}</div>
-                                         <div class='workout__section-time'>${duration} MIN</div>
+                                         <div class='workout__section-time'>${duration} ${t('workout.min')}</div>
                                     </div>`;
         return sectionElement;
     }
@@ -73,11 +74,11 @@ export class WorkoutOverview {
     private getSectionKindText(section: Section) {
         switch (section.kind) {
             case 'warm_up':
-                return 'Warm Up';
+                return t('workout.warmUp');
             case 'circuit':
-                return 'Circuit';
+                return t('workout.circuit');
             case 'cool_down':
-                return 'Cool Down';
+                return t('workout.coolDown');
         }
     }
 }
