@@ -12,13 +12,13 @@ import { WorkoutController } from '../../pages/workoutPage/workoutController';
 import { TrainPageView } from '../../pages/trainPage/trainPageView';
 import { TrainPageController } from '../../pages/trainPage/trainPageController';
 import { LoginView } from '../../pages/login/loginView';
-import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
 import { ProfileService } from '../../service/profileService';
-import { HeaderView } from '../../components/header/headerView';
+import { HeaderView } from '../header/headerView';
 import { RouterPath } from '../router/Router';
+import { getAuth } from 'firebase/auth';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -36,7 +36,6 @@ export class App {
     private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
     private readonly profilePage: ProfilePageView;
-    private readonly loginService: LoginService;
     private readonly loginController: LoginController;
     private readonly trainController: TrainPageController;
     private readonly header: HeaderView;
@@ -50,14 +49,8 @@ export class App {
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
-        this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.profileService = new ProfileService(this.dbRef, this.database);
-        this.loginController = new LoginController(
-            new LoginView(),
-            this.loginService,
-            new LoginValidator(),
-            this.profileService
-        );
+        this.loginController = new LoginController(new LoginView(), new LoginValidator(), this.profileService);
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
         this.header = new HeaderView('#root');
 
@@ -68,30 +61,51 @@ export class App {
         await this.renderPageForCurrentUrl();
     }
 
-    private async renderPageForCurrentUrl() {
+    private async renderPageForCurrentUrl(): Promise<void> {
         this.clearPage();
         const url = window.location.pathname;
+
+        let auth = await getAuth();
+        const user = auth.currentUser;
+        console.log('userid ===', user?.uid);
+
         if (url === RouterPath.MAIN) {
             this.header.createHeader();
             this.mainPage.render();
-        } else if (url === RouterPath.LOGIN) {
+            return;
+        }
+        if (url === RouterPath.LOGIN) {
             this.header.createHeader();
-            this.loginController.render();
-        } else if (url === RouterPath.PROFILE) {
-            this.header.createHeader();
-            this.profilePage.render();
-        } else if (url === RouterPath.WORKOUTS) {
-            this.header.createHeader();
-            this.workoutListController.render();
-        } else if (url.startsWith(RouterPath.WORKOUT)) {
-            this.header.createHeader();
-            const workoutId = url.split('/').at(-1) || 'not found';
-            this.workoutController.render(workoutId);
-        } else if (url.startsWith(RouterPath.TRAIN)) {
-            const workoutId = url.split('/').at(-1) || 'not found';
-            this.trainController.render(workoutId);
+            await this.loginController.render();
+            return;
+        }
+
+        if (user) {
+            if (url === RouterPath.PROFILE) {
+                this.header.createHeader();
+                this.profilePage.render();
+                return;
+            }
+            if (url === RouterPath.WORKOUTS) {
+                this.header.createHeader();
+                await this.workoutListController.render();
+                return;
+            }
+            if (url.startsWith(RouterPath.WORKOUT)) {
+                this.header.createHeader();
+                const workoutId = url.split('/').at(-1) || 'not found';
+                await this.workoutController.render(workoutId);
+                return;
+            }
+            if (url.startsWith(RouterPath.TRAIN)) {
+                const workoutId = url.split('/').at(-1) || 'not found';
+                await this.trainController.render(workoutId);
+                return;
+            }
         } else {
-            // render a 404 page
+            this.header.createHeader();
+            await this.loginController.render();
+            return;
         }
     }
 
@@ -103,12 +117,12 @@ export class App {
     private initListeners(): void {
         window.addEventListener('popstate', async () => {
             await updateLanguage();
-            this.renderPageForCurrentUrl();
+            await this.renderPageForCurrentUrl();
         });
 
         window.addEventListener('changeLanguage', async () => {
             await updateLanguage();
-            this.renderPageForCurrentUrl();
+            await this.renderPageForCurrentUrl();
         });
         window.addEventListener('refreshPage', () => {
             this.renderPageForCurrentUrl();
