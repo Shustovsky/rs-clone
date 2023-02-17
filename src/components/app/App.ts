@@ -18,6 +18,7 @@ import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
 import { ProfileService } from '../../service/profileService';
 import { HeaderView } from '../../components/header/headerView';
+import { RouterPath } from '../router/Router';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -70,23 +71,23 @@ export class App {
     private async renderPageForCurrentUrl() {
         this.clearPage();
         const url = window.location.pathname;
-        if (url === '/') {
+        if (url === RouterPath.MAIN) {
             this.header.createHeader();
             this.mainPage.render();
-        } else if (url === '/login') {
+        } else if (url === RouterPath.LOGIN) {
             this.header.createHeader();
             this.loginController.render();
-        } else if (url === '/profile') {
+        } else if (url === RouterPath.PROFILE) {
             this.header.createHeader();
             this.profilePage.render();
-        } else if (url === '/workouts') {
+        } else if (url === RouterPath.WORKOUTS) {
             this.header.createHeader();
             this.workoutListController.render();
-        } else if (url.startsWith('/workout/')) {
+        } else if (url.startsWith(RouterPath.WORKOUT)) {
             this.header.createHeader();
             const workoutId = url.substring('/workout/'.length);
             this.workoutController.render(workoutId);
-        } else if (url.startsWith('/train/')) {
+        } else if (url.startsWith(RouterPath.TRAIN)) {
             const workoutId = url.substring('/train/'.length);
             this.trainController.render(workoutId);
         } else {

@@ -1,11 +1,14 @@
 import { loginNowTemplate } from './loginNowTemplate';
 import './loginNow.scss';
+import { Router } from '../../../components/router/Router';
 
 export class LoginNow {
     private readonly selector: string;
+    private readonly router: Router;
 
     constructor(selector: string) {
         this.selector = selector;
+        this.router = new Router();
     }
 
     render(): void {
@@ -14,14 +17,13 @@ export class LoginNow {
         container.innerHTML = loginNowTemplate();
         root.append(container);
 
-        this.initListner();
+        this.initListener();
     }
 
-    private initListner(): void {
+    private initListener(): void {
         const mainLink = <HTMLButtonElement>document.querySelector('.login-now_btn');
         mainLink.addEventListener('click', () => {
-            history.pushState('', '', `/login`);
-            window.dispatchEvent(new Event('refreshPage'));
+            this.router.redirectToLogin();
         });
     }
 }

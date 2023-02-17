@@ -2,12 +2,15 @@ import { headerTemplate } from './headerTemplate';
 import './header.scss';
 import i18next from 'i18next';
 import { SearchParams } from '../../utils/language';
+import { Router } from '../router/Router';
 
 export class HeaderView {
     private readonly selector: string;
+    private readonly router: Router;
 
     constructor(selector: string) {
         this.selector = selector;
+        this.router = new Router();
     }
 
     public createHeader(): void {
@@ -18,7 +21,7 @@ export class HeaderView {
         root.append(header);
 
         this.changeLanguage();
-        this.initListner();
+        this.initListeners();
     }
 
     private changeLanguage(): void {
@@ -33,18 +36,16 @@ export class HeaderView {
         });
     }
 
-    private initListner(): void {
+    private initListeners(): void {
         const mainLink = <HTMLLinkElement>document.querySelector('.header__nav_main-link');
         mainLink.addEventListener('click', (e) => {
             e.preventDefault();
-            history.pushState('', '', `/`);
-            window.dispatchEvent(new Event('refreshPage'));
+            this.router.redirectToMain();
         });
 
         const btnLogin = <HTMLButtonElement>document.querySelector('.header__nav_login');
         btnLogin.addEventListener('click', () => {
-            history.pushState('', '', `/login`);
-            window.dispatchEvent(new Event('refreshPage'));
+            this.router.redirectToLogin();
         });
     }
 }

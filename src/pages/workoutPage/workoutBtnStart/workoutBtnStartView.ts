@@ -1,11 +1,14 @@
 import './workoutBtnStart.scss';
 import { t } from 'i18next';
+import { Router } from '../../../components/router/Router';
 
 export class WorkoutBtnStartView {
     private readonly selector: string;
+    private readonly router: Router;
 
     constructor(selector: string) {
         this.selector = selector;
+        this.router = new Router();
     }
 
     public render(id: string): void {
@@ -14,8 +17,7 @@ export class WorkoutBtnStartView {
         btnStart.setAttribute('uk-sticky', '');
         btnStart.innerHTML = `<a class='workout__btn-start' >${t('workout.start')}</a>`;
         btnStart.addEventListener('click', () => {
-            history.pushState('', '', `/train/${id}`);
-            window.dispatchEvent(new Event('refreshPage'));
+            this.router.redirectToTrain(id);
         });
 
         document.querySelector(this.selector)?.append(btnStart);

@@ -3,12 +3,14 @@ import { LoginService } from './loginService';
 import { LoginValidator } from './loginValidationService';
 import { t } from 'i18next';
 import { ProfileService } from '../../service/profileService';
+import { Router } from '../../components/router/Router';
 
 export class LoginController {
-    private loginView: LoginView;
-    private loginService: LoginService;
-    private loginValidator: LoginValidator;
-    private profileService: ProfileService;
+    private readonly loginView: LoginView;
+    private readonly loginService: LoginService;
+    private readonly loginValidator: LoginValidator;
+    private readonly profileService: ProfileService;
+    private readonly router: Router;
 
     constructor(
         loginView: LoginView,
@@ -20,6 +22,7 @@ export class LoginController {
         this.loginService = loginService;
         this.loginValidator = loginValidator;
         this.profileService = profileService;
+        this.router = new Router();
     }
 
     public async render() {
@@ -43,8 +46,7 @@ export class LoginController {
             const auth = await this.loginService.authWithEmailAndPassword(email.value, password.value);
             if (auth) {
                 this.loginView.deleteButtonError('login_submit');
-                history.pushState('', '', '/');
-                window.dispatchEvent(new Event('refreshPage'));
+                this.router.redirectToMain();
             } else {
                 this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
             }
@@ -67,8 +69,7 @@ export class LoginController {
             if (auth) {
                 await this.profileService.createProfile(auth);
                 this.loginView.deleteButtonError('signup_submit');
-                history.pushState('', '', '/');
-                window.dispatchEvent(new Event('refreshPage'));
+                this.router.redirectToMain();
             } else {
                 this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
             }
