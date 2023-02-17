@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
-import { DatabaseReference } from '@firebase/database';
+import { DatabaseReference, Database } from '@firebase/database';
 import { WorkoutService } from '../../service/workoutService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
@@ -16,6 +16,7 @@ import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
+import { ProfileService } from '../../service/profileService';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -24,9 +25,11 @@ export class App {
     };
 
     private readonly app: FirebaseApp;
+    private readonly database: Database;
     private readonly dbRef: DatabaseReference;
 
     private readonly workoutService: WorkoutService;
+    private readonly profileService: ProfileService;
     private readonly workoutListController: WorkoutListController;
     private readonly workoutController: WorkoutController;
     private readonly mainPage: MainPageView;
@@ -37,32 +40,35 @@ export class App {
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
-        this.dbRef = ref(getDatabase());
+        this.database = getDatabase();
+        this.dbRef = ref(this.database);
         this.workoutService = new WorkoutService(this.dbRef);
-        const workoutsView = new WorkoutListView();
-        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
+        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
-        this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
+        this.profileService = new ProfileService(this.dbRef, this.database);
+        this.loginController = new LoginController(
+            new LoginView(),
+            this.loginService,
+            new LoginValidator(),
+            this.profileService
+        );
+        this.initLanguageListeners();
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
-
-        this.initListeners();
     }
 
     public async run() {
-        // this.mainPage.render();
-        // this.loginController.render();
-        this.profilePage.render();
+        this.mainPage.render();
+        //this.loginController.render();
+        // this.profilePage.render();
         // this.workoutsController.render();
         // this.workoutListController.render();
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
         // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
-
     }
-
 
     private rerenderPage(): void {
         const root = <HTMLBodyElement>document.getElementById('root');
@@ -70,14 +76,14 @@ export class App {
         this.run();
     }
 
-    private initListeners(): void {
+    private initLanguageListeners() {
         window.addEventListener('popstate', () => {
             updateLanguage();
             this.rerenderPage();
-        })
+        });
         window.addEventListener('changeLanguage', () => {
             updateLanguage();
             this.rerenderPage();
-        })
+        });
     }
 }

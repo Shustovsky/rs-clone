@@ -1,3 +1,5 @@
+import { ProfileAuth } from '../../model/ProfileAuth';
+
 export class LoginService {
     apiKey: string | undefined;
 
@@ -5,7 +7,7 @@ export class LoginService {
         this.apiKey = apiKey;
     }
 
-    public authWithEmailAndPassword(email: string, password: string): Promise<string> {
+    public authWithEmailAndPassword(email: string, password: string): Promise<ProfileAuth> {
         return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -18,10 +20,10 @@ export class LoginService {
             },
         })
             .then((response) => response.json())
-            .then((data) => data.idToken);
+            .then((data) => new ProfileAuth(data.localId, data.idToken, email));
     }
 
-    public signUpWithEmailAndPassword(email: string, password: string): Promise<string> {
+    public signUpWithEmailAndPassword(email: string, password: string): Promise<ProfileAuth> {
         return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.apiKey}`, {
             method: 'POST',
             body: JSON.stringify({
@@ -34,6 +36,6 @@ export class LoginService {
             },
         })
             .then((response) => response.json())
-            .then((data) => data.idToken);
+            .then((data) => new ProfileAuth(data.localId, data.idToken, email));
     }
 }
