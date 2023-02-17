@@ -13,5 +13,15 @@ export class LoginNow {
         const container = document.createElement('div');
         container.innerHTML = loginNowTemplate();
         root.append(container);
+
+        this.initListner();
+    }
+
+    private initListner(): void {
+        const mainLink = <HTMLButtonElement>document.querySelector('.login-now_btn');
+        mainLink.addEventListener('click', () => {
+            history.pushState('', '', `/login`);
+            window.dispatchEvent(new Event('refreshPage'));
+        });
     }
 }

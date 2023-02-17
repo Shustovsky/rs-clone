@@ -26,5 +26,10 @@ export class WorkoutCard {
                          </div>`;
 
         document.querySelector(this.selector)?.append(card);
+
+        card.addEventListener('click', () => {
+            history.pushState('', '', `/workout/${workout.id}`);
+            window.dispatchEvent(new Event('refreshPage'));
+        });
     }
 }

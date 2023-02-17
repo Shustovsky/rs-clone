@@ -22,13 +22,13 @@ export class LoginController {
                 this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token) {
                         this.loginView.deleteButtonError('login_submit');
+                        history.pushState('', '', '/');
+                        window.dispatchEvent(new Event('refreshPage'));
                     } else {
                         this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
                     }
                 });
             }
-
-            //TODO переход в личный кабинет
         });
 
         this.loginView.bindSignUpHandler((email, password, passwordRepeat, input) => {
@@ -41,12 +41,12 @@ export class LoginController {
                 this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
                     if (token) {
                         this.loginView.deleteButtonError('signup_submit');
+                        history.pushState('', '', '/');
+                        window.dispatchEvent(new Event('refreshPage'));
                     } else {
                         this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
                     }
                 });
-
-                //TODO переход в личный кабинет
             }
         });
 

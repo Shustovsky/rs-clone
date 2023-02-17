@@ -16,6 +16,7 @@ import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
+import { HeaderView } from '../../components/header/headerView';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -28,12 +29,13 @@ export class App {
 
     private readonly workoutService: WorkoutService;
     private readonly workoutListController: WorkoutListController;
-    private readonly workoutController: WorkoutController;
-    private readonly mainPage: MainPageView;
-    private readonly profilePage: ProfilePageView;
+    readonly workoutController: WorkoutController;
+    readonly mainPage: MainPageView;
+    readonly profilePage: ProfilePageView;
     private readonly loginService: LoginService;
-    private readonly loginController: LoginController;
-    private readonly trainController: TrainPageController;
+    readonly loginController: LoginController;
+    readonly trainController: TrainPageController;
+    private readonly header: HeaderView;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
@@ -47,37 +49,59 @@ export class App {
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
         this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
+        this.header = new HeaderView('#root');
 
         this.initListeners();
     }
 
     public async run() {
-        // this.mainPage.render();
-        // this.loginController.render();
-        this.profilePage.render();
-        // this.workoutsController.render();
-        // this.workoutListController.render();
-        // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
-        // this.trainController.render('7719fdb0-41f3-46b8-9d69-cdad209d5775');
-        // this.workoutController.render('7719fdb0-41f3-46b8-9d69-cdad209d57');
-
+        await this.renderPageForCurrentUrl();
     }
 
+    private async renderPageForCurrentUrl() {
+        this.clearPage();
+        const url = window.location.pathname;
+        if (url === '/') {
+            this.header.createHeader();
+            this.mainPage.render();
+        } else if (url === '/login') {
+            this.header.createHeader();
+            this.loginController.render();
+        } else if (url === '/profile') {
+            this.header.createHeader();
+            this.profilePage.render();
+        } else if (url === '/workouts') {
+            this.header.createHeader();
+            this.workoutListController.render();
+        } else if (url.startsWith('/workout/')) {
+            this.header.createHeader();
+            const workoutId = url.substring('/workout/'.length);
+            this.workoutController.render(workoutId);
+        } else if (url.startsWith('/train/')) {
+            const workoutId = url.substring('/train/'.length);
+            this.trainController.render(workoutId);
+        } else {
+            // render a 404 page
+        }
+    }
 
-    private rerenderPage(): void {
+    private clearPage(): void {
         const root = <HTMLBodyElement>document.getElementById('root');
         root.innerHTML = '';
-        this.run();
     }
 
     private initListeners(): void {
         window.addEventListener('popstate', () => {
             updateLanguage();
-            this.rerenderPage();
-        })
+            this.renderPageForCurrentUrl();
+        });
+
         window.addEventListener('changeLanguage', () => {
             updateLanguage();
-            this.rerenderPage();
-        })
+            this.renderPageForCurrentUrl();
+        });
+        window.addEventListener('refreshPage', () => {
+            this.renderPageForCurrentUrl();
+        });
     }
 }

@@ -5,7 +5,7 @@ export const headerTemplate = (): string => {
     return `
         <a class="header__nav_link uk-button uk-button-default" href="https://go.puma.com/koswb" target="_blank">
         ${t('header.shop')} </a>
-        <a href="/">
+        <a class="header__nav_main-link" href="/">
             <img class="header__nav_logo" src="${logo}" alt="puma logo">
         </a>
         <div>

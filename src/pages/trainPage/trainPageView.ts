@@ -20,7 +20,17 @@ export class TrainPageView {
         trainContainer.innerHTML = trainLogo;
         main.append(trainContainer);
 
+        this.leaveWorkoutBtn(workout.id);
+
         this.createDescriptionBlock();
+    }
+
+    private leaveWorkoutBtn(id: string) {
+        const btn = <HTMLDivElement>document.querySelector('.train__back');
+        btn.addEventListener('click', () => {
+            history.pushState('', '', `/workout/${id}`);
+            window.dispatchEvent(new Event('refreshPage'));
+        });
     }
 
     private init(workout: Workout): void {

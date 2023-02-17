@@ -18,6 +18,7 @@ export class HeaderView {
         root.append(header);
 
         this.changeLanguage();
+        this.initListner();
     }
 
     private changeLanguage(): void {
@@ -29,8 +30,21 @@ export class HeaderView {
 
             history.pushState('', '', url);
             window.dispatchEvent(new Event('changeLanguage'));
-        })
-    };
+        });
+    }
 
+    private initListner(): void {
+        const mainLink = <HTMLLinkElement>document.querySelector('.header__nav_main-link');
+        mainLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            history.pushState('', '', `/`);
+            window.dispatchEvent(new Event('refreshPage'));
+        });
 
+        const btnLogin = <HTMLButtonElement>document.querySelector('.header__nav_login');
+        btnLogin.addEventListener('click', () => {
+            history.pushState('', '', `/login`);
+            window.dispatchEvent(new Event('refreshPage'));
+        });
+    }
 }
