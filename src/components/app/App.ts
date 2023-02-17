@@ -85,10 +85,10 @@ export class App {
             this.workoutListController.render();
         } else if (url.startsWith(RouterPath.WORKOUT)) {
             this.header.createHeader();
-            const workoutId = url.substring('/workout/'.length);
+            const workoutId = url.split('/').at(-1) || 'not found';
             this.workoutController.render(workoutId);
         } else if (url.startsWith(RouterPath.TRAIN)) {
-            const workoutId = url.substring('/train/'.length);
+            const workoutId = url.split('/').at(-1) || 'not found';
             this.trainController.render(workoutId);
         } else {
             // render a 404 page
