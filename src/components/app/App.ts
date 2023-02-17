@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
-import { DatabaseReference } from '@firebase/database';
+import { DatabaseReference, Database } from '@firebase/database';
 import { WorkoutService } from '../../service/workoutService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
@@ -16,6 +16,7 @@ import { LoginService } from '../../pages/login/loginService';
 import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
+import { ProfileService } from '../../service/profileService';
 import { HeaderView } from '../../components/header/headerView';
 
 export class App {
@@ -25,29 +26,37 @@ export class App {
     };
 
     private readonly app: FirebaseApp;
+    private readonly database: Database;
     private readonly dbRef: DatabaseReference;
 
     private readonly workoutService: WorkoutService;
+    private readonly profileService: ProfileService;
     private readonly workoutListController: WorkoutListController;
-    readonly workoutController: WorkoutController;
-    readonly mainPage: MainPageView;
-    readonly profilePage: ProfilePageView;
+    private readonly workoutController: WorkoutController;
+    private readonly mainPage: MainPageView;
+    private readonly profilePage: ProfilePageView;
     private readonly loginService: LoginService;
-    readonly loginController: LoginController;
-    readonly trainController: TrainPageController;
+    private readonly loginController: LoginController;
+    private readonly trainController: TrainPageController;
     private readonly header: HeaderView;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
-        this.dbRef = ref(getDatabase());
+        this.database = getDatabase();
+        this.dbRef = ref(this.database);
         this.workoutService = new WorkoutService(this.dbRef);
-        const workoutsView = new WorkoutListView();
-        this.workoutListController = new WorkoutListController(workoutsView, this.workoutService);
+        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
         this.mainPage = new MainPageView();
         this.profilePage = new ProfilePageView();
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.loginService = new LoginService(this.firebaseConfig.apiKey);
-        this.loginController = new LoginController(new LoginView(), this.loginService, new LoginValidator());
+        this.profileService = new ProfileService(this.dbRef, this.database);
+        this.loginController = new LoginController(
+            new LoginView(),
+            this.loginService,
+            new LoginValidator(),
+            this.profileService
+        );
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
         this.header = new HeaderView('#root');
 

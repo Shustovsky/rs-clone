@@ -2,54 +2,34 @@ import { LoginView } from './loginView';
 import { LoginService } from './loginService';
 import { LoginValidator } from './loginValidationService';
 import { t } from 'i18next';
+import { ProfileService } from '../../service/profileService';
 
 export class LoginController {
     private loginView: LoginView;
     private loginService: LoginService;
     private loginValidator: LoginValidator;
+    private profileService: ProfileService;
 
-    constructor(loginView: LoginView, loginService: LoginService, loginValidator: LoginValidator) {
+    constructor(
+        loginView: LoginView,
+        loginService: LoginService,
+        loginValidator: LoginValidator,
+        profileService: ProfileService
+    ) {
         this.loginView = loginView;
         this.loginService = loginService;
         this.loginValidator = loginValidator;
+        this.profileService = profileService;
     }
 
-    public render(): void {
+    public async render() {
         this.loginView.render();
-
         this.loginView.bindLoginHandler((email, password) => {
-            if (this.validateEmail(email) && this.validatePassword(password)) {
-                this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
-                    if (token) {
-                        this.loginView.deleteButtonError('login_submit');
-                        history.pushState('', '', '/');
-                        window.dispatchEvent(new Event('refreshPage'));
-                    } else {
-                        this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
-                    }
-                });
-            }
+            this.login(email, password);
         });
-
         this.loginView.bindSignUpHandler((email, password, passwordRepeat, input) => {
-            if (
-                this.validateEmail(email) &&
-                this.validatePassword(password) &&
-                this.validateMatchPassword(password, passwordRepeat) &&
-                this.validateInputCheck(input)
-            ) {
-                this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
-                    if (token) {
-                        this.loginView.deleteButtonError('signup_submit');
-                        history.pushState('', '', '/');
-                        window.dispatchEvent(new Event('refreshPage'));
-                    } else {
-                        this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
-                    }
-                });
-            }
+            this.signUp(email, password, passwordRepeat, input);
         });
-
         this.loginView.bindEmailHandler((email) => {
             this.validateEmail(email);
         });
@@ -58,7 +38,44 @@ export class LoginController {
         });
     }
 
-    validateEmail(email: HTMLInputElement): boolean {
+    private async login(email: HTMLInputElement, password: HTMLInputElement) {
+        if (this.validateEmail(email) && this.validatePassword(password)) {
+            const auth = await this.loginService.authWithEmailAndPassword(email.value, password.value);
+            if (auth) {
+                this.loginView.deleteButtonError('login_submit');
+                history.pushState('', '', '/');
+                window.dispatchEvent(new Event('refreshPage'));
+            } else {
+                this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
+            }
+        }
+    }
+
+    private async signUp(
+        email: HTMLInputElement,
+        password: HTMLInputElement,
+        passwordRepeat: HTMLInputElement,
+        input: HTMLInputElement
+    ) {
+        if (
+            this.validateEmail(email) &&
+            this.validatePassword(password) &&
+            this.validateMatchPassword(password, passwordRepeat) &&
+            this.validateInputCheck(input)
+        ) {
+            const auth = await this.loginService.signUpWithEmailAndPassword(email.value, password.value);
+            if (auth) {
+                await this.profileService.createProfile(auth);
+                this.loginView.deleteButtonError('signup_submit');
+                history.pushState('', '', '/');
+                window.dispatchEvent(new Event('refreshPage'));
+            } else {
+                this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
+            }
+        }
+    }
+
+    private validateEmail(email: HTMLInputElement): boolean {
         if (this.loginValidator.validateEmail(email.value)) {
             this.loginView.deleteInputError(email);
             return true;
@@ -68,7 +85,7 @@ export class LoginController {
         }
     }
 
-    validatePassword(password: HTMLInputElement): boolean {
+    private validatePassword(password: HTMLInputElement): boolean {
         if (this.loginValidator.validatePassword(password.value)) {
             this.loginView.deleteInputError(password);
             return true;
@@ -78,7 +95,7 @@ export class LoginController {
         }
     }
 
-    validateMatchPassword(password: HTMLInputElement, passwordRepeat: HTMLInputElement): boolean {
+    private validateMatchPassword(password: HTMLInputElement, passwordRepeat: HTMLInputElement): boolean {
         if (this.loginValidator.validateMatchPassword(password, passwordRepeat)) {
             this.loginView.deleteInputError(passwordRepeat);
             return true;
@@ -88,7 +105,7 @@ export class LoginController {
         }
     }
 
-    validateInputCheck(input: HTMLInputElement): boolean {
+    private validateInputCheck(input: HTMLInputElement): boolean {
         if (this.loginValidator.validateInputCheck(input)) {
             this.loginView.deleteInputError(input);
             return true;
