@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
-import { DatabaseReference } from '@firebase/database';
-import { Database } from '@firebase/database';
+import { DatabaseReference, Database } from '@firebase/database';
 import { WorkoutService } from '../../service/workoutService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
