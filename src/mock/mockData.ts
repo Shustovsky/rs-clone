@@ -15,6 +15,7 @@ export const mockData = [
         introVideoFilename: '20171106_Anthony_PlanksAllDay_020c109b-7b03-462c-a55e-8824989e7bae_intro.mp4',
         availableLocales: ['cs', 'de', 'en', 'es', 'fr', 'pl', 'ru', 'tr'],
         approved: true,
+        score: 17,
         containsRun: false,
         newUntil: null,
         isNew: false,
@@ -1064,37 +1065,56 @@ export interface ICountry {
 export const workoutsDone = [
     {
         duration: 320,
-        date: new Date(2022, 12, 3),
+        date: '2022, 7, 3',
         coverImageUrl:
             'https://d1qus2vc0fdn27.cloudfront.net/content/eyJpZCI6IndvcmtvdXQvMDIwYzEwOWItN2IwMy00NjJjLWE1NWUtODgyNDk4OWU3YmFlL2NvdmVyX2ltYWdlL2JhMjg0YzUxYzQyN2YzZmFjNjBjNjk1NDdmNGVjNmJmLmpwZyIsInN0b3JhZ2UiOiJzdG9yZSIsIm1ldGFkYXRhIjp7ImZpbGVuYW1lIjoiT1BUX1YyX0FudGhvbnlQbGFua3NBbGxEYXlCRy5qcGciLCJzaXplIjo5NDYzNywibWltZV90eXBlIjoiaW1hZ2UvanBlZyJ9fQ',
         title: 'Reverse Plank',
+        scores: 10,
+        calories: 56,
     },
     {
         duration: 520,
-        date: new Date(2022, 7, 3),
+        date: '2022, 1, 3',
         coverImageUrl:
             'https://d1qus2vc0fdn27.cloudfront.net/content/eyJpZCI6IndvcmtvdXQvN2Y4YWFmNGEtN2FkYS00Zjc1LTg2Y2YtOTJlNGUyYWM3MjhkL2NvdmVyX2ltYWdlL2VjODQwNWQ5OTJmZDZkNTI1MzRlYzUyNzhmODU2ZWU4LmpwZyIsInN0b3JhZ2UiOiJzdG9yZSIsIm1ldGFkYXRhIjp7ImZpbGVuYW1lIjoiX01HXzU0NzEuanBnIiwic2l6ZSI6MTM2OTE5NTAsIm1pbWVfdHlwZSI6ImltYWdlL2pwZWcifX0',
         title: 'Low Back Stretch',
+        scores: 11,
+        calories: 81,
     },
     {
         duration: 700,
-        date: new Date(2022, 7, 10),
+        date: '2022, 7, 10',
         coverImageUrl:
             'https://d1qus2vc0fdn27.cloudfront.net/content/eyJpZCI6IndvcmtvdXQvODM1MWEzMzMtYWQ3MS00MTZlLTgzMzgtOWY0NGJmZWU5ZDhiL2NvdmVyX2ltYWdlLzcxYzBmOWJjM2I5Y2NiMmZjZWMwNGMzYjgyZDUzMDQ1LmpwZyIsInN0b3JhZ2UiOiJzdG9yZSIsIm1ldGFkYXRhIjp7ImZpbGVuYW1lIjoiT1BUX1YyX0FsaW5hU2thdGVyU3RyZW5ndGhJTi5qcGciLCJzaXplIjo3NzAyMCwibWltZV90eXBlIjoiaW1hZ2UvanBlZyJ9fQ',
         title: 'High Plank + Reach',
+        scores: 15,
+        calories: 85,
     },
     {
-        duration: 520,
-        date: new Date(2022, 5, 20),
+        duration: 580,
+        date: '2025, 7, 20',
         coverImageUrl:
             'https://d1qus2vc0fdn27.cloudfront.net/content/eyJpZCI6IndvcmtvdXQvODM1MWEzMzMtYWQ3MS00MTZlLTgzMzgtOWY0NGJmZWU5ZDhiL2NvdmVyX2ltYWdlLzcxYzBmOWJjM2I5Y2NiMmZjZWMwNGMzYjgyZDUzMDQ1LmpwZyIsInN0b3JhZ2UiOiJzdG9yZSIsIm1ldGFkYXRhIjp7ImZpbGVuYW1lIjoiT1BUX1YyX0FsaW5hU2thdGVyU3RyZW5ndGhJTi5qcGciLCJzaXplIjo3NzAyMCwibWltZV90eXBlIjoiaW1hZ2UvanBlZyJ9fQ',
         title: 'Crunches',
+        scores: 22,
+        calories: 63,
+    },
+    {
+        duration: 520,
+        date: '2025, 4, 20',
+        coverImageUrl:
+            'https://d1qus2vc0fdn27.cloudfront.net/content/eyJpZCI6IndvcmtvdXQvODM1MWEzMzMtYWQ3MS00MTZlLTgzMzgtOWY0NGJmZWU5ZDhiL2NvdmVyX2ltYWdlLzcxYzBmOWJjM2I5Y2NiMmZjZWMwNGMzYjgyZDUzMDQ1LmpwZyIsInN0b3JhZ2UiOiJzdG9yZSIsIm1ldGFkYXRhIjp7ImZpbGVuYW1lIjoiT1BUX1YyX0FsaW5hU2thdGVyU3RyZW5ndGhJTi5qcGciLCJzaXplIjo3NzAyMCwibWltZV90eXBlIjoiaW1hZ2UvanBlZyJ9fQ',
+        title: 'Crunches',
+        scores: 17,
+        calories: 56,
     },
 ];
 
 export interface IWorkoutsDone {
     duration: number;
-    date: Date;
+    date: string;
     coverImageUrl: string;
     title: string;
+    scores: number;
+    calories: number;
 }

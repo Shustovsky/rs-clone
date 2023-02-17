@@ -1,6 +1,6 @@
 import { ActivitiesView } from '../activities/activitiesView';
 import { AccountView } from '../account/account';
-import { mockData } from '../../../mock/mockData';
+import { workoutsDone } from '../../../mock/mockData';
 import { account } from '../../../mock/mockData';
 import { AccountDeleteView } from '../accountDelete/accountDeletView';
 import { LogoutView } from '../logout/logoutView';
@@ -33,7 +33,7 @@ export class SwitcherView {
         const switcher = <HTMLDivElement>document.createElement('div');
         switcher.className = 'switcher_wrapper';
         this.sidebar.render(account);
-        this.activities.render(mockData);
+        this.activities.render(workoutsDone);
         this.account.render(account);
         this.accountDelete.render(account);
         this.logout.render();
