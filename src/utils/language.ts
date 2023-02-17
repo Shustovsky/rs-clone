@@ -12,6 +12,6 @@ export const getLanguageFromLocation = (): string => {
 };
 
 export const updateLanguage = async (): Promise<void> => {
-    const currentLanguage = await getLanguageFromLocation();
-    changeLanguage(currentLanguage);
+    const currentLanguage = getLanguageFromLocation();
+    await changeLanguage(currentLanguage);
 };

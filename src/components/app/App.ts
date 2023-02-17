@@ -101,13 +101,13 @@ export class App {
     }
 
     private initListeners(): void {
-        window.addEventListener('popstate', () => {
-            updateLanguage();
+        window.addEventListener('popstate', async () => {
+            await updateLanguage();
             this.renderPageForCurrentUrl();
         });
 
-        window.addEventListener('changeLanguage', () => {
-            updateLanguage();
+        window.addEventListener('changeLanguage', async () => {
+            await updateLanguage();
             this.renderPageForCurrentUrl();
         });
         window.addEventListener('refreshPage', () => {
