@@ -9,27 +9,32 @@ export enum RouterPath {
 
 export class Router {
     public redirectToMain() {
-        history.pushState('', '', `/`);
+        history.pushState('', '', RouterPath.MAIN);
         window.dispatchEvent(new Event('refreshPage'));
     }
+
     public redirectToLogin() {
-        history.pushState('', '', `/login`);
+        history.pushState('', '', RouterPath.LOGIN);
         window.dispatchEvent(new Event('refreshPage'));
     }
+
     public redirectToProfile() {
-        history.pushState('', '', `/profile`);
+        history.pushState('', '', RouterPath.PROFILE);
         window.dispatchEvent(new Event('refreshPage'));
     }
+
     public redirectToWorkouts() {
-        history.pushState('', '', `/workouts`);
+        history.pushState('', '', RouterPath.WORKOUTS);
         window.dispatchEvent(new Event('refreshPage'));
     }
+
     public redirectToWorkout(id: string) {
-        history.pushState('', '', `/workout/${id}`);
+        history.pushState('', '', `${RouterPath.WORKOUT}${id}`);
         window.dispatchEvent(new Event('refreshPage'));
     }
+
     public redirectToTrain(id: string) {
-        history.pushState('', '', `/train/${id}`);
+        history.pushState('', '', `${RouterPath.TRAIN}${id}`);
         window.dispatchEvent(new Event('refreshPage'));
     }
 }
