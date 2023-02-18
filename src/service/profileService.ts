@@ -47,16 +47,16 @@ export class ProfileService {
 
     public async addProfileWorkout(id: string, workout: Workout): Promise<void> {
         const profile = await this.fetchProfile(id);
-        const profileWorkout = this.convertWorkoutToProfileWorkout(workout);
+        const newProfileWorkout = this.convertWorkoutToProfileWorkout(workout);
 
         const profileWorkouts = profile.workouts || [];
         const existsWorkout = profileWorkouts
-            .filter((workout1) => Date.parse(workout1.date) === this.createTodayDate().getTime())
-            .find((workout1) => workout1.id === profileWorkout.id);
+            .filter((profileWorkout) => Date.parse(profileWorkout.date) === this.createTodayDate().getTime())
+            .find((profileWorkout) => profileWorkout.id === newProfileWorkout.id);
         if (existsWorkout) {
             existsWorkout.score += this.getScore(workout);
         } else {
-            profileWorkouts.push(profileWorkout);
+            profileWorkouts.push(newProfileWorkout);
         }
 
         await this.updateProfileWorkouts(id, profileWorkouts);

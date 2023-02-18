@@ -22,7 +22,7 @@ export class TrainPageController {
 
     public addProfileWorkout(workout: Workout): void {
         const auth = getAuth();
-        if (auth && auth.currentUser) {
+        if (auth.currentUser) {
             this.profileService.addProfileWorkout(auth.currentUser.uid, workout);
         }
     }

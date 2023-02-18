@@ -146,7 +146,7 @@ export class TrainPageView {
             this.reRender();
 
             if (!this.nextExercise) {
-                this.trainPageController?.addProfileWorkout(this.workout as Workout);
+                this.trainPageController?.addProfileWorkout(<Workout>this.workout);
             }
         });
 
