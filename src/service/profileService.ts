@@ -34,7 +34,7 @@ export class ProfileService {
     }
 
     public updateProfileWorkouts(id: string, workouts: ProfileWorkout[]): Promise<void> {
-        const updates: { [index: string]:  ProfileWorkout[] } = {};
+        const updates: { [index: string]: ProfileWorkout[] } = {};
         updates[`profiles/${id}/workouts`] = workouts;
         return update(ref(this.database), updates);
     }
@@ -44,8 +44,9 @@ export class ProfileService {
         const profileWorkout = this.convertWorkoutToProfileWorkout(workout);
 
         const profileWorkouts = profile.workouts || [];
-        const existsWorkout = profileWorkouts.filter(workout1 => Date.parse(workout1.date) === this.createTodayDate().getTime())
-            .find(workout1 => workout1.id === profileWorkout.id);
+        const existsWorkout = profileWorkouts
+            .filter((workout1) => Date.parse(workout1.date) === this.createTodayDate().getTime())
+            .find((workout1) => workout1.id === profileWorkout.id);
         if (existsWorkout) {
             existsWorkout.score += this.getScore(workout);
         } else {
@@ -64,7 +65,7 @@ export class ProfileService {
             workout.description,
             workout.calories,
             workout.duration,
-            this.getScore(workout),
+            this.getScore(workout)
         );
     }
 
