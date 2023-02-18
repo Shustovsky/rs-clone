@@ -56,9 +56,7 @@ export class App {
         const trainPageView = new TrainPageView();
         this.trainController = new TrainPageController(this.workoutService, this.profileService, trainPageView);
         trainPageView.trainPageController = this.trainController;
-        this.header = new HeaderView('#root');
-
-        this.initListeners();
+        this.header = new HeaderView('#root');this.initListeners();
     }
 
     public async run() {
@@ -75,8 +73,7 @@ export class App {
             this.mainPage.render();
             return;
         }
-        if (url === RouterPath.LOGIN) {
-            this.header.createHeader();
+        if (url === RouterPath.LOGIN) {this.header.createHeader();
             await this.loginController.render();
             return;
         }
