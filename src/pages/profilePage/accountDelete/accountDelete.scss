@@ -55,7 +55,7 @@
 
 .account_wrapper_button {
   padding-bottom: 80px;
-  .button_save {
+  .button_delete {
     font-size: 16px;
     padding: 5px 40px;
     line-height: 42px;
@@ -78,4 +78,10 @@
 .uk-divider {
   border: 1px solid $light-grey-color;
   margin: 40px 0;
+}
+
+.account__delete-error {
+  font-size: 14px;
+  color: #b62906;
+  text-align: left;
 }

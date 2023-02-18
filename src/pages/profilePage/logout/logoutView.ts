@@ -7,6 +7,7 @@ export class LogoutView {
     constructor(selector: string) {
         this.selector = selector;
     }
+
     public render() {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const logout = <HTMLDivElement>document.createElement('div');
