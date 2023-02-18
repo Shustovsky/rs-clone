@@ -33,6 +33,12 @@ export class ProfileService {
             });
     }
 
+    public updateProfile(profile: Profile): Promise<void> {
+        const updates: { [index: string]: Profile } = {};
+        updates[`profiles/${profile.id}`] = profile;
+        return update(ref(this.database), profile);
+    }
+
     public updateProfileWorkouts(id: string, workouts: ProfileWorkout[]): Promise<void> {
         const updates: { [index: string]: ProfileWorkout[] } = {};
         updates[`profiles/${id}/workouts`] = workouts;
