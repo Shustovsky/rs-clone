@@ -9,7 +9,7 @@ export class LogoutView {
         this.selector = selector;
     }
 
-    public render() {
+    public render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const logout = <HTMLDivElement>document.createElement('div');
         logout.className = 'logout_wrapper';
@@ -19,11 +19,11 @@ export class LogoutView {
         this.doLogOutFromButton();
     }
 
-    public doLogOutFromButton() {
+    public doLogOutFromButton(): void {
         const btn = <HTMLButtonElement>document.querySelector('.btn_logout');
         btn.addEventListener('click', () => {
             const auth = getAuth();
             auth.signOut();
-        })
+        });
     }
 }
