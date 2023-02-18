@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref } from 'firebase/database';
 import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference, Database } from '@firebase/database';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { WorkoutService } from '../../service/workoutService';
 import { MainPageView } from '../../pages/mainPage/mainPageView';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
@@ -18,7 +19,6 @@ import { updateLanguage } from '../../utils/language';
 import { ProfileService } from '../../service/profileService';
 import { HeaderView } from '../header/headerView';
 import { RouterPath } from '../router/Router';
-import { getAuth } from 'firebase/auth';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -39,6 +39,8 @@ export class App {
     private readonly loginController: LoginController;
     private readonly trainController: TrainPageController;
     private readonly header: HeaderView;
+    private isLoading = true;
+    private user: User | null = null;
 
     constructor() {
         this.app = initializeApp(this.firebaseConfig);
@@ -62,12 +64,9 @@ export class App {
     }
 
     private async renderPageForCurrentUrl(): Promise<void> {
+        if (this.isLoading) return;
         this.clearPage();
         const url = window.location.pathname;
-
-        let auth = await getAuth();
-        const user = auth.currentUser;
-        console.log('userid ===', user?.uid);
 
         if (url === RouterPath.MAIN) {
             this.header.createHeader();
@@ -80,7 +79,7 @@ export class App {
             return;
         }
 
-        if (user) {
+        if (this.user) {
             if (url === RouterPath.PROFILE) {
                 this.header.createHeader();
                 this.profilePage.render();
@@ -126,6 +125,13 @@ export class App {
         });
         window.addEventListener('refreshPage', () => {
             this.renderPageForCurrentUrl();
+        });
+
+        const auth = getAuth();
+        onAuthStateChanged(auth, async (user) => {
+            this.isLoading = false;
+            this.user = user;
+            await this.renderPageForCurrentUrl();
         });
     }
 }
