@@ -1,4 +1,4 @@
-import footerTemplate from './footer.html';
+import { footerTemplate } from './footerTemplate';
 import './footer.scss';
 
 export class Footer {
@@ -12,7 +12,7 @@ export class Footer {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const container = document.createElement('footer');
         container.className = 'footer';
-        container.innerHTML = footerTemplate;
+        container.innerHTML = footerTemplate();
         root.append(container);
     }
 }

@@ -4,6 +4,7 @@ import { WorkoutGeneral } from './general/workoutGeneral';
 import '../workoutPage/workoutPage.scss';
 import { WorkoutVideoView } from './workoutVideo/workoutVideoView';
 import { WorkoutBtnStartView } from './workoutBtnStart/workoutBtnStartView';
+import { t } from 'i18next';
 
 export class WorkoutView {
     private readonly workoutTitle: WorkoutTitle;
@@ -36,20 +37,7 @@ export class WorkoutView {
         this.workoutVideo.render(workout);
         this.workoutTitle.render(workout);
         this.general.render(workout);
-        this.workoutBtnStart.render();
-    }
-
-    public createLoader(): void {
-        const root = <HTMLBodyElement>document.querySelector('#root');
-
-        const loader = <HTMLElement>document.createElement('div');
-        loader.className = 'mask-loader uk-flex uk-flex-center';
-        loader.innerHTML = `<div uk-spinner='ratio: 4'></div>`;
-        root.append(loader);
-    }
-
-    public deleteLoader(): void {
-        document.querySelector(' #root .mask-loader')?.remove();
+        this.workoutBtnStart.render(workout.id);
     }
 
     public createErrorBlock(): void {
@@ -57,7 +45,7 @@ export class WorkoutView {
 
         const error = <HTMLElement>document.createElement('div');
         error.className = 'wrapper-error uk-flex uk-flex-center';
-        error.innerHTML = `<div class='error'>workout not found</div>`;
+        error.innerHTML = `<div class='error'>${t('workout.notFound')}</div>`;
         root.append(error);
     }
 }

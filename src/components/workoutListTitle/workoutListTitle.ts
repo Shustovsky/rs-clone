@@ -1,4 +1,5 @@
 import './workoutListTitle.scss';
+import { t } from 'i18next';
 
 export class WorkoutListTitle {
     private readonly selector: string;
@@ -10,7 +11,7 @@ export class WorkoutListTitle {
     public render(workoutsCount: number): void {
         const title = <HTMLElement>document.createElement('div');
         title.className = 'workouts__page-title';
-        title.innerHTML = `<span>workouts</span>
+        title.innerHTML = `<span>${t('workoutList.title')}</span>
                            <span class='workouts__count-title'>${workoutsCount}</span>`;
         document.querySelector(this.selector)?.append(title);
     }

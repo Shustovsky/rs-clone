@@ -8,6 +8,7 @@ import { SidebarView } from '../sidebar/sidebarView';
 import { Footer } from '../../../components/footer/footer';
 
 import '../switcher/switcher.scss';
+import { t } from 'i18next';
 
 export class SwitcherView {
     private readonly activities: ActivitiesView;
@@ -47,9 +48,9 @@ export class SwitcherView {
             <div uk-grid>
                 <div class="uk-width-auto@m profile_tabs">
                     <ul class="uk-tab-right margin_reset" uk-tab="connect: #component-tab-left; animation: uk-animation-fade">
-                        <li><a href="#" class="tabs_padding">ACTIVITIES</a></li>
-                        <li><a href="#" class="tabs_padding">ACCOUNT</a></li>
-                        <li><a href="#" class="tabs_padding">DELETE ACCOUNT</a></li>
+                        <li><a href="#" class="tabs_padding">${t('profile.activities')}</a></li>
+                        <li><a href="#" class="tabs_padding">${t('profile.account')}</a></li>
+                        <li><a href="#" class="tabs_padding">${t('profile.deleteAccount')}</a></li>
                     </ul>
                 </div>
                 <div class="uk-width-expand@m main_content_switcher">

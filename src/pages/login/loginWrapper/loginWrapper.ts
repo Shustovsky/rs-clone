@@ -1,4 +1,4 @@
-import loginWrapperTemplate from './loginWrapper.html';
+import loginWrapperTemplate from './loginWrapperTemplate.html';
 import './loginWrapper.scss';
 
 export class LoginWrapper {

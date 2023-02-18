@@ -1,6 +1,7 @@
 import '../activities/activities.scss';
 import { IWorkoutsDone } from '../../../mock/mockData';
 import i18next from 'i18next';
+import { t } from 'i18next';
 
 export class ActivitiesView {
     private readonly selector: string;
@@ -8,12 +9,13 @@ export class ActivitiesView {
     constructor(selector: string) {
         this.selector = selector;
     }
+
     public render(workoutsDone: IWorkoutsDone[]): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const activities = <HTMLDivElement>document.createElement('div');
         activities.className = 'activities_wrapper';
         const title = document.createElement('h1');
-        title.textContent = 'ACTIVITIES';
+        title.textContent = t('profile.activities');
         title.className = 'activities uk-article-title uk-text-bold';
         activities.innerHTML = `<div class="activities_stats uk-flex uk-flex-center uk-flex-middle">${this.createStatsItems(
             workoutsDone
@@ -74,7 +76,9 @@ export class ActivitiesView {
         const duration = durationArr.reduce(
             (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
         );
-        const durationTime = `${Math.floor(duration / 3600)}h ${Math.round((duration % 3600) / 60)}min`;
+        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t(
+            'workout.min'
+        )}`;
         const caloriesArr = workoutsDone.map((workout: IWorkoutsDone): number => workout.calories) as number[];
         const calories = caloriesArr.reduce(
             (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
@@ -82,11 +86,11 @@ export class ActivitiesView {
         const scoreArr = workoutsDone.map((workout: IWorkoutsDone): number => workout.calories) as number[];
         const scores = scoreArr.reduce((workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext);
         const parameters = [
-            { title: 'ACTIVITY', value: `${workoutsDone.length}` },
-            { title: 'RUNNING DISTANCE', value: '0.0km' },
-            { title: 'WORKOUT TIME', value: `${durationTime}` },
-            { title: 'KCAL BURNED', value: `${calories}` },
-            { title: 'TRAC SCORE', value: `${scores}` },
+            { title: t('profile.activity'), value: `${workoutsDone.length}` },
+            { title: t('profile.runningDistance'), value: '0.0km' },
+            { title: t('profile.workoutTime'), value: `${durationTime}` },
+            { title: t('profile.kcalBurned'), value: `${calories}` },
+            { title: t('profile.score'), value: `${scores}` },
         ];
 
         const statColumns = parameters

@@ -1,5 +1,5 @@
 import '../logout/logout.scss';
-import LogoutTemplate from '../logout/logout.html';
+import { logoutTemplate } from './logoutTemplate';
 
 export class LogoutView {
     private readonly selector: string;
@@ -11,7 +11,7 @@ export class LogoutView {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const logout = <HTMLDivElement>document.createElement('div');
         logout.className = 'logout_wrapper';
-        logout.innerHTML = LogoutTemplate;
+        logout.innerHTML = logoutTemplate();
         root.append(logout);
     }
 }

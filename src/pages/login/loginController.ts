@@ -1,62 +1,32 @@
 import { LoginView } from './loginView';
-import { LoginService } from './loginService';
 import { LoginValidator } from './loginValidationService';
+import { t } from 'i18next';
+import { ProfileService } from '../../service/profileService';
+import { Router } from '../../components/router/Router';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { ProfileAuth } from '../../model/ProfileAuth';
 
 export class LoginController {
-    private loginView: LoginView;
-    private loginService: LoginService;
-    private loginValidator: LoginValidator;
+    private readonly loginView: LoginView;
+    private readonly loginValidator: LoginValidator;
+    private readonly profileService: ProfileService;
+    private readonly router: Router;
 
-    constructor(loginView: LoginView, loginService: LoginService, loginValidator: LoginValidator) {
+    constructor(loginView: LoginView, loginValidator: LoginValidator, profileService: ProfileService) {
         this.loginView = loginView;
-        this.loginService = loginService;
         this.loginValidator = loginValidator;
+        this.profileService = profileService;
+        this.router = new Router();
     }
 
-    public render(): void {
+    public async render() {
         this.loginView.render();
-
         this.loginView.bindLoginHandler((email, password) => {
-            if (this.validateEmail(email) && this.validatePassword(password)) {
-                this.loginService.authWithEmailAndPassword(email.value, password.value).then((token) => {
-                    if (token === undefined) {
-                        this.loginView.createButtonError(
-                            'login_submit',
-                            'The e-mail or password are incorrect. Please try again.'
-                        );
-                    } else {
-                        this.loginView.deleteButtonError('login_submit');
-                        console.log(token);
-                    }
-                });
-            }
-
-            //TODO переход в личный кабинет
+            this.login(email, password);
         });
-
         this.loginView.bindSignUpHandler((email, password, passwordRepeat, input) => {
-            if (
-                this.validateEmail(email) &&
-                this.validatePassword(password) &&
-                this.validateMatchPassword(password, passwordRepeat) &&
-                this.validateInputCheck(input)
-            ) {
-                this.loginService.signUpWithEmailAndPassword(email.value, password.value).then((token) => {
-                    if (token) {
-                        this.loginView.createButtonError(
-                            'signup_submit',
-                            'It was not possible to create the new user. The email address is already used.'
-                        );
-                    } else {
-                        this.loginView.deleteButtonError('signup_submit');
-                        console.log(token);
-                    }
-                });
-
-                //TODO переход в личный кабинет
-            }
+            this.signUp(email, password, passwordRepeat, input);
         });
-
         this.loginView.bindEmailHandler((email) => {
             this.validateEmail(email);
         });
@@ -65,37 +35,80 @@ export class LoginController {
         });
     }
 
-    validateEmail(email: HTMLInputElement): boolean {
+    private async login(email: HTMLInputElement, password: HTMLInputElement) {
+        if (this.validateEmail(email) && this.validatePassword(password)) {
+            const auth = getAuth();
+            const user = auth.currentUser;
+            console.log(user);
+            signInWithEmailAndPassword(auth, email.value, password.value)
+                .then(() => {
+                    this.loginView.deleteButtonError('login_submit');
+                    this.router.redirectToMain();
+                })
+                .catch(() => {
+                    this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
+                });
+        }
+    }
+
+    private async signUp(
+        email: HTMLInputElement,
+        password: HTMLInputElement,
+        passwordRepeat: HTMLInputElement,
+        input: HTMLInputElement
+    ) {
+        if (
+            this.validateEmail(email) &&
+            this.validatePassword(password) &&
+            this.validateMatchPassword(password, passwordRepeat) &&
+            this.validateInputCheck(input)
+        ) {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email.value, password.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const profile = new ProfileAuth(user.uid, user?.email || '');
+                    this.profileService.createProfile(profile);
+                    this.loginView.deleteButtonError('signup_submit');
+                    this.router.redirectToMain();
+                })
+                .catch(() => {
+                    this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
+                });
+        }
+    }
+
+    private validateEmail(email: HTMLInputElement): boolean {
         if (this.loginValidator.validateEmail(email.value)) {
             this.loginView.deleteInputError(email);
             return true;
         } else {
-            this.loginView.createInputError(email, 'is not correct');
+            this.loginView.createInputError(email, t('login.emailIncorrect'));
             return false;
         }
     }
 
-    validatePassword(password: HTMLInputElement): boolean {
+    private validatePassword(password: HTMLInputElement): boolean {
         if (this.loginValidator.validatePassword(password.value)) {
             this.loginView.deleteInputError(password);
             return true;
         } else {
-            this.loginView.createInputError(password, 'must have at least 6 characters');
+            this.loginView.createInputError(password, t('login.passwordIncorrect'));
             return false;
         }
     }
 
-    validateMatchPassword(password: HTMLInputElement, passwordRepeat: HTMLInputElement): boolean {
+    private validateMatchPassword(password: HTMLInputElement, passwordRepeat: HTMLInputElement): boolean {
         if (this.loginValidator.validateMatchPassword(password, passwordRepeat)) {
             this.loginView.deleteInputError(passwordRepeat);
             return true;
         } else {
-            this.loginView.createInputError(passwordRepeat, 'must match');
+            this.loginView.createInputError(passwordRepeat, t('login.repeatIncorrect'));
             return false;
         }
     }
 
-    validateInputCheck(input: HTMLInputElement): boolean {
+    private validateInputCheck(input: HTMLInputElement): boolean {
         if (this.loginValidator.validateInputCheck(input)) {
             this.loginView.deleteInputError(input);
             return true;
