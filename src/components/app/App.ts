@@ -54,9 +54,7 @@ export class App {
         this.profileService = new ProfileService(this.dbRef, this.database);
         this.loginController = new LoginController(new LoginView(), new LoginValidator(), this.profileService);
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
-        this.header = new HeaderView('#root');
-
-        this.initListeners();
+        this.header = new HeaderView('#root');this.initListeners();
     }
 
     public async run() {
@@ -73,8 +71,7 @@ export class App {
             this.mainPage.render();
             return;
         }
-        if (url === RouterPath.LOGIN) {
-            this.header.createHeader();
+        if (url === RouterPath.LOGIN) {this.header.createHeader();
             await this.loginController.render();
             return;
         }
