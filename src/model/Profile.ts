@@ -22,7 +22,7 @@ export class Profile {
 
 export class ProfileWorkout {
     id: string;
-    date: Date;
+    date: string;
     title: string;
     imageUrl: string;
     description: string;
@@ -32,13 +32,13 @@ export class ProfileWorkout {
 
     constructor(
         id: string,
-        date: Date,
+        date: string,
         title: string,
         imageUrl: string,
         description: string,
         calories: number,
         duration: number,
-        score: number,
+        score: number
     ) {
         this.id = id;
         this.date = date;
