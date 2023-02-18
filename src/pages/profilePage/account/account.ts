@@ -61,7 +61,7 @@ export class AccountView {
         profile.append(profileAddition);
         root.append(profile);
         const picker = new Litepicker({
-            element: document.querySelector('.litepicker') as HTMLInputElement,
+            element: <HTMLInputElement>document.querySelector('.litepicker'),
         });
 
         const input = <HTMLInputElement>document.querySelector('.search_country');

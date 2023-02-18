@@ -93,6 +93,10 @@
   padding: 0 20px;
 }
 
+.activities_month {
+  padding: 0 20px;
+}
+
 }
 
 @media(max-width: 760px) {
@@ -177,6 +181,10 @@
 
 .activities_stats .activities_stats_item .activities_cathegory {
   font-size: 12px;
+}
+
+.invisible_col {
+  display: none;
 }
 
 }
