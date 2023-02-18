@@ -1,6 +1,5 @@
 import '../activities/activities.scss';
-import i18next from 'i18next';
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 import { ProfileWorkout } from '../../../model/Profile';
 
 export class ActivitiesView {
@@ -78,17 +77,20 @@ export class ActivitiesView {
     private createStatsItems(workoutsDone: ProfileWorkout[]): string {
         const durationArr = workoutsDone.map((workout: ProfileWorkout): number => workout.duration) as number[];
         const duration = durationArr.reduce(
-            (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
         );
-        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t(
-            'workout.min'
-        )}`;
+        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t('workout.min')}`;
         const caloriesArr = workoutsDone.map((workout: ProfileWorkout): number => workout.calories) as number[];
         const calories = caloriesArr.reduce(
-            (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
         );
-        const scoreArr = workoutsDone.map((workout: ProfileWorkout): number => workout.calories) as number[];
-        const scores = scoreArr.reduce((workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext);
+        const scoreArr = workoutsDone.map((workout) => workout.calories);
+        const scores = scoreArr.reduce(
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
+        );
         const parameters = [
             { title: t('profile.activity'), value: `${workoutsDone.length}` },
             { title: t('profile.runningDistance'), value: '0.0km' },
@@ -97,10 +99,9 @@ export class ActivitiesView {
             { title: t('profile.score'), value: `${scores}` },
         ];
 
-        const statColumns = parameters
+        return parameters
             .map((stat, index) => this.createStatsItem(stat.title, stat.value, index !== 0))
             .join('');
-        return statColumns;
     }
 
     private createMonthHistoryTotal(date: string): string {

@@ -118,9 +118,7 @@ export class ProfilePageView {
     private deleteConfirmDeleteErrorMessage(): void {
         const inputDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
         inputDelete.classList.remove('uk-form-danger');
-
-        const errorMassage = <HTMLDivElement>document.querySelector('.account__delete-error');
-        errorMassage.remove();
+        document.querySelector('.account__delete-error')?.remove();
     }
 
     private createConfirmDeleteErrorMessage(): void {
