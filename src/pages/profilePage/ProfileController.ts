@@ -41,8 +41,8 @@ export class ProfileController {
 
     private async deleteAccount() {
         if (this.authService.isLoggedIn()) {
-            await this.profileService.deleteProfile(this.authService.getUserId());
-            await this.authService.deleteUser();
+            this.profileService.deleteProfile(this.authService.getUserId());
+            this.authService.deleteUser();
             this.router.redirectToMain();
         }
     }
