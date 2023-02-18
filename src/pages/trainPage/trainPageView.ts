@@ -1,9 +1,12 @@
 import trainLogo from './trainPage.html';
 import { Exercise, Workout } from '../../model/Workout';
 import './trainPage.scss';
+import { TrainPageController } from './trainPageController';
 import { Router } from '../../components/router/Router';
 
 export class TrainPageView {
+    trainPageController: TrainPageController | null = null;
+
     private workout: Workout | null = null;
     private currentExercise: Exercise | null = null;
     private nextExercise: Exercise | null = null;
@@ -141,6 +144,10 @@ export class TrainPageView {
             const workout = <Workout>this.workout;
             this.nextExercise = this.getNextExercise(workout);
             this.reRender();
+
+            if (!this.nextExercise) {
+                this.trainPageController?.addProfileWorkout(<Workout>this.workout);
+            }
         });
 
         nextExerciseDescriptionBlock.innerHTML = `

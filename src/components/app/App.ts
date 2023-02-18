@@ -53,7 +53,9 @@ export class App {
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.profileService = new ProfileService(this.dbRef, this.database);
         this.loginController = new LoginController(new LoginView(), new LoginValidator(), this.profileService);
-        this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
+        const trainPageView = new TrainPageView();
+        this.trainController = new TrainPageController(this.workoutService, this.profileService, trainPageView);
+        trainPageView.trainPageController = this.trainController;
         this.header = new HeaderView('#root');this.initListeners();
     }
 
