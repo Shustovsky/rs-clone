@@ -2,12 +2,15 @@ import { headerTemplate } from './headerTemplate';
 import './header.scss';
 import i18next from 'i18next';
 import { SearchParams } from '../../utils/language';
+import { Router } from '../router/Router';
 
 export class HeaderView {
     private readonly selector: string;
+    private readonly router: Router;
 
     constructor(selector: string) {
         this.selector = selector;
+        this.router = new Router();
     }
 
     public createHeader(): void {
@@ -18,6 +21,7 @@ export class HeaderView {
         root.append(header);
 
         this.changeLanguage();
+        this.initListeners();
     }
 
     private changeLanguage(): void {
@@ -29,6 +33,19 @@ export class HeaderView {
 
             history.pushState('', '', url);
             window.dispatchEvent(new Event('changeLanguage'));
+        });
+    }
+
+    private initListeners(): void {
+        const mainLink = <HTMLLinkElement>document.querySelector('.header__nav_main-link');
+        mainLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.router.redirectToMain();
+        });
+
+        const btnLogin = <HTMLButtonElement>document.querySelector('.header__nav_login');
+        btnLogin.addEventListener('click', () => {
+            this.router.redirectToLogin();
         });
     }
 }

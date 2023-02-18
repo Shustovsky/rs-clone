@@ -1,25 +1,22 @@
 import { LoginView } from './loginView';
-import { LoginService } from './loginService';
 import { LoginValidator } from './loginValidationService';
 import { t } from 'i18next';
 import { ProfileService } from '../../service/profileService';
+import { Router } from '../../components/router/Router';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { ProfileAuth } from '../../model/ProfileAuth';
 
 export class LoginController {
-    private loginView: LoginView;
-    private loginService: LoginService;
-    private loginValidator: LoginValidator;
-    private profileService: ProfileService;
+    private readonly loginView: LoginView;
+    private readonly loginValidator: LoginValidator;
+    private readonly profileService: ProfileService;
+    private readonly router: Router;
 
-    constructor(
-        loginView: LoginView,
-        loginService: LoginService,
-        loginValidator: LoginValidator,
-        profileService: ProfileService
-    ) {
+    constructor(loginView: LoginView, loginValidator: LoginValidator, profileService: ProfileService) {
         this.loginView = loginView;
-        this.loginService = loginService;
         this.loginValidator = loginValidator;
         this.profileService = profileService;
+        this.router = new Router();
     }
 
     public async render() {
@@ -40,14 +37,18 @@ export class LoginController {
 
     private async login(email: HTMLInputElement, password: HTMLInputElement) {
         if (this.validateEmail(email) && this.validatePassword(password)) {
-            const auth = await this.loginService.authWithEmailAndPassword(email.value, password.value);
-            if (auth) {
-                this.loginView.deleteButtonError('login_submit');
-            } else {
-                this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
-            }
+            const auth = getAuth();
+            const user = auth.currentUser;
+            console.log(user);
+            signInWithEmailAndPassword(auth, email.value, password.value)
+                .then(() => {
+                    this.loginView.deleteButtonError('login_submit');
+                    this.router.redirectToMain();
+                })
+                .catch(() => {
+                    this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
+                });
         }
-        //TODO переход в личный кабинет
     }
 
     private async signUp(
@@ -62,14 +63,18 @@ export class LoginController {
             this.validateMatchPassword(password, passwordRepeat) &&
             this.validateInputCheck(input)
         ) {
-            const auth = await this.loginService.signUpWithEmailAndPassword(email.value, password.value);
-            if (auth) {
-                await this.profileService.createProfile(auth);
-                this.loginView.deleteButtonError('signup_submit');
-            } else {
-                this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
-            }
-            //TODO переход в личный кабинет
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email.value, password.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const profile = new ProfileAuth(user.uid, user?.email || '');
+                    this.profileService.createProfile(profile);
+                    this.loginView.deleteButtonError('signup_submit');
+                    this.router.redirectToMain();
+                })
+                .catch(() => {
+                    this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
+                });
         }
     }
 

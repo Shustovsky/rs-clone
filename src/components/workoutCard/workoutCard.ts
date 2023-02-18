@@ -1,12 +1,15 @@
 import { Workout } from '../../model/Workout';
 import './workoutCard.scss';
 import { t } from 'i18next';
+import { Router } from '../router/Router';
 
 export class WorkoutCard {
     private readonly selector: string;
+    private readonly router: Router;
 
     constructor(selector: string) {
         this.selector = selector;
+        this.router = new Router();
     }
 
     public render(workout: Workout): void {
@@ -26,5 +29,9 @@ export class WorkoutCard {
                          </div>`;
 
         document.querySelector(this.selector)?.append(card);
+
+        card.addEventListener('click', () => {
+            this.router.redirectToWorkout(workout.id);
+        });
     }
 }

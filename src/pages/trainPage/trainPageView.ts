@@ -1,11 +1,17 @@
 import trainLogo from './trainPage.html';
 import { Exercise, Workout } from '../../model/Workout';
 import './trainPage.scss';
+import { Router } from '../../components/router/Router';
 
 export class TrainPageView {
     private workout: Workout | null = null;
     private currentExercise: Exercise | null = null;
     private nextExercise: Exercise | null = null;
+    private router: Router;
+
+    constructor() {
+        this.router = new Router();
+    }
 
     public render(workout: Workout): void {
         this.init(workout);
@@ -20,7 +26,16 @@ export class TrainPageView {
         trainContainer.innerHTML = trainLogo;
         main.append(trainContainer);
 
+        this.leaveWorkoutBtn(workout.id);
+
         this.createDescriptionBlock();
+    }
+
+    private leaveWorkoutBtn(id: string) {
+        const btn = <HTMLDivElement>document.querySelector('.train__back');
+        btn.addEventListener('click', () => {
+            this.router.redirectToWorkout(id);
+        });
     }
 
     private init(workout: Workout): void {

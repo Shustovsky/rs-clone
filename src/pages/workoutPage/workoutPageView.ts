@@ -37,7 +37,7 @@ export class WorkoutView {
         this.workoutVideo.render(workout);
         this.workoutTitle.render(workout);
         this.general.render(workout);
-        this.workoutBtnStart.render();
+        this.workoutBtnStart.render(workout.id);
     }
 
     public createLoader(): void {
