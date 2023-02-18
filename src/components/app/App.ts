@@ -17,8 +17,8 @@ import { LoginController } from '../../pages/login/loginController';
 import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
 import { ProfileService } from '../../service/profileService';
-import { HeaderView } from '../header/headerView';
 import { RouterPath } from '../router/Router';
+import { HeaderController } from '../header/headerController';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -38,7 +38,7 @@ export class App {
     private readonly profilePage: ProfilePageView;
     private readonly loginController: LoginController;
     private readonly trainController: TrainPageController;
-    private readonly header: HeaderView;
+    private readonly header: HeaderController;
     private isLoading = true;
     private user: User | null = null;
 
@@ -54,7 +54,7 @@ export class App {
         this.profileService = new ProfileService(this.dbRef, this.database);
         this.loginController = new LoginController(new LoginView(), new LoginValidator(), this.profileService);
         this.trainController = new TrainPageController(this.workoutService, new TrainPageView());
-        this.header = new HeaderView('#root');
+        this.header = new HeaderController();
 
         this.initListeners();
     }
@@ -69,29 +69,29 @@ export class App {
         const url = window.location.pathname;
 
         if (url === RouterPath.MAIN) {
-            this.header.createHeader();
+            this.header.render();
             this.mainPage.render();
             return;
         }
         if (url === RouterPath.LOGIN) {
-            this.header.createHeader();
+            this.header.render();
             await this.loginController.render();
             return;
         }
 
         if (this.user) {
             if (url === RouterPath.PROFILE) {
-                this.header.createHeader();
+                this.header.render();
                 this.profilePage.render();
                 return;
             }
             if (url === RouterPath.WORKOUTS) {
-                this.header.createHeader();
+                this.header.render();
                 await this.workoutListController.render();
                 return;
             }
             if (url.startsWith(RouterPath.WORKOUT)) {
-                this.header.createHeader();
+                this.header.render();
                 const workoutId = url.split('/').at(-1) || 'not found';
                 await this.workoutController.render(workoutId);
                 return;
@@ -102,7 +102,7 @@ export class App {
                 return;
             }
         } else {
-            this.header.createHeader();
+            this.header.render();
             await this.loginController.render();
             return;
         }
