@@ -2,17 +2,24 @@ import { WorkoutService } from '../../service/workoutService';
 import { Workout } from '../../model/Workout';
 import { TrainPageView } from './trainPageView';
 import { ProfileService } from '../../service/profileService';
-import { getAuth } from 'firebase/auth';
+import { AuthService } from '../../service/authService';
 
 export class TrainPageController {
     workoutService: WorkoutService;
     trainPageView: TrainPageView;
     profileService: ProfileService;
+    authService: AuthService;
 
-    constructor(workoutService: WorkoutService, profileService: ProfileService, trainPageView: TrainPageView) {
+    constructor(
+        workoutService: WorkoutService,
+        profileService: ProfileService,
+        authService: AuthService,
+        trainPageView: TrainPageView
+    ) {
         this.workoutService = workoutService;
         this.profileService = profileService;
         this.trainPageView = trainPageView;
+        this.authService = authService;
     }
 
     public async render(id: string) {
@@ -21,9 +28,8 @@ export class TrainPageController {
     }
 
     public addProfileWorkout(workout: Workout): void {
-        const auth = getAuth();
-        if (auth.currentUser) {
-            this.profileService.addProfileWorkout(auth.currentUser.uid, workout);
+        if (this.authService.isLoggedIn()) {
+            this.profileService.addProfileWorkout(this.authService.getUserId(), workout);
         }
     }
 }

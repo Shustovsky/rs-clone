@@ -18,7 +18,9 @@ import { LoginValidator } from '../../pages/login/loginValidationService';
 import { updateLanguage } from '../../utils/language';
 import { ProfileService } from '../../service/profileService';
 import { HeaderView } from '../header/headerView';
-import { RouterPath } from '../router/Router';
+import { Router, RouterPath } from '../router/Router';
+import { AuthService } from '../../service/authService';
+import { ProfileController } from '../../pages/profilePage/ProfileController';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -30,14 +32,19 @@ export class App {
     private readonly database: Database;
     private readonly dbRef: DatabaseReference;
 
+    private readonly router: Router;
+
     private readonly workoutService: WorkoutService;
     private readonly profileService: ProfileService;
+    private readonly authService: AuthService;
+
     private readonly workoutListController: WorkoutListController;
     private readonly workoutController: WorkoutController;
-    private readonly mainPage: MainPageView;
-    private readonly profilePage: ProfilePageView;
     private readonly loginController: LoginController;
     private readonly trainController: TrainPageController;
+    private readonly profileController: ProfileController;
+
+    private readonly mainPage: MainPageView;
     private readonly header: HeaderView;
     private isLoading = true;
     private user: User | null = null;
@@ -46,17 +53,38 @@ export class App {
         this.app = initializeApp(this.firebaseConfig);
         this.database = getDatabase();
         this.dbRef = ref(this.database);
+
         this.workoutService = new WorkoutService(this.dbRef);
-        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
-        this.mainPage = new MainPageView();
-        this.profilePage = new ProfilePageView();
-        this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.profileService = new ProfileService(this.dbRef, this.database);
-        this.loginController = new LoginController(new LoginView(), new LoginValidator(), this.profileService);
+        this.authService = new AuthService();
+        this.router = new Router();
+
+        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
+        this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
+        this.profileController = new ProfileController(
+            new ProfilePageView(),
+            this.profileService,
+            this.authService,
+            this.router
+        );
+        this.loginController = new LoginController(
+            new LoginView(),
+            new LoginValidator(),
+            this.profileService,
+            this.authService
+        );
         const trainPageView = new TrainPageView();
-        this.trainController = new TrainPageController(this.workoutService, this.profileService, trainPageView);
+        this.trainController = new TrainPageController(
+            this.workoutService,
+            this.profileService,
+            this.authService,
+            trainPageView
+        );
         trainPageView.trainPageController = this.trainController;
-        this.header = new HeaderView('#root');this.initListeners();
+
+        this.mainPage = new MainPageView();
+        this.header = new HeaderView('#root');
+        this.initListeners();
     }
 
     public async run() {
@@ -73,7 +101,8 @@ export class App {
             this.mainPage.render();
             return;
         }
-        if (url === RouterPath.LOGIN) {this.header.createHeader();
+        if (url === RouterPath.LOGIN) {
+            this.header.createHeader();
             await this.loginController.render();
             return;
         }
@@ -81,7 +110,7 @@ export class App {
         if (this.user) {
             if (url === RouterPath.PROFILE) {
                 this.header.createHeader();
-                this.profilePage.render();
+                this.profileController.render();
                 return;
             }
             if (url === RouterPath.WORKOUTS) {

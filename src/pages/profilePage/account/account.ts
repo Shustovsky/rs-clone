@@ -2,9 +2,9 @@ import '../account/account.scss';
 import { accountTemplate } from './accountTemplate';
 import Litepicker from 'litepicker';
 import autocomplete from 'autocompleter';
-import { IAccount } from '../../../mock/mockData';
 import { countries } from '../../../mock/mockData';
 import { t } from 'i18next';
+import { Profile } from '../../../model/Profile';
 
 export class AccountView {
     private readonly selector: string;
@@ -12,11 +12,11 @@ export class AccountView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(account: IAccount) {
+    public render(profile: Profile) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
-        const profile = <HTMLDivElement>document.createElement('div');
-        profile.className = 'account_wrapper';
-        profile.innerHTML = `<h3 class="account">${t('profile.about')}</h3>
+        const profileContainer = <HTMLDivElement>document.createElement('div');
+        profileContainer.className = 'account_wrapper';
+        profileContainer.innerHTML = `<h3 class="account">${t('profile.about')}</h3>
         <p class="account_text">${t('profile.details')}</p>
         <div class="account-img_wrapper uk-flex uk-flex-middle">
             <div class="account-img"></div>
@@ -26,19 +26,30 @@ export class AccountView {
         <form class="profile_form">
             <div class="form_row uk-flex form_row_margin">
                 <div class="form_row_half">
-                    <input class="uk-input" type="text" placeholder="${t('profile.firstAndLastName')}" value=${
-            account.name
-        }>
+                    <input 
+                        class="uk-input"
+                        type="text" 
+                        placeholder="${t('profile.firstName')}" 
+                        value=${profile.firstName || ''}
+                     >
                 </div>
                 <div class="form_row_half">
-                <input class="uk-input" type="email" placeholder="${t('profile.email')}" value=${account.mail}>
+                    <input 
+                        class="uk-input" 
+                        type="text" 
+                        placeholder="${t('profile.lastName')}" 
+                        value=${profile.lastName || ''}
+                    >
+                </div>
+                <div class="form_row_half">
+                <input class="uk-input" type="email" placeholder="${t('profile.email')}" value=${profile.email || ''}>
                 </div>
             </div>
             <div class="form_row uk-flex form_row_margin_below">
                 <div class="form_row_half">
                     <input class="uk-input search_country" id="autoComplete" type="search" placeholder="${t(
                         'profile.country'
-                    )}" value=${account.country}>
+                    )}" value=${profile.location || ''}>
                 </div>
                 <div class="form_row_half"></div>
             </div>
@@ -58,14 +69,14 @@ export class AccountView {
             </div>`;
         const profileAddition = <HTMLDivElement>document.createElement('div');
         profileAddition.innerHTML = accountTemplate();
-        profile.append(profileAddition);
-        root.append(profile);
+        profileContainer.append(profileAddition);
+        root.append(profileContainer);
         const picker = new Litepicker({
             element: <HTMLInputElement>document.querySelector('.litepicker'),
         });
 
         const input = <HTMLInputElement>document.querySelector('.search_country');
-        picker.setDate(account.birthday);
+        picker.setDate(profile.birthday);
         autocomplete({
             input: input,
             fetch: function (text, update) {

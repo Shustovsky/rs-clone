@@ -1,4 +1,4 @@
-import { child, Database, DatabaseReference, get, set, update } from '@firebase/database';
+import { child, Database, DatabaseReference, get, set, remove } from '@firebase/database';
 import { ProfileAuth } from '../model/ProfileAuth';
 import { Profile, ProfileWorkout } from '../model/Profile';
 import { ref } from 'firebase/database';
@@ -34,15 +34,11 @@ export class ProfileService {
     }
 
     public updateProfile(profile: Profile): Promise<void> {
-        const updates: { [index: string]: Profile } = {};
-        updates[`profiles/${profile.id}`] = profile;
-        return update(ref(this.database), profile);
+        return set(ref(this.database, `profiles/${profile.id}`), profile);
     }
 
     public updateProfileWorkouts(id: string, workouts: ProfileWorkout[]): Promise<void> {
-        const updates: { [index: string]: ProfileWorkout[] } = {};
-        updates[`profiles/${id}/workouts`] = workouts;
-        return update(ref(this.database), updates);
+        return set(ref(this.database, `profiles/${id}/workouts`), workouts);
     }
 
     public async addProfileWorkout(id: string, workout: Workout): Promise<void> {
@@ -60,6 +56,10 @@ export class ProfileService {
         }
 
         await this.updateProfileWorkouts(id, profileWorkouts);
+    }
+
+    public deleteProfile(id: string): Promise<void> {
+        return remove(ref(this.database, `profiles/${id}`));
     }
 
     private convertWorkoutToProfileWorkout(workout: Workout): ProfileWorkout {
