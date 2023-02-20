@@ -5,12 +5,11 @@ import { TrainPageController } from './trainPageController';
 import { Router } from '../../components/router/Router';
 
 export class TrainPageView {
-    trainPageController: TrainPageController | null = null;
-
+    public trainPageController: TrainPageController | null = null;
     private workout: Workout | null = null;
     private currentExercise: Exercise | null = null;
     private nextExercise: Exercise | null = null;
-    private router: Router;
+    private readonly router: Router;
 
     constructor() {
         this.router = new Router();
@@ -34,7 +33,7 @@ export class TrainPageView {
         this.createDescriptionBlock();
     }
 
-    private leaveWorkoutBtn(id: string) {
+    private leaveWorkoutBtn(id: string): void {
         const btn = <HTMLDivElement>document.querySelector('.train__back');
         btn.addEventListener('click', () => {
             this.router.redirectToWorkout(id);

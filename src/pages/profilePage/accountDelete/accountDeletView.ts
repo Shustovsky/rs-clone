@@ -8,7 +8,7 @@ export class AccountDeleteView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(profile: Profile) {
+    public render(profile: Profile): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const accountDelete = <HTMLDivElement>document.createElement('div');
         accountDelete.className = 'accountDelete_wrapper';

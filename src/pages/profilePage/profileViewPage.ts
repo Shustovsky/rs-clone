@@ -87,12 +87,12 @@ export class ProfilePageView {
         mainContent.append(footer);
     }
 
-    public bindLogOutFromButton(callback: () => Promise<void>) {
+    public bindLogOutFromButton(callback: () => Promise<void>): void {
         const btn = <HTMLButtonElement>document.querySelector('.btn_logout');
         btn.addEventListener('click', () => callback());
     }
 
-    public bindDeleteAccountButton(callback: () => void) {
+    public bindDeleteAccountButton(callback: () => void): void {
         const btn = <HTMLButtonElement>document.querySelector('.button_delete');
         btn.addEventListener('click', () => {
             const confirmDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
@@ -104,7 +104,7 @@ export class ProfilePageView {
         });
     }
 
-    public bindConfirmDeleteAccountInput() {
+    public bindConfirmDeleteAccountInput(): void {
         const inputDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
         inputDelete.addEventListener('blur', () => {
             if (inputDelete.value !== 'delete' && !inputDelete.parentElement?.querySelector('.account__delete-error')) {

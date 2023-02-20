@@ -12,7 +12,7 @@ export class AccountView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(profile: Profile) {
+    public render(profile: Profile): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const profileContainer = <HTMLDivElement>document.createElement('div');
         profileContainer.className = 'account_wrapper';

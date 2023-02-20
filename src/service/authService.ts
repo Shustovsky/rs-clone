@@ -17,7 +17,7 @@ export class AuthService {
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    public deleteUser() {
+    public deleteUser(): Promise<void> | undefined {
         const auth = getAuth();
         const user = auth.currentUser;
         if (user) {
@@ -30,7 +30,7 @@ export class AuthService {
         return currentUser.uid;
     }
 
-    public isLoggedIn() {
+    public isLoggedIn(): User | null {
         return getAuth().currentUser;
     }
 }

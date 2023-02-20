@@ -85,7 +85,7 @@ export class LoginView {
         });
     }
 
-    public createInputError(input: HTMLInputElement, message: string) {
+    public createInputError(input: HTMLInputElement, message: string): void {
         const warningNull = t('login.required');
         const warningMessage = `${input.placeholder} ${message}`;
 
@@ -104,13 +104,13 @@ export class LoginView {
         }
     }
 
-    public deleteInputError(input: HTMLInputElement) {
+    public deleteInputError(input: HTMLInputElement): void {
         input.classList.remove('uk-form-danger');
         const inputError = <HTMLDivElement>document.getElementById(`${input.id}-error`);
         inputError?.remove();
     }
 
-    public createButtonError(btnName: string, message: string) {
+    public createButtonError(btnName: string, message: string): void {
         const btn = <HTMLButtonElement>document.getElementById(btnName);
         const inputError = <HTMLDivElement>document.getElementById(`${btn.id}-error`);
 
