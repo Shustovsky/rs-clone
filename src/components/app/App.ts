@@ -4,7 +4,7 @@ import { FirebaseApp, FirebaseOptions } from '@firebase/app';
 import { DatabaseReference, Database } from '@firebase/database';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import { WorkoutService } from '../../service/workoutService';
-import { MainPageView } from '../../pages/mainPage/mainPageView';
+import { MainPageController } from '../../pages/mainPage/mainPageController';
 import { ProfilePageView } from '../../pages/profilePage/profileViewPage';
 import { WorkoutListController } from '../../pages/workoutListPage/workoutListController';
 import { WorkoutListView } from '../../pages/workoutListPage/workoutListView';
@@ -44,7 +44,7 @@ export class App {
     private readonly trainController: TrainPageController;
     private readonly profileController: ProfileController;
 
-    private readonly mainPage: MainPageView;
+    private readonly mainPage: MainPageController;
     private readonly header: HeaderView;
     private isLoading = true;
     private user: User | null = null;
@@ -59,7 +59,7 @@ export class App {
         this.authService = new AuthService();
         this.router = new Router();
 
-        this.workoutListController = new WorkoutListController(new WorkoutListView(), this.workoutService);
+        this.workoutListController = new WorkoutListController(new WorkoutListView('#root'), this.workoutService);
         this.workoutController = new WorkoutController(this.workoutService, new WorkoutView());
         this.profileController = new ProfileController(
             new ProfilePageView(),
@@ -82,7 +82,7 @@ export class App {
         );
         trainPageView.trainPageController = this.trainController;
 
-        this.mainPage = new MainPageView();
+        this.mainPage = new MainPageController(new WorkoutListView('#root main div'), this.workoutService);
         this.header = new HeaderView('#root');
         this.initListeners();
     }
