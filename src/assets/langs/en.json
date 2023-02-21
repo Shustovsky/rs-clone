@@ -84,9 +84,10 @@
       "reasonExperience": "I experience technical issues",
       "reasonPrivacy": "Privacy concerns",
       "other": "Other:",
-      "confirmDeletion": "Please type 'delete' if you really want to delete your account",
+      "confirmDeletion": "Enter your current password to verify the deletion of your account:",
       "logout": "LOG OUT",
-      "confirmDeleteErrorMessage": "Please type 'delete' if you really want to delete your account"
+      "confirmDeleteErrorMessage": "Please enter your current password",
+      "confirmDeleteWrongPasswordErrorMessage": "Please input correct password"
     },
     "login": {
       "logIn": "Login",
