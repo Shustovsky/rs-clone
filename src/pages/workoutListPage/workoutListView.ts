@@ -5,15 +5,17 @@ import { WorkoutCardList } from '../../components/workoutCartList/workoutCardLis
 export class WorkoutListView {
     private readonly workoutCardList: WorkoutCardList;
     private readonly workoutsTitle: WorkoutListTitle;
+    private readonly selector: string;
 
-    constructor() {
-        this.workoutCardList = new WorkoutCardList('#root main');
-        this.workoutsTitle = new WorkoutListTitle('#root main');
+    constructor(selector: string) {
+        this.workoutCardList = new WorkoutCardList(`${selector} section`);
+        this.workoutsTitle = new WorkoutListTitle(`${selector} section`);
+        this.selector = selector;
     }
 
     public render(workouts: Workout[]): void {
-        const root = <HTMLBodyElement>document.querySelector('#root');
-        const main = document.createElement('main');
+        const root = <HTMLBodyElement>document.querySelector(this.selector);
+        const main = document.createElement('section');
         main.className = 'workouts uk-container';
         root.append(main);
 
