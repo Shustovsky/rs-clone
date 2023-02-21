@@ -49,6 +49,41 @@
             }
         }
 
+        &_profile {
+            color: $white-color;
+            font-weight: bold;
+
+            &-active {
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    bottom: -80%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: $white-color;
+                    border-radius: 100%;
+                }
+            }
+
+            svg {
+                circle {
+                    stroke-width: 2;
+                }
+
+                path {
+                    stroke-width: 2;
+                }
+            }
+
+            &:hover {
+                color: $white-color;
+            }
+        }
+
         &_lang {
             width: 40px;
             height: 40px;

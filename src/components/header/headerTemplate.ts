@@ -8,11 +8,7 @@ export const headerTemplate = (): string => {
         <a class="header__nav_main-link" href="/">
             <img class="header__nav_logo" src="${logo}" alt="puma logo">
         </a>
-        <div>
-            <button class="header__nav_login uk-button uk-button-default">
-                ${t('header.login')}
-                <span uk-icon="user"></span>
-            </button>
+        <div class="header__nav_right-panel">
              <button class="header__nav_lang uk-button uk-button-default">
                 ${t('header.lang')}
             </button>
