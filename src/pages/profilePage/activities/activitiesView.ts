@@ -1,7 +1,6 @@
 import '../activities/activities.scss';
-import { IWorkoutsDone } from '../../../mock/mockData';
-import i18next from 'i18next';
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
+import { ProfileWorkout } from '../../../model/Profile';
 
 export class ActivitiesView {
     private readonly selector: string;
@@ -10,27 +9,31 @@ export class ActivitiesView {
         this.selector = selector;
     }
 
-    public render(workoutsDone: IWorkoutsDone[]): void {
+    public render(workouts: ProfileWorkout[] = []): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const activities = <HTMLDivElement>document.createElement('div');
         activities.className = 'activities_wrapper';
+
         const title = document.createElement('h1');
         title.textContent = t('profile.activities');
         title.className = 'activities uk-article-title uk-text-bold';
-        activities.innerHTML = `<div class="activities_stats uk-flex uk-flex-center uk-flex-middle">${this.createStatsItems(
-            workoutsDone
-        )}</div>`;
+
+        activities.innerHTML = `<div class="activities_stats uk-flex uk-flex-center uk-flex-middle">
+                                    ${this.createStatsItems(workouts)}
+                                </div>`;
         activities.insertBefore(title, activities.firstChild);
         root.append(activities);
+
         const monthWorkouts = <HTMLDivElement>document.createElement('div');
         monthWorkouts.className = 'activities_month';
-        monthWorkouts.innerHTML = this.createHistoryTrainingsBlock(workoutsDone);
+        monthWorkouts.innerHTML = this.createHistoryTrainingsBlock(workouts);
         root.append(monthWorkouts);
+
         const monthTotalDuration = Array.from(document.querySelectorAll('.activities_duration'));
         const arrD: any[][] = [];
         monthTotalDuration.map((x) => {
             arrD.push(
-                workoutsDone.filter(
+                workouts.filter(
                     (y) =>
                         new Date(y.date).getMonth().toString() + new Date(y.date).getFullYear().toString() ===
                         x.getAttribute('data-att')
@@ -47,7 +50,7 @@ export class ActivitiesView {
         const arrC: any[][] = [];
         monthTotalCalories.map((x) => {
             arrC.push(
-                workoutsDone.filter(
+                workouts.filter(
                     (y) =>
                         new Date(y.date).getMonth().toString() + new Date(y.date).getFullYear().toString() ===
                         x.getAttribute('data-att')
@@ -58,7 +61,7 @@ export class ActivitiesView {
             arrC[monthTotalCalories.indexOf(x)].length === 1
                 ? (x.textContent = arrC[monthTotalCalories.indexOf(x)][0].calories.toString())
                 : (x.textContent = arrC[monthTotalCalories.indexOf(x)].reduce(
-                      (a: IWorkoutsDone, b: IWorkoutsDone) => a.calories + b.calories
+                      (a: ProfileWorkout, b: ProfileWorkout) => a.calories + b.calories
                   ))
         );
     }
@@ -71,20 +74,23 @@ export class ActivitiesView {
         return isDivider ? `<hr class="uk-divider-vertical">${row}` : row;
     }
 
-    private createStatsItems(workoutsDone: IWorkoutsDone[]): string {
-        const durationArr = workoutsDone.map((workout: IWorkoutsDone): number => workout.duration) as number[];
+    private createStatsItems(workoutsDone: ProfileWorkout[]): string {
+        const durationArr = workoutsDone.map((workout: ProfileWorkout): number => workout.duration) as number[];
         const duration = durationArr.reduce(
-            (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
         );
-        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t(
-            'workout.min'
-        )}`;
-        const caloriesArr = workoutsDone.map((workout: IWorkoutsDone): number => workout.calories) as number[];
+        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t('workout.min')}`;
+        const caloriesArr = workoutsDone.map((workout: ProfileWorkout): number => workout.calories) as number[];
         const calories = caloriesArr.reduce(
-            (workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
         );
-        const scoreArr = workoutsDone.map((workout: IWorkoutsDone): number => workout.calories) as number[];
-        const scores = scoreArr.reduce((workoutPrev: number, workoutNext: number): number => workoutPrev + workoutNext);
+        const scoreArr = workoutsDone.map((workout) => workout.calories);
+        const scores = scoreArr.reduce(
+            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
+            0
+        );
         const parameters = [
             { title: t('profile.activity'), value: `${workoutsDone.length}` },
             { title: t('profile.runningDistance'), value: '0.0km' },
@@ -93,10 +99,9 @@ export class ActivitiesView {
             { title: t('profile.score'), value: `${scores}` },
         ];
 
-        const statColumns = parameters
+        return parameters
             .map((stat, index) => this.createStatsItem(stat.title, stat.value, index !== 0))
             .join('');
-        return statColumns;
     }
 
     private createMonthHistoryTotal(date: string): string {
@@ -167,7 +172,7 @@ export class ActivitiesView {
     <hr class="uk-hr">`;
     }
 
-    private createHistoryTrainingsBlock(workoutsDone: IWorkoutsDone[]): string {
+    private createHistoryTrainingsBlock(workoutsDone: ProfileWorkout[]): string {
         const sortedWorkouts = workoutsDone
             .slice()
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -183,10 +188,10 @@ export class ActivitiesView {
                     emptyArr.push(new Date(x.date).getMonth().toString() + new Date(x.date).getFullYear().toString());
                     return (
                         this.createMonthHistoryTotal(x.date) +
-                        this.createTrainingBlock(x.duration, x.date, x.coverImageUrl, x.title, x.calories)
+                        this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories)
                     );
                 } else {
-                    return this.createTrainingBlock(x.duration, x.date, x.coverImageUrl, x.title, x.calories);
+                    return this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories);
                 }
             })
             .join('');

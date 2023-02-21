@@ -48,7 +48,8 @@
       "about": "ABOUT YOU",
       "details": "The details you enter below will be used to calculate the calories you burn as accurately as possible, and to find events near you.",
       "addPicture": "Add profile picture",
-      "firstAndLastName": "First and last name*",
+      "firstName": "First name*",
+      "lastName": "Last name*",
       "email": "E-Mail*",
       "country": "Country*",
       "gender": "Gender",
@@ -59,6 +60,7 @@
       "lbs": "lbs",
       "changePassword": "CHANGE PASSWORD",
       "passwordCurrent": "Current password",
+      "confirmDeletionTitle": "Confirm deletion",
       "passwordNew": "New password",
       "passwordConfirm": "Confirm new password",
       "privacy": "PRIVACY",
@@ -82,8 +84,9 @@
       "reasonExperience": "I experience technical issues",
       "reasonPrivacy": "Privacy concerns",
       "other": "Other:",
-      "enterPassword": "Enter your current password to verify the deletion of your account:",
-      "logout": "LOG OUT"
+      "confirmDeletion": "Please type 'delete' if you really want to delete your account",
+      "logout": "LOG OUT",
+      "confirmDeleteErrorMessage": "Please type 'delete' if you really want to delete your account"
     },
     "login": {
       "logIn": "Login",

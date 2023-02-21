@@ -1,6 +1,6 @@
 import '../accountDelete/accountDelete.scss';
-import { IAccount } from '../../../mock/mockData';
 import { t } from 'i18next';
+import { Profile } from '../../../model/Profile';
 
 export class AccountDeleteView {
     private readonly selector: string;
@@ -8,7 +8,7 @@ export class AccountDeleteView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(account: IAccount) {
+    public render(profile: Profile) {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const accountDelete = <HTMLDivElement>document.createElement('div');
         accountDelete.className = 'accountDelete_wrapper';
@@ -23,17 +23,17 @@ export class AccountDeleteView {
         <div class="account_delete_other uk-flex uk-flex-middle">
             <span class="other_text">Other:</span>
             <div class="input_wrapper">
-                <input type="text" class="uk-input input_background" value=${account.mail}>
+                <input type="text" class="uk-input input_background" value=${profile.email}>
             </div>
         </div>
-        <h3 class="account_delete_title margin_larger">${t('profile.passwordCurrent')}</h3>
-        <p class="help_title">${t('profile.enterPassword')}</p>
+        <h3 class="account_delete_title margin_larger">${t('profile.confirmDeletionTitle')}</h3>
+        <p class="help_title">${t('profile.confirmDeletion')}</p>
         <div class="form_row_half">
-            <input class="uk-input input_background" type="password">
+            <input class="js_confirm_delete_input uk-input input_background" type="text">
         </div>
         <hr class="uk-divider">
         <div class="account_wrapper_button">
-          <button class="button_save uk-button uk-button-secondary">${t('profile.deleteAccount')}</button>
+          <button class="button_delete uk-button uk-button-secondary">${t('profile.deleteAccount')}</button>
         </div>`;
         root.append(accountDelete);
     }
