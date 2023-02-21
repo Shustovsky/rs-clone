@@ -23,7 +23,7 @@ export class SidebarView {
         <div class="account-img"></div>
         <h2 class="profile_sidebar_name">${nickName}</h2>
         <div class="profile-sidebar_info uk-flex uk-flex-middle">
-          <span class="padding-right"><strong>0</strong> ${t(
+          <span class="padding-right"><strong class="trac_score_total">0</strong> ${t(
               'profile.score'
           )}</span><hr class="uk-divider-vertical"><span>${profile.location}</span>
         </div>
