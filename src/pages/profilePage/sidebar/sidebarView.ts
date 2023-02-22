@@ -8,7 +8,7 @@ export class SidebarView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(profile: Profile) {
+    public render(profile: Profile): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const sidebar = <HTMLDivElement>document.createElement('div');
         sidebar.className = 'sidebar_wrapper';
@@ -16,7 +16,7 @@ export class SidebarView {
         root.append(sidebar);
     }
 
-    private createSidebar(profile: Profile) {
+    private createSidebar(profile: Profile): string {
         const nickName =
             profile.firstName && profile.lastName ? `${profile.firstName} ${profile.lastName}` : profile.email;
         return `<div class="profile_sidebar_basic uk-flex uk-flex-center uk-flex-column">

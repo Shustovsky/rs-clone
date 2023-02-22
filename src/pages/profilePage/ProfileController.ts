@@ -22,7 +22,7 @@ export class ProfileController {
         this.router = router;
     }
 
-    public async render() {
+    public async render(): Promise<void> {
         if (this.authService.isLoggedIn()) {
             const profile = await this.profileService.fetchProfile(this.authService.getUserId());
             this.profilePageView.render(profile);
@@ -35,12 +35,12 @@ export class ProfileController {
         this.profilePageView.bindConfirmDeleteAccountInput();
     }
 
-    private async logout() {
+    private async logout(): Promise<void> {
         await this.authService.logOut();
         this.router.redirectToMain();
     }
 
-    private async deleteAccount(password: string) {
+    private async deleteAccount(password: string): Promise<void> {
         if (this.authService.isLoggedIn()) {
             this.authService
                 .reauthenticate(password)

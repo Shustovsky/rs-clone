@@ -27,13 +27,13 @@ export class AuthService {
 
     public deleteUser(): Promise<void> {
         const auth = getAuth();
-        const user = auth.currentUser as User;
+        const user = <User>auth.currentUser;
         return deleteUser(user);
     }
 
     public reauthenticate(password: string): Promise<UserCredential> {
         const auth = getAuth();
-        const user = auth.currentUser as User;
+        const user = <User>auth.currentUser;
         const credential = EmailAuthProvider.credential(user.email as string, password);
         return reauthenticateWithCredential(user, credential);
     }

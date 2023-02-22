@@ -7,8 +7,8 @@ import { Loader } from '../../components/loader/Loader';
 
 export class MainPageController {
     private readonly mainPageView: MainPageView;
-    private workoutView: WorkoutListView;
-    private workoutService: WorkoutService;
+    private readonly workoutView: WorkoutListView;
+    private readonly workoutService: WorkoutService;
     private readonly loader: Loader;
 
     constructor(workoutView: WorkoutListView, workoutService: WorkoutService) {
@@ -18,7 +18,7 @@ export class MainPageController {
         this.loader = new Loader();
     }
 
-    public async render() {
+    public async render(): Promise<void> {
         const auth = getAuth();
         this.loader.createLoader();
         try {
