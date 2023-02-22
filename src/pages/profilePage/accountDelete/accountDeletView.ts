@@ -29,7 +29,7 @@ export class AccountDeleteView {
         <h3 class="account_delete_title margin_larger">${t('profile.confirmDeletionTitle')}</h3>
         <p class="help_title">${t('profile.confirmDeletion')}</p>
         <div class="form_row_half">
-            <input class="js_confirm_delete_input uk-input input_background" type="text">
+            <input class="js_confirm_delete_input uk-input input_background" type="password">
         </div>
         <hr class="uk-divider">
         <div class="account_wrapper_button">
