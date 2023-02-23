@@ -75,7 +75,7 @@ export class ProfileService {
         );
     }
 
-    private getScore(workout: Workout) {
+    private getScore(workout: Workout): number {
         return Math.round(workout.calories / 10);
     }
 

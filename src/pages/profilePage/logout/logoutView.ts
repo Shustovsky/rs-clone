@@ -8,7 +8,7 @@ export class LogoutView {
         this.selector = selector;
     }
 
-    public render() {
+    public render(): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const logout = <HTMLDivElement>document.createElement('div');
         logout.className = 'logout_wrapper';

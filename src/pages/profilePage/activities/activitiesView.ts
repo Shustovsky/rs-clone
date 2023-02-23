@@ -160,7 +160,7 @@ export class ActivitiesView {
         title: string,
         calories: number,
         score: number
-    ) {
+    ): string {
         return `<div class="activities_month_items">
         <a href="/" class="uk-flex activity_link activities_month_item">
             <div class="activities_month_img">

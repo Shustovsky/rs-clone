@@ -16,37 +16,37 @@ enum TitleName {
 }
 
 export class Router {
-    public redirectToMain() {
+    public redirectToMain(): void {
         history.pushState('', '', RouterPath.MAIN);
         window.dispatchEvent(new Event('refreshPage'));
         document.title = TitleName.MAIN;
     }
 
-    public redirectToLogin() {
+    public redirectToLogin(): void {
         history.pushState('', '', RouterPath.LOGIN);
         window.dispatchEvent(new Event('refreshPage'));
         document.title = TitleName.LOGIN;
     }
 
-    public redirectToProfile() {
+    public redirectToProfile(): void {
         history.pushState('', '', RouterPath.PROFILE);
         window.dispatchEvent(new Event('refreshPage'));
         document.title = TitleName.PROFILE;
     }
 
-    public redirectToWorkouts() {
+    public redirectToWorkouts(): void {
         history.pushState('', '', RouterPath.WORKOUTS);
         window.dispatchEvent(new Event('refreshPage'));
         document.title = TitleName.WORKOUTS;
     }
 
-    public redirectToWorkout(id: string) {
+    public redirectToWorkout(id: string): void {
         history.pushState('', '', `${RouterPath.WORKOUT}${id}`);
         window.dispatchEvent(new Event('refreshPage'));
         document.title = TitleName.WORKOUT;
     }
 
-    public redirectToTrain(id: string) {
+    public redirectToTrain(id: string): void {
         history.pushState('', '', `${RouterPath.TRAIN}${id}`);
         window.dispatchEvent(new Event('refreshPage'));
     }

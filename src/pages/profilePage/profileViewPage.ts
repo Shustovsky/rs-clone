@@ -90,28 +90,28 @@ export class ProfilePageView {
         mainContent.append(footer);
     }
 
-    public bindLogOutFromButton(callback: () => Promise<void>) {
+    public bindLogOutFromButton(callback: () => Promise<void>): void {
         const btn = <HTMLButtonElement>document.querySelector('.btn_logout');
         btn.addEventListener('click', () => callback());
     }
 
-    public bindDeleteAccountButton(callback: () => void) {
+    public bindDeleteAccountButton(callback: (password: string) => void): void {
         const btn = <HTMLButtonElement>document.querySelector('.button_delete');
         btn.addEventListener('click', () => {
             const confirmDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
-            if (confirmDelete.value === 'delete') {
-                callback();
-            } else if (!btn.parentElement?.parentElement?.querySelector('.account__delete-error')) {
-                this.createConfirmDeleteErrorMessage();
+            if (confirmDelete.value) {
+                callback(confirmDelete.value);
+            } else {
+                this.createConfirmDeleteErrorMessage(t('profile.confirmDeleteErrorMessage'));
             }
         });
     }
 
-    public bindConfirmDeleteAccountInput() {
+    public bindConfirmDeleteAccountInput(): void {
         const inputDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
         inputDelete.addEventListener('blur', () => {
-            if (inputDelete.value !== 'delete' && !inputDelete.parentElement?.querySelector('.account__delete-error')) {
-                this.createConfirmDeleteErrorMessage();
+            if (!inputDelete.value) {
+                this.createConfirmDeleteErrorMessage(t('profile.confirmDeleteErrorMessage'));
             } else {
                 this.deleteConfirmDeleteErrorMessage();
             }
@@ -124,13 +124,14 @@ export class ProfilePageView {
         document.querySelector('.account__delete-error')?.remove();
     }
 
-    private createConfirmDeleteErrorMessage(): void {
+    public createConfirmDeleteErrorMessage(message: string): void {
         const inputDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
+        inputDelete?.parentElement?.querySelector('.account__delete-error')?.remove();
         inputDelete.classList.add('uk-form-danger');
 
         const errorMassage = document.createElement('div');
         errorMassage.className = 'account__delete-error';
-        errorMassage.textContent = t('profile.confirmDeleteErrorMessage');
+        errorMassage.textContent = message;
         inputDelete?.after(errorMassage);
     }
 }

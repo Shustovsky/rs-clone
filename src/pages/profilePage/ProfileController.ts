@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { ProfilePageView } from './profileViewPage';
 import { ProfileService } from '../../service/profileService';
 import { AuthService } from '../../service/authService';
@@ -21,7 +22,7 @@ export class ProfileController {
         this.router = router;
     }
 
-    public async render() {
+    public async render(): Promise<void> {
         if (this.authService.isLoggedIn()) {
             const profile = await this.profileService.fetchProfile(this.authService.getUserId());
             this.profilePageView.render(profile);
@@ -30,20 +31,28 @@ export class ProfileController {
         }
 
         this.profilePageView.bindLogOutFromButton(() => this.logout());
-        this.profilePageView.bindDeleteAccountButton(() => this.deleteAccount());
+        this.profilePageView.bindDeleteAccountButton((password) => this.deleteAccount(password));
         this.profilePageView.bindConfirmDeleteAccountInput();
     }
 
-    private async logout() {
+    private async logout(): Promise<void> {
         await this.authService.logOut();
         this.router.redirectToMain();
     }
 
-    private async deleteAccount() {
+    private async deleteAccount(password: string): Promise<void> {
         if (this.authService.isLoggedIn()) {
-            this.profileService.deleteProfile(this.authService.getUserId());
-            this.authService.deleteUser();
-            this.router.redirectToMain();
+            this.authService
+                .reauthenticate(password)
+                .then(() => this.profileService.deleteProfile(this.authService.getUserId()))
+                .then(() => this.authService.deleteUser())
+                .then(() => this.router.redirectToMain())
+                .catch((reason) => {
+                    console.log(reason);
+                    this.profilePageView.createConfirmDeleteErrorMessage(
+                        t('profile.confirmDeleteWrongPasswordErrorMessage')
+                    );
+                });
         }
     }
 }

@@ -17,7 +17,7 @@ export class WorkoutGeneral {
         this.workoutSectionExerciseView = new WorkoutSectionExerciseView('#root .workout__intro-content');
     }
 
-    render(workout: Workout) {
+    render(workout: Workout): void {
         const generalWrapper = document.createElement('div');
         generalWrapper.className = 'workout__general-wrapper uk-flex';
         document.querySelector(this.selector)?.append(generalWrapper);

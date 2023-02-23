@@ -22,7 +22,7 @@ export class TrainPageController {
         this.authService = authService;
     }
 
-    public async render(id: string) {
+    public async render(id: string): Promise<void> {
         const workout: Workout = await this.workoutService.fetchWorkout(id);
         this.trainPageView.render(workout);
     }

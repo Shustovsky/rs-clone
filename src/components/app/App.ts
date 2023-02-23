@@ -87,7 +87,7 @@ export class App {
         this.initListeners();
     }
 
-    public async run() {
+    public async run(): Promise<void> {
         await this.renderPageForCurrentUrl();
     }
 
