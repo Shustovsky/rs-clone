@@ -42,8 +42,14 @@ export class ActivitiesView {
         });
         monthTotalDuration.map((x) =>
             arrD[monthTotalDuration.indexOf(x)].length === 1
-                ? (x.textContent = arrD[monthTotalDuration.indexOf(x)][0].duration.toString())
-                : (x.textContent = arrD[monthTotalDuration.indexOf(x)].reduce((a, b) => a.duration + b.duration))
+                ? (x.textContent = `${Math.floor(arrD[monthTotalDuration.indexOf(x)][0].duration / 3600)}${t(
+                      'workout.h'
+                  )} ${Math.round((arrD[monthTotalDuration.indexOf(x)][0].duration % 3600) / 60)}${t('workout.min')}`)
+                : (x.textContent = `${Math.floor(
+                      arrD[monthTotalDuration.indexOf(x)].reduce((a, b) => a.duration + b.duration) / 3600
+                  )}${t('workout.h')} ${Math.round(
+                      (arrD[monthTotalDuration.indexOf(x)].reduce((a, b) => a.duration + b.duration) % 3600) / 60
+                  )}${t('workout.min')}`)
         );
 
         const monthTotalCalories = Array.from(document.querySelectorAll('.activities_calories'));
@@ -59,10 +65,28 @@ export class ActivitiesView {
         });
         monthTotalCalories.map((x) =>
             arrC[monthTotalCalories.indexOf(x)].length === 1
-                ? (x.textContent = arrC[monthTotalCalories.indexOf(x)][0].calories.toString())
-                : (x.textContent = arrC[monthTotalCalories.indexOf(x)].reduce(
+                ? (x.textContent = `${arrC[monthTotalCalories.indexOf(x)][0].calories}${t('workout.kcal')}`)
+                : (x.textContent = `${arrC[monthTotalCalories.indexOf(x)].reduce(
                       (a: ProfileWorkout, b: ProfileWorkout) => a.calories + b.calories
-                  ))
+                  )}${t('workout.kcal')}`)
+        );
+        const monthTotalScore = Array.from(document.querySelectorAll('.activities_scores'));
+        const arrS: any[][] = [];
+        monthTotalScore.map((x) => {
+            arrS.push(
+                workouts.filter(
+                    (y) =>
+                        new Date(y.date).getMonth().toString() + new Date(y.date).getFullYear().toString() ===
+                        x.getAttribute('data-att')
+                )
+            );
+        });
+        monthTotalScore.map((x) =>
+            arrS[monthTotalScore.indexOf(x)].length === 1
+                ? (x.textContent = `${arrC[monthTotalScore.indexOf(x)][0].score}${t('profile.score')}`)
+                : (x.textContent = `${arrC[monthTotalScore.indexOf(x)].reduce(
+                      (a: ProfileWorkout, b: ProfileWorkout) => a.score + b.score
+                  )}${t('profile.score')}`)
         );
     }
 
@@ -75,33 +99,24 @@ export class ActivitiesView {
     }
 
     private createStatsItems(workoutsDone: ProfileWorkout[]): string {
-        const durationArr = workoutsDone.map((workout: ProfileWorkout): number => workout.duration) as number[];
-        const duration = durationArr.reduce(
-            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
-            0
-        );
-        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t('workout.min')}`;
-        const caloriesArr = workoutsDone.map((workout: ProfileWorkout): number => workout.calories) as number[];
-        const calories = caloriesArr.reduce(
-            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
-            0
-        );
-        const scoreArr = workoutsDone.map((workout) => workout.calories);
-        const scores = scoreArr.reduce(
-            (workoutPrev, workoutNext) => workoutPrev + workoutNext,
-            0
-        );
+        const durationArr: number[] = workoutsDone.map((workout: ProfileWorkout): number => workout.duration);
+        const duration = durationArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
+        const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t(
+            'workout.min'
+        )}`;
+        const caloriesArr: number[] = workoutsDone.map((workout: ProfileWorkout): number => workout.calories);
+        const calories = caloriesArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
+        const scoreArr = workoutsDone.map((workout) => workout.score);
+        const scores = scoreArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
         const parameters = [
             { title: t('profile.activity'), value: `${workoutsDone.length}` },
-            { title: t('profile.runningDistance'), value: '0.0km' },
+            { title: t('profile.runningDistance'), value: `0.0${t('workout.km')}` },
             { title: t('profile.workoutTime'), value: `${durationTime}` },
             { title: t('profile.kcalBurned'), value: `${calories}` },
             { title: t('profile.score'), value: `${scores}` },
         ];
 
-        return parameters
-            .map((stat, index) => this.createStatsItem(stat.title, stat.value, index !== 0))
-            .join('');
+        return parameters.map((stat, index) => this.createStatsItem(stat.title, stat.value, index !== 0)).join('');
     }
 
     private createMonthHistoryTotal(date: string): string {
@@ -116,7 +131,7 @@ export class ActivitiesView {
   
       </div>
       <div class="activities_month_column uk-text-bold uk-flex uk-flex-middle uk-flex-center invisible_col">
-          0,0km
+      ${t('workout.km')}
       </div>
       <div class="activities_month_column  uk-text-bold uk-flex uk-flex-middle uk-flex-center invisible_col activities_duration" data-att=${
           new Date(date).getMonth().toString() + new Date(date).getFullYear().toString()
@@ -128,7 +143,9 @@ export class ActivitiesView {
       }>
           0kcal
       </div>
-      <div class="activities_month_column  uk-text-bold uk-flex uk-flex-middle uk-flex-center invisible_col">
+      <div class="activities_month_column  uk-text-bold uk-flex uk-flex-middle uk-flex-center invisible_col activities_scores" data-att=${
+          new Date(date).getMonth().toString() + new Date(date).getFullYear().toString()
+      }>
           0 TRAC Score
       </div>
   </div>
@@ -141,7 +158,8 @@ export class ActivitiesView {
         date: string,
         coverImageUrl: string,
         title: string,
-        calories: number
+        calories: number,
+        score: number
     ): string {
         return `<div class="activities_month_items">
         <a href="/" class="uk-flex activity_link activities_month_item">
@@ -160,13 +178,13 @@ export class ActivitiesView {
         <div class="activities_month_item uk-flex uk-flex-center uk-flex-middle invisible_col" data-att=${
             new Date(date).getMonth().toString() + new Date(date).getFullYear().toString()
         }>
-        ${duration}
+        ${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t('workout.min')}
         </div>
         <div class="activities_month_item uk-flex uk-flex-center uk-flex-middle invisible_col">
-        ${calories}kcal
+        ${calories}${t('workout.kcal')}
         </div>
         <div class="activities_month_item uk-flex uk-flex-center uk-flex-middle invisible_col">
-            0 TRAC Score
+        ${score}${t('profile.score')}
         </div>
     </div>
     <hr class="uk-hr">`;
@@ -188,10 +206,10 @@ export class ActivitiesView {
                     emptyArr.push(new Date(x.date).getMonth().toString() + new Date(x.date).getFullYear().toString());
                     return (
                         this.createMonthHistoryTotal(x.date) +
-                        this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories)
+                        this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score)
                     );
                 } else {
-                    return this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories);
+                    return this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score);
                 }
             })
             .join('');

@@ -42,6 +42,9 @@ export class ProfilePageView {
         const accountWrapper = <HTMLDivElement>document.querySelector('.account_wrapper');
         const activitiesWrapper = <HTMLDivElement>document.querySelector('.activities_wrapper');
         const accountDeleteWrapper = <HTMLDivElement>document.querySelector('.accountDelete_wrapper');
+        const tracScoreTotalAcc = <HTMLElement>document.querySelector('.trac_score_total');
+        const activitiesActivityValue = Array.from(document.querySelectorAll('.activities_activity_value'));
+        tracScoreTotalAcc.innerHTML = activitiesActivityValue[activitiesActivityValue.length - 1].innerHTML;
 
         switcher.innerHTML = `<div class='uk-child-width-1-1@s uk-grid'>
         <div>
