@@ -99,12 +99,12 @@ export class ActivitiesView {
     }
 
     private createStatsItems(workoutsDone: ProfileWorkout[]): string {
-        const durationArr = workoutsDone.map((workout: ProfileWorkout): number => workout.duration) as number[];
+        const durationArr: number[] = workoutsDone.map((workout: ProfileWorkout): number => workout.duration);
         const duration = durationArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
         const durationTime = `${Math.floor(duration / 3600)}${t('workout.h')} ${Math.round((duration % 3600) / 60)}${t(
             'workout.min'
         )}`;
-        const caloriesArr = workoutsDone.map((workout: ProfileWorkout): number => workout.calories) as number[];
+        const caloriesArr: number[] = workoutsDone.map((workout: ProfileWorkout): number => workout.calories);
         const calories = caloriesArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
         const scoreArr = workoutsDone.map((workout) => workout.score);
         const scores = scoreArr.reduce((workoutPrev, workoutNext) => workoutPrev + workoutNext, 0);
