@@ -39,20 +39,16 @@
 
 }
 
-@media(max-width: 970px) {
+@media(max-width: 960px) {
 
   .activities_stats {
     padding: 30px 20px 40px;
 }
 
-  .uk-tab > * {
-    padding-left: 0;
-    width: 33.33333333%;
-}
-
 .uk-tab > * > .tabs_padding {
   padding: 20px 10px;
   font-size: 14px;
+  height: 100%;
 }
 
 .profile_tabs {
@@ -101,6 +97,14 @@
 
 .activities_month {
   padding: 0 20px;
+}
+
+.uk-tab-right {
+  flex-direction: row;
+}
+
+.uk-tab-right > * > a {
+  justify-content: center;
 }
 
 }
