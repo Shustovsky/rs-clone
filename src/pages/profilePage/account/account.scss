@@ -16,7 +16,8 @@
 .account_text {
   margin-top: 0;
   margin-bottom: 50px;
-  line-height: 1.5
+  line-height: 1.5;
+  text-align: justify;
 }
 
 .account_title {
@@ -123,6 +124,7 @@ input[type='number'] {
 
 .account_paragraph {
   margin: 0 0 22px 0;
+  text-align: justify;
 }
 
 .button_save {

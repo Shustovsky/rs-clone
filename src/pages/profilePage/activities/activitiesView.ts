@@ -18,7 +18,7 @@ export class ActivitiesView {
         title.textContent = t('profile.activities');
         title.className = 'activities uk-article-title uk-text-bold';
 
-        activities.innerHTML = `<div class="activities_stats uk-flex uk-flex-center uk-flex-middle">
+        activities.innerHTML = `<div class="activities_stats uk-flex uk-flex-center">
                                     ${this.createStatsItems(workouts)}
                                 </div>`;
         activities.insertBefore(title, activities.firstChild);
@@ -166,7 +166,7 @@ export class ActivitiesView {
             <div class="activities_month_img">
                 <img src=${coverImageUrl} alt="workout_image" class="activities_img">
             </div>
-            <div class="activities_info uk-flex uk-flex-middle uk-flex-center uk-flex-column">
+            <div class="activities_info uk-flex uk-flex-center uk-flex-column">
                 <div class="activities_title uk-text-bold">${title}</div>
                 <div class="activities_date">${new Date(date).toLocaleString((i18next.language = 'en'))}</div>
             </div>
