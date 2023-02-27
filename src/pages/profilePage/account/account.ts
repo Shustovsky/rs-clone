@@ -63,7 +63,7 @@ export class AccountView {
                     </select>
                 </div>
             <div class="form_row_half">
-                <input class="uk-input uk-date litepicker" type="text" placeholder="Date of birth">
+                <input class="uk-input uk-date litepicker" type="text" placeholder="${t('profile.dateOfBirth')}">
                 <span class="icon_calendar" uk-icon="icon: calendar"></span>
             </div>
             </div>`;

@@ -159,10 +159,11 @@ export class ActivitiesView {
         coverImageUrl: string,
         title: string,
         calories: number,
-        score: number
+        score: number,
+        id: string
     ): string {
         return `<div class="activities_month_items">
-        <a href="/" class="uk-flex activity_link activities_month_item">
+       <a href="/workout/${id}" class="uk-flex activity_link activities_month_item">
             <div class="activities_month_img">
                 <img src=${coverImageUrl} alt="workout_image" class="activities_img">
             </div>
@@ -206,10 +207,10 @@ export class ActivitiesView {
                     emptyArr.push(new Date(x.date).getMonth().toString() + new Date(x.date).getFullYear().toString());
                     return (
                         this.createMonthHistoryTotal(x.date) +
-                        this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score)
+                        this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score, x.id)
                     );
                 } else {
-                    return this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score);
+                    return this.createTrainingBlock(x.duration, x.date, x.imageUrl, x.title, x.calories, x.score, x.id);
                 }
             })
             .join('');
