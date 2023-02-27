@@ -25,7 +25,7 @@ export class ProfilePageView {
         this.footer = new Footer('#root');
     }
 
-    public render(profile: Profile): void {
+    public async render(profile: Profile): Promise<void> {
         const root = <HTMLBodyElement>document.querySelector('#root');
         const main = document.createElement('main');
         main.className = 'main__profile_content';
@@ -33,7 +33,7 @@ export class ProfilePageView {
 
         const switcher = <HTMLDivElement>document.createElement('div');
         switcher.className = 'switcher_wrapper';
-        this.sidebar.render(profile);
+        await this.sidebar.render(profile);
         this.activities.render(profile.workouts);
         this.account.render(profile);
         this.accountDelete.render(profile);

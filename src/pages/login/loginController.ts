@@ -47,8 +47,8 @@ export class LoginController {
             this.authService
                 .logIn(email.value, password.value)
                 .then(() => {
-                    this.loginView.deleteButtonError('login_submit');
                     this.router.redirectToMain();
+                    this.loginView.deleteButtonError('login_submit');
                 })
                 .catch(() => {
                     this.loginView.createButtonError('login_submit', t('login.loginIncorrect'));
@@ -71,11 +71,11 @@ export class LoginController {
             this.authService
                 .signUp(email.value, password.value)
                 .then((userCredential) => {
+                    this.router.redirectToMain();
                     const user = userCredential.user;
                     const profile = new ProfileAuth(user.uid, user?.email || '');
                     this.profileService.createProfile(profile);
                     this.loginView.deleteButtonError('signup_submit');
-                    this.router.redirectToMain();
                 })
                 .catch(() => {
                     this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));

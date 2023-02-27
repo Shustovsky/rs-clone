@@ -112,14 +112,16 @@ export class LoginView {
 
     public createButtonError(btnName: string, message: string): void {
         const btn = <HTMLButtonElement>document.getElementById(btnName);
-        const inputError = <HTMLDivElement>document.getElementById(`${btn.id}-error`);
+        if (btn) {
+            const inputError = <HTMLDivElement>document.getElementById(`${btn.id}-error`);
 
-        if (!inputError) {
-            const error = document.createElement('div');
-            error.textContent = message;
-            error.id = `${btn.id}-error`;
-            error.className = `message-error`;
-            btn.after(error);
+            if (!inputError) {
+                const error = document.createElement('div');
+                error.textContent = message;
+                error.id = `${btn.id}-error`;
+                error.className = `message-error`;
+                btn.after(error);
+            }
         }
     }
 

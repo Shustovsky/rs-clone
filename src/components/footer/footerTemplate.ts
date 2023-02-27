@@ -1,4 +1,5 @@
 import { t } from 'i18next';
+import rsschool from '../../assets/icons/rs_school_js.svg';
 
 export const footerTemplate = (): string => {
     return `
@@ -12,7 +13,7 @@ export const footerTemplate = (): string => {
             <a href="#" class="footer__item">${t('footer.cookie')}</a>
             <a href="https://pumatrac.puma.com/faq/" target="_blank" class="footer__item">${t('footer.faq')}</a>
             <a href="https://rs.school/js/" target="_blank" class="footer__item rsschool">
-                <img src="../../assets/icons/rs_school_js.svg" alt="rs school logo">
+                <img src="${rsschool}" alt="rs school logo">
                 <div class="rsschool_drop uk-card uk-card-body uk-card-default"
                      uk-drop="animation: reveal-bottom; animate-out: true; duration: 700">
                     <a href="https://github.com/Shustovsky" target="_blank"><span uk-icon="github"></span> Shustovsky</a>
