@@ -98,42 +98,59 @@ export class App {
 
         if (url === RouterPath.MAIN) {
             this.header.render();
-            this.mainPage.render();
-            return;
-        }
-        if (url === RouterPath.LOGIN) {
-            this.header.render();
-            await this.loginController.render();
+            await this.mainPage.render();
             return;
         }
 
-        if (this.user) {
-            if (url === RouterPath.PROFILE) {
+        if (url === RouterPath.LOGIN) {
+            if (!this.user) {
                 this.header.render();
-                this.profileController.render();
-                return;
+                await this.loginController.render();
+            } else {
+                this.router.redirectToProfile();
             }
-            if (url === RouterPath.WORKOUTS) {
+            return;
+        }
+
+        if (url === RouterPath.PROFILE) {
+            if (this.user) {
+                this.header.render();
+                await this.profileController.render();
+            } else {
+                this.router.redirectToLogin();
+            }
+            return;
+        }
+        if (url === RouterPath.WORKOUTS) {
+            if (this.user) {
                 this.header.render();
                 await this.workoutListController.render();
-                return;
+            } else {
+                this.router.redirectToLogin();
             }
-            if (url.startsWith(RouterPath.WORKOUT)) {
+            return;
+        }
+        if (url.startsWith(RouterPath.WORKOUT)) {
+            if (this.user) {
                 this.header.render();
                 const workoutId = url.split('/').at(-1) || 'not found';
                 await this.workoutController.render(workoutId);
-                return;
+            } else {
+                this.router.redirectToLogin();
             }
-            if (url.startsWith(RouterPath.TRAIN)) {
-                const workoutId = url.split('/').at(-1) || 'not found';
-                await this.trainController.render(workoutId);
-                return;
-            }
-        } else {
-            this.header.render();
-            await this.loginController.render();
             return;
         }
+        if (url.startsWith(RouterPath.TRAIN)) {
+            if (this.user) {
+                const workoutId = url.split('/').at(-1) || 'not found';
+                await this.trainController.render(workoutId);
+            } else {
+                this.router.redirectToLogin();
+            }
+            return;
+        }
+
+        this.router.redirectToMain();
     }
 
     private clearPage(): void {
