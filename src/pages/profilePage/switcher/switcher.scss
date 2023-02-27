@@ -31,7 +31,7 @@
   height: 100%;
 }
 
-@media(max-width: 1050px) {
+@media(max-width: 1070px) {
 
   .activities_stats {
     padding: 30px 10px 40px;
@@ -45,9 +45,10 @@
     padding: 30px 20px 40px;
 }
 
-  .uk-tab > * {
-    padding-left: 0;
-    width: 33.33333333%;
+.uk-tab > * > .tabs_padding {
+  padding: 20px 10px;
+  font-size: 14px;
+  height: 100%;
 }
 
 .profile_tabs {
@@ -60,6 +61,7 @@
 
 .profile_sidebar_basic {
   align-items: center;
+  gap: 5px;
 }
 
 .btn_logout_container {
@@ -95,6 +97,14 @@
 
 .activities_month {
   padding: 0 20px;
+}
+
+.uk-tab-right {
+  flex-direction: row;
+}
+
+.uk-tab-right > * > a {
+  justify-content: center;
 }
 
 }
@@ -140,11 +150,6 @@
 
 @media(max-width: 680px) {
 
-  .uk-tab > * > .tabs_padding {
-    padding: 20px 10px;
-    font-size: 14px;
-}
-
 .btn_logout_container .btn_logout {
   padding: 0 25px 2px;
  
@@ -164,9 +169,22 @@
 
 }
 
-@media(max-width: 450px) {
+@media(max-width: 550px) {
 
-  .uk-tab > * > .tabs_padding {
+  .invisible_col {
+  display: none;
+}
+
+.activities_month_items,
+.activities_month_total  {
+  grid-template-columns: 1fr;
+}
+
+}
+
+@media(max-width: 470px) {
+
+.uk-tab > * > .tabs_padding {
     padding: 20px 0;
     font-size: 11px;
 }
@@ -183,8 +201,22 @@
   font-size: 12px;
 }
 
-.invisible_col {
-  display: none;
+.button_save {
+  font-size: 14px;
+}
+
+.account-img_wrapper .account-img {
+  width: 50px;
+  height: 50px;
+}
+
+.account-img_wrapper {
+  gap: 10px;
+  font-size: 13px;
+}
+
+.account_delete_reason {
+  padding: 0 5px;
 }
 
 }

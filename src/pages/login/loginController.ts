@@ -26,7 +26,7 @@ export class LoginController {
         this.router = new Router();
     }
 
-    public async render() {
+    public async render(): Promise<void> {
         this.loginView.render();
         this.loginView.bindLoginHandler((email, password) => {
             this.login(email, password);
@@ -61,7 +61,7 @@ export class LoginController {
         password: HTMLInputElement,
         passwordRepeat: HTMLInputElement,
         input: HTMLInputElement
-    ) {
+    ): Promise<void> {
         if (
             this.validateEmail(email) &&
             this.validatePassword(password) &&

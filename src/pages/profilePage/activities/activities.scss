@@ -24,6 +24,7 @@
     .activities_cathegory {
       font-size: 14px;
       text-transform: uppercase;
+      text-align: center;
     }
   }
 }
@@ -45,6 +46,7 @@
 .activities_month_total {
   display: grid;
   grid-template-columns: 6fr 1fr 3fr 3fr 3fr 3fr;
+  align-items: flex-start;
 }
 
 .activities_month_items {
@@ -53,6 +55,16 @@
   .activities_month_img {
     width: 72px;
     height: 72px;
+    position: relative
+  }
+  .activities_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }
 

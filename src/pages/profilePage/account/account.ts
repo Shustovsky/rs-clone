@@ -12,7 +12,7 @@ export class AccountView {
     constructor(selector: string) {
         this.selector = selector;
     }
-    public render(profile: Profile) {
+    public render(profile: Profile): void {
         const root = <HTMLBodyElement>document.querySelector(this.selector);
         const profileContainer = <HTMLDivElement>document.createElement('div');
         profileContainer.className = 'account_wrapper';
@@ -63,7 +63,7 @@ export class AccountView {
                     </select>
                 </div>
             <div class="form_row_half">
-                <input class="uk-input uk-date litepicker" type="date">
+                <input class="uk-input uk-date litepicker" type="text" placeholder="Date of birth">
                 <span class="icon_calendar" uk-icon="icon: calendar"></span>
             </div>
             </div>`;

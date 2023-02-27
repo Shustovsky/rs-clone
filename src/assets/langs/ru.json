@@ -84,9 +84,10 @@
       "reasonExperience": "Я сталкиваюсь с техническими проблемами",
       "reasonPrivacy": "Проблемы конфиденциальности",
       "other": "Другие:",
-      "confirmDeletion": "Пожалуйста введите 'delete' если вы действительно хотите удалить аккаунт",
+      "confirmDeletion": "Введите свой текущий пароль, чтобы подтвердить удаление вашей учетной записи:",
       "logout": "ВЫЙТИ",
-      "confirmDeleteErrorMessage": "Пожалуйста введите 'delete' если вы действительно хотите удалить аккаунт"
+      "confirmDeleteErrorMessage": "Пожалуйста введите свой текущий пароль",
+      "confirmDeleteWrongPasswordErrorMessage": "Пожалуйста введите корректный пароль"
     },
     "login": {
       "logIn": "Вход",

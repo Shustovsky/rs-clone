@@ -4,9 +4,9 @@ import { Workout } from '../../model/Workout';
 import { Loader } from '../../components/loader/Loader';
 
 export class WorkoutListController {
-    private workoutView: WorkoutListView;
-    private workoutService: WorkoutService;
-    loader: Loader;
+    private readonly workoutView: WorkoutListView;
+    private readonly workoutService: WorkoutService;
+    private readonly loader: Loader;
 
     constructor(workoutView: WorkoutListView, workoutService: WorkoutService) {
         this.workoutView = workoutView;
@@ -14,7 +14,7 @@ export class WorkoutListController {
         this.loader = new Loader();
     }
 
-    public async render() {
+    public async render(): Promise<void> {
         this.loader.createLoader();
         try {
             const workouts: Workout[] = await this.workoutService.fetchWorkouts();
