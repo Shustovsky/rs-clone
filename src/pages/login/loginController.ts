@@ -77,7 +77,7 @@ export class LoginController {
                     this.profileService.createProfile(profile);
                     this.loginView.deleteButtonError('signup_submit');
                 })
-                .catch((error) => {
+                .catch(() => {
                     this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
                 });
         }
