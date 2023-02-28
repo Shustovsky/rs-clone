@@ -18,16 +18,11 @@ export class AccountView {
         profileContainer.className = 'account_wrapper';
         profileContainer.innerHTML = `<h3 class="account">${t('profile.about')}</h3>
         <p class="account_text">${t('profile.details')}</p>
-        <div class="account-img_wrapper uk-flex uk-flex-middle">
-            <div class="account-img"></div>
-            <span class="profile_add">${t('profile.addPicture')}</span>
-            <input type="file" class="input_add_img">
-        </div>
         <form class="profile_form">
             <div class="form_row uk-flex form_row_margin">
                 <div class="form_row_half">
                     <input 
-                        class="uk-input"
+                        class="uk-input js-profile-firstName"
                         type="text" 
                         placeholder="${t('profile.firstName')}" 
                         value=${profile.firstName || ''}
@@ -35,27 +30,33 @@ export class AccountView {
                 </div>
                 <div class="form_row_half">
                     <input 
-                        class="uk-input" 
+                        class="uk-input js-profile-lastName" 
                         type="text" 
                         placeholder="${t('profile.lastName')}" 
                         value=${profile.lastName || ''}
                     >
                 </div>
                 <div class="form_row_half">
-                <input class="uk-input" type="email" placeholder="${t('profile.email')}" value=${profile.email || ''}>
+                <input class="uk-input" 
+                    type="email" 
+                    placeholder="${t('profile.email')}" 
+                    value=${profile.email || ''} 
+                    disabled
+                >
                 </div>
             </div>
             <div class="form_row uk-flex form_row_margin_below">
                 <div class="form_row_half">
-                    <input class="uk-input search_country" id="autoComplete" type="search" placeholder="${t(
-                        'profile.country'
-                    )}" value=${profile.location || ''}>
+                    <input class="uk-input search_country" 
+                    id="autoComplete" 
+                    type="search" placeholder="${t('profile.country')}" 
+                    value=${profile.location || ''}>
                 </div>
                 <div class="form_row_half"></div>
             </div>
             <div class="form_row uk-flex form_row_margin">
                 <div class="form_row_half">
-                    <select class="uk-select" aria-label="Select">
+                    <select class="uk-select js-profile-gender" aria-label="Select">
                         <option disabled selected>${t('profile.gender')}</option>
                         <option>${t('profile.male')}</option>
                         <option>${t('profile.female')}</option>
@@ -63,12 +64,15 @@ export class AccountView {
                     </select>
                 </div>
             <div class="form_row_half">
-                <input class="uk-input uk-date litepicker" type="text" placeholder="${t('profile.dateOfBirth')}">
+                <input class="uk-input uk-date litepicker js-profile-birthday" 
+                    type="text" 
+                    placeholder="${t('profile.dateOfBirth')}"
+                >
                 <span class="icon_calendar" uk-icon="icon: calendar"></span>
             </div>
             </div>`;
         const profileAddition = <HTMLDivElement>document.createElement('div');
-        profileAddition.innerHTML = accountTemplate();
+        profileAddition.innerHTML = accountTemplate(profile);
         profileContainer.append(profileAddition);
         root.append(profileContainer);
         const picker = new Litepicker({

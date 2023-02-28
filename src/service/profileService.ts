@@ -47,8 +47,9 @@ export class ProfileService {
             .catch(() => '');
     }
 
-    public updateProfile(profile: Profile): Promise<void> {
-        return set(ref(this.database, `profiles/${profile.id}`), profile);
+    public updateProfile(existsProfile: Profile, profile: Profile): Promise<void> {
+        const updatedProfile = this.mergeProfile(existsProfile, profile);
+        return set(ref(this.database, `profiles/${existsProfile.id}`), updatedProfile);
     }
 
     public updateProfileWorkouts(id: string, workouts: ProfileWorkout[]): Promise<void> {
@@ -101,5 +102,19 @@ export class ProfileService {
         const date = new Date();
         date.setHours(0, 0, 0, 0);
         return date;
+    }
+
+    private mergeProfile(existsProfile: Profile, profile: Profile) {
+        existsProfile.location = profile.location;
+        existsProfile.lastName = profile.lastName;
+        existsProfile.firstName = profile.firstName;
+        existsProfile.gender = profile.gender;
+        existsProfile.birthday = profile.birthday;
+        existsProfile.height = profile.height;
+        existsProfile.weight = profile.weight;
+        existsProfile.isEmailNotificationEnabled = profile.isEmailNotificationEnabled;
+        existsProfile.isOffersNotificationEnabled = profile.isOffersNotificationEnabled;
+        existsProfile.isPrivateOnlyMe = profile.isPrivateOnlyMe;
+        return existsProfile;
     }
 }

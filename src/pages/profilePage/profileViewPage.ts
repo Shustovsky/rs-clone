@@ -118,6 +118,54 @@ export class ProfilePageView {
         });
     }
 
+    public bindUpdateProfileButton(callback: (profile: Profile) => void): void {
+        const btn = <HTMLButtonElement>document.querySelector('.button_save');
+        btn.addEventListener('click', () => {
+            const accountWrapper = <HTMLDivElement>document.querySelector('.account_wrapper');
+            const locationElement = <HTMLInputElement>accountWrapper.querySelector('.search_country');
+
+            const updateProfile = new Profile('unused', 'unused', locationElement.value);
+
+            const lastNameInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-lastName');
+            updateProfile.lastName = lastNameInput.value;
+
+            const firstNameInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-firstName');
+            updateProfile.firstName = firstNameInput.value;
+
+            const genderInput = <HTMLSelectElement>accountWrapper.querySelector('.js-profile-gender');
+            updateProfile.gender = genderInput.value;
+
+            const birthdayInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-birthday');
+            updateProfile.birthday = birthdayInput.value ? new Date(Date.parse(birthdayInput.value)) : null;
+
+            const ftInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-ft');
+            const inchInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-inch');
+            if (ftInput.value && inchInput.value) {
+                updateProfile.height = `${ftInput.value}|${inchInput.value}`;
+            }
+
+            const weightInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-weight');
+            if (weightInput.value) {
+                updateProfile.weight = +weightInput.value;
+            }
+
+            const isEmailNotificationEnabledInput = <HTMLInputElement>(
+                accountWrapper.querySelector('.js-profile-isEmailNotificationEnabled')
+            );
+            updateProfile.isEmailNotificationEnabled = isEmailNotificationEnabledInput.checked;
+
+            const isOffersNotificationEnabledInput = <HTMLInputElement>(
+                accountWrapper.querySelector('.js-profile-isOffersNotificationEnabled')
+            );
+            updateProfile.isOffersNotificationEnabled = isOffersNotificationEnabledInput.checked;
+
+            const isPrivateOnlyMeInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-isPrivateOnlyMe');
+            updateProfile.isPrivateOnlyMe = isPrivateOnlyMeInput.checked;
+
+            callback(updateProfile);
+        });
+    }
+
     private deleteConfirmDeleteErrorMessage(): void {
         const inputDelete = <HTMLInputElement>document.querySelector('.js_confirm_delete_input');
         inputDelete.classList.remove('uk-form-danger');

@@ -7,7 +7,7 @@ export class Profile {
     gender: string | null = null;
     birthday: Date | null = null;
     weight: number | null = null;
-    height: number | null = null;
+    height: string | null = null;
     isPrivateOnlyMe = false;
     isUnitsMetric = false;
     isOffersNotificationEnabled = false;
@@ -17,7 +17,7 @@ export class Profile {
     constructor(id: string, email: string, location: string) {
         this.id = id;
         this.email = email;
-        this.location= location;
+        this.location = location;
     }
 }
 
