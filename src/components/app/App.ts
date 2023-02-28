@@ -149,7 +149,6 @@ export class App {
             return;
         }
 
-        // this.router.redirectToMain();
         this.header.render();
         this.notFound.render();
     }
