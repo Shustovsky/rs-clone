@@ -103,12 +103,8 @@ export class App {
         }
 
         if (url === RouterPath.LOGIN) {
-            if (!this.user) {
-                this.header.render();
-                await this.loginController.render();
-            } else {
-                this.router.redirectToProfile();
-            }
+            this.header.render();
+            await this.loginController.render();
             return;
         }
 

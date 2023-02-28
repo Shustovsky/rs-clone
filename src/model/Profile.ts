@@ -3,7 +3,7 @@ export class Profile {
     email: string;
     firstName: string | null = null;
     lastName: string | null = null;
-    location: string | null = null;
+    location: string;
     gender: string | null = null;
     birthday: Date | null = null;
     weight: number | null = null;
@@ -14,9 +14,10 @@ export class Profile {
     isEmailNotificationEnabled = false;
     workouts: ProfileWorkout[] = [];
 
-    constructor(id: string, email: string) {
+    constructor(id: string, email: string, location: string) {
         this.id = id;
         this.email = email;
+        this.location= location;
     }
 }
 

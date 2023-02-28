@@ -68,14 +68,15 @@ export class LoginController {
             this.validateMatchPassword(password, passwordRepeat) &&
             this.validateInputCheck(input)
         ) {
+            const emailValue = email.value;
             this.authService
-                .signUp(email.value, password.value)
-                .then((userCredential) => {
-                    this.router.redirectToMain();
-                    const user = userCredential.user;
-                    const profile = new ProfileAuth(user.uid, user?.email || '');
-                    this.profileService.createProfile(profile);
+                .signUp(emailValue, password.value)
+                .then(async (userCredential) => {
+                    const location = await this.profileService.getUserLocation();
+                    const profile = new ProfileAuth(userCredential.user.uid, emailValue, location);
+                    await this.profileService.createProfile(profile);
                     this.loginView.deleteButtonError('signup_submit');
+                    this.router.redirectToMain();
                 })
                 .catch(() => {
                     this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));

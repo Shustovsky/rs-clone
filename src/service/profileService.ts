@@ -33,6 +33,20 @@ export class ProfileService {
             });
     }
 
+    public getUserLocation(): Promise<string> {
+        return fetch('https://api.ipify.org?format=json')
+            .then((response) => response.json())
+            .then((data) => {
+                const ip = data.ip;
+                return fetch(`https://ipapi.co/${ip}/json/`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        return data.country_name;
+                    });
+            })
+            .catch(() => '');
+    }
+
     public updateProfile(profile: Profile): Promise<void> {
         return set(ref(this.database, `profiles/${profile.id}`), profile);
     }
@@ -80,7 +94,7 @@ export class ProfileService {
     }
 
     private convertProfileAuthToProfile(profileAuth: ProfileAuth): Profile {
-        return new Profile(profileAuth.id, profileAuth.email);
+        return new Profile(profileAuth.id, profileAuth.email, profileAuth.location);
     }
 
     private createTodayDate(): Date {

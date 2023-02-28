@@ -25,7 +25,7 @@ export class ProfileController {
     public async render(): Promise<void> {
         if (this.authService.isLoggedIn()) {
             const profile = await this.profileService.fetchProfile(this.authService.getUserId());
-            await this.profilePageView.render(profile);
+            this.profilePageView.render(profile);
         } else {
             this.router.redirectToLogin();
         }
