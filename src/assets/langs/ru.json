@@ -36,6 +36,9 @@
       "bannersGearPart2": "для выступлений",
       "shopNow": "Делайте покупки сейчас"
     },
+    "notFound": {
+      "sorry": "Извините, Страница не найдена"
+    },
     "profile": {
       "score": "TRAC оценка",
       "activities": "АКТИВНОСТЬ",
