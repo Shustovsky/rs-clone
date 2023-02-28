@@ -105,6 +105,8 @@ export class TrainPageView {
             const mediaWrapper = <HTMLElement>document.createElement('div');
             mediaWrapper.className = 'train__wrapper-media uk-flex uk-flex-center';
             mediaWrapper.innerHTML = `<video class='train__video' src='${exercise.videoUrl}' controls playsinline uk-video></video>`;
+            const element = <HTMLVideoElement>mediaWrapper.querySelector('.train__video');
+            element.addEventListener('ended', () => this.callNextVideo());
             wrapperDescription?.append(mediaWrapper);
         } else {
             const mediaWrapper = <HTMLElement>document.createElement('div');
@@ -138,16 +140,7 @@ export class TrainPageView {
         const nextExerciseDescriptionBlock = <HTMLElement>document.createElement('div');
         nextExerciseDescriptionBlock.className = 'train__next-exercise-description-block uk-flex uk-flex-middle';
 
-        nextExerciseDescriptionBlock.addEventListener('click', () => {
-            this.currentExercise = this.nextExercise;
-            const workout = <Workout>this.workout;
-            this.nextExercise = this.getNextExercise(workout);
-            this.reRender();
-
-            if (!this.nextExercise) {
-                this.trainPageController?.addProfileWorkout(<Workout>this.workout);
-            }
-        });
+        nextExerciseDescriptionBlock.addEventListener('click', () => this.callNextVideo());
 
         nextExerciseDescriptionBlock.innerHTML = `
                             <div  class='train__next-exercise-wrapper-img'>
@@ -159,6 +152,17 @@ export class TrainPageView {
                             </div>`;
 
         return nextExerciseDescriptionBlock;
+    }
+
+    private callNextVideo() {
+        if (this.nextExercise) {
+            this.currentExercise = this.nextExercise;
+            const workout = <Workout>this.workout;
+            this.nextExercise = this.getNextExercise(workout);
+            this.reRender();
+        } else {
+            this.trainPageController?.addProfileWorkout(<Workout>this.workout);
+        }
     }
 
     private reRender(): void {
