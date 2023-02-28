@@ -57,7 +57,7 @@ export class AccountView {
             <div class="form_row uk-flex form_row_margin">
                 <div class="form_row_half">
                     <select class="uk-select js-profile-gender" aria-label="Select">
-                        <option disabled selected>${t('profile.gender')}</option>
+                        <option disabled selected>${profile.gender ? profile.gender : t('profile.gender')}</option>
                         <option>${t('profile.male')}</option>
                         <option>${t('profile.female')}</option>
                         <option>${t('profile.nonBinary')}</option>
