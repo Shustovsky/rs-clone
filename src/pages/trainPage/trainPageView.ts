@@ -154,7 +154,7 @@ export class TrainPageView {
         return nextExerciseDescriptionBlock;
     }
 
-    private callNextVideo() {
+    private callNextVideo(): void {
         if (this.nextExercise) {
             this.currentExercise = this.nextExercise;
             const workout = <Workout>this.workout;
