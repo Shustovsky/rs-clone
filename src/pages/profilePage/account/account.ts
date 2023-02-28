@@ -67,6 +67,7 @@ export class AccountView {
                 <input class="uk-input uk-date litepicker js-profile-birthday" 
                     type="text" 
                     placeholder="${t('profile.dateOfBirth')}"
+                    value=${profile.birthday ? profile.birthday : ''}
                 >
                 <span class="icon_calendar" uk-icon="icon: calendar"></span>
             </div>

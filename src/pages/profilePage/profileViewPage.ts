@@ -136,7 +136,7 @@ export class ProfilePageView {
             updateProfile.gender = genderInput.value;
 
             const birthdayInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-birthday');
-            updateProfile.birthday = birthdayInput.value ? new Date(Date.parse(birthdayInput.value)) : null;
+            updateProfile.birthday = birthdayInput.value;
 
             const ftInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-ft');
             const inchInput = <HTMLInputElement>accountWrapper.querySelector('.js-profile-inch');

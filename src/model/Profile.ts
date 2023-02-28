@@ -5,7 +5,7 @@ export class Profile {
     lastName: string | null = null;
     location: string;
     gender: string | null = null;
-    birthday: Date | null = null;
+    birthday: string | null = null;
     weight: number | null = null;
     height: string | null = null;
     isPrivateOnlyMe = false;
