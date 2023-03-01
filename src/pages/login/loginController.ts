@@ -69,10 +69,10 @@ export class LoginController {
             this.validateInputCheck(input)
         ) {
             const emailValue = email.value;
+            const location = await this.profileService.getUserLocation();
             this.authService
                 .signUp(emailValue, password.value)
                 .then(async (userCredential) => {
-                    const location = await this.profileService.getUserLocation();
                     const profile = new ProfileAuth(userCredential.user.uid, emailValue, location);
                     await this.profileService.createProfile(profile);
                     this.loginView.deleteButtonError('signup_submit');
