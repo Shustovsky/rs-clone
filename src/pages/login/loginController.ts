@@ -5,12 +5,14 @@ import { ProfileService } from '../../service/profileService';
 import { Router } from '../../components/router/Router';
 import { ProfileAuth } from '../../model/ProfileAuth';
 import { AuthService } from '../../service/authService';
+import { Loader } from '../../components/loader/Loader';
 
 export class LoginController {
     private readonly loginView: LoginView;
     private readonly loginValidator: LoginValidator;
     private readonly profileService: ProfileService;
     private readonly authService: AuthService;
+    private readonly loader: Loader;
     private readonly router: Router;
 
     constructor(
@@ -24,6 +26,7 @@ export class LoginController {
         this.profileService = profileService;
         this.authService = authService;
         this.router = new Router();
+        this.loader = new Loader();
     }
 
     public async render(): Promise<void> {
@@ -68,6 +71,7 @@ export class LoginController {
             this.validateMatchPassword(password, passwordRepeat) &&
             this.validateInputCheck(input)
         ) {
+            this.loader.createLoader();
             const emailValue = email.value;
             const location = await this.profileService.getUserLocation();
             this.authService
@@ -80,7 +84,8 @@ export class LoginController {
                 })
                 .catch(() => {
                     this.loginView.createButtonError('signup_submit', t('login.signupIncorrect'));
-                });
+                })
+                .finally(() => this.loader.deleteLoader());
         }
     }
 
