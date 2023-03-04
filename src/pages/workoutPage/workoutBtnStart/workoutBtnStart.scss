@@ -1,0 +1,18 @@
+@import '../../../assets/style/variables';
+
+.workout {
+  &__wrapper-btn-start {
+    left: 0;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background: $black-color;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 80px;
+    color: $white-color;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../../assets/style/variables';
+
+.workout {
+  &__general-wrapper {
+    margin-left: 50px;
+    border-bottom: 1px solid $light-grey-color;
+  }
+}
+
+@media (max-width: 1000px) {
+  .workout {
+    &__general-wrapper {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .workout {
+    &__general-wrapper {
+      flex-direction: column;
+    }
+  }
+}

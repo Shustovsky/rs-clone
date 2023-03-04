@@ -1,0 +1,23 @@
+@import '../../../assets/style/variables.scss';
+
+.btn_logout_container {
+  padding: 40px;
+  background: $light-grey-color;
+  .btn_logout {
+    font-size: 16px;
+    padding: 0 40px 2px;
+    line-height: 42px;
+    background: $black-color;
+    color: $white-color;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 1px solid $black-color;
+    transition: 0.8s;
+    &:hover {
+      background: $white-color;
+      color: $black-color;
+      cursor: pointer;
+      transition: 0.8s;
+    }
+  }
+}
