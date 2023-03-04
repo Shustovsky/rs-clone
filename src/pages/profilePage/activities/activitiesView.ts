@@ -162,6 +162,11 @@ export class ActivitiesView {
         score: number,
         id: string
     ): string {
+        const timeFormat: Intl.DateTimeFormatOptions = {
+            month: 'numeric',
+            day: '2-digit',
+            year: 'numeric',
+        };
         return `<div class="activities_month_items">
        <a href="/workout/${id}" class="uk-flex activity_link activities_month_item">
             <div class="activities_month_img">
@@ -169,7 +174,9 @@ export class ActivitiesView {
             </div>
             <div class="activities_info uk-flex uk-flex-center uk-flex-column">
                 <div class="activities_title uk-text-bold">${title}</div>
-                <div class="activities_date">${new Date(date).toLocaleString((i18next.language = 'en'))}</div>
+                <div class="activities_date">
+                    ${new Date(date).toLocaleString(i18next.language, timeFormat)}
+                </div>
             </div>
         </a>
         <div class="activities_month_item">

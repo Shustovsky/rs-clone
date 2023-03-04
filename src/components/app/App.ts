@@ -21,6 +21,7 @@ import { HeaderController } from '../header/headerController';
 import { Router, RouterPath } from '../router/Router';
 import { AuthService } from '../../service/authService';
 import { ProfileController } from '../../pages/profilePage/ProfileController';
+import { NotFound } from '../notFound/notFound';
 
 export class App {
     private readonly firebaseConfig: FirebaseOptions = {
@@ -46,6 +47,7 @@ export class App {
 
     private readonly mainPage: MainPageController;
     private readonly header: HeaderController;
+    private readonly notFound: NotFound;
     private isLoading = true;
     private user: User | null = null;
 
@@ -84,6 +86,7 @@ export class App {
 
         this.mainPage = new MainPageController(new WorkoutListView('#root main div'), this.workoutService);
         this.header = new HeaderController();
+        this.notFound = new NotFound('#root');
         this.initListeners();
     }
 
@@ -103,12 +106,8 @@ export class App {
         }
 
         if (url === RouterPath.LOGIN) {
-            if (!this.user) {
-                this.header.render();
-                await this.loginController.render();
-            } else {
-                this.router.redirectToProfile();
-            }
+            this.header.render();
+            await this.loginController.render();
             return;
         }
 
@@ -150,7 +149,8 @@ export class App {
             return;
         }
 
-        this.router.redirectToMain();
+        this.header.render();
+        this.notFound.render();
     }
 
     private clearPage(): void {

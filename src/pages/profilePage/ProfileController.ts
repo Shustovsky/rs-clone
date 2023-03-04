@@ -3,6 +3,7 @@ import { ProfilePageView } from './profileViewPage';
 import { ProfileService } from '../../service/profileService';
 import { AuthService } from '../../service/authService';
 import { Router } from '../../components/router/Router';
+import { Profile } from '../../model/Profile';
 
 export class ProfileController {
     private readonly profilePageView: ProfilePageView;
@@ -25,7 +26,7 @@ export class ProfileController {
     public async render(): Promise<void> {
         if (this.authService.isLoggedIn()) {
             const profile = await this.profileService.fetchProfile(this.authService.getUserId());
-            await this.profilePageView.render(profile);
+            this.profilePageView.render(profile);
         } else {
             this.router.redirectToLogin();
         }
@@ -33,6 +34,7 @@ export class ProfileController {
         this.profilePageView.bindLogOutFromButton(() => this.logout());
         this.profilePageView.bindDeleteAccountButton((password) => this.deleteAccount(password));
         this.profilePageView.bindConfirmDeleteAccountInput();
+        this.profilePageView.bindUpdateProfileButton((profile) => this.updateProfile(profile));
     }
 
     private async logout(): Promise<void> {
@@ -53,6 +55,14 @@ export class ProfileController {
                         t('profile.confirmDeleteWrongPasswordErrorMessage')
                     );
                 });
+        }
+    }
+
+    public async updateProfile(profile: Profile) {
+        if (this.authService.isLoggedIn()) {
+            const existsProfile = await this.profileService.fetchProfile(this.authService.getUserId());
+            await this.profileService.updateProfile(existsProfile, profile);
+            this.router.redirectToProfile();
         }
     }
 }

@@ -36,6 +36,9 @@
       "bannersGearPart2": "performance apparel",
       "shopNow": "Shop now"
     },
+    "notFound": {
+      "sorry": "Sorry, Page Not Found"
+    },
     "profile": {
       "score": "TRAC Score",
       "activities": "ACTIVITIES",
@@ -144,5 +147,6 @@
       "cookie": "Cookie Settings",
       "faq": "FAQ"
     }
+
   }
 }

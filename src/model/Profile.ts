@@ -3,20 +3,21 @@ export class Profile {
     email: string;
     firstName: string | null = null;
     lastName: string | null = null;
-    location: string | null = null;
+    location: string;
     gender: string | null = null;
-    birthday: Date | null = null;
+    birthday: string | null = null;
     weight: number | null = null;
-    height: number | null = null;
+    height: string | null = null;
     isPrivateOnlyMe = false;
     isUnitsMetric = false;
     isOffersNotificationEnabled = false;
     isEmailNotificationEnabled = false;
     workouts: ProfileWorkout[] = [];
 
-    constructor(id: string, email: string) {
+    constructor(id: string, email: string, location: string) {
         this.id = id;
         this.email = email;
+        this.location = location;
     }
 }
 
