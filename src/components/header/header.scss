@@ -1,0 +1,114 @@
+@import 'src/assets/style/variables.scss';
+
+.header {
+    &__nav {
+        position: sticky;
+        z-index: 11;
+        top: 0;
+        background-color: $black-color;
+        height: 64px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+
+        &_link {
+            min-width: 155px;
+            padding: 0 16px;
+            height: 36px;
+            border-radius: 18px;
+            color: $white-color;
+            text-transform: none;
+            font-weight: bold;
+            line-height: 30px;
+
+            &:hover {
+                color: $black-color;
+                background-color: $white-color;
+
+            }
+        }
+
+        &_logo {
+        }
+
+        &_login {
+            background-color: $dark-grey-color;
+            padding: 0 20px;
+            color: $white-color;
+            text-transform: lowercase;
+
+            &:first-letter {
+                text-transform: uppercase;
+            }
+
+            &:hover {
+                color: $black-color;
+                background-color: $white-color;
+
+            }
+        }
+
+        &_profile {
+            color: $white-color;
+            font-weight: bold;
+
+            &-active {
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    bottom: -80%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: $white-color;
+                    border-radius: 100%;
+                }
+            }
+
+            svg {
+                circle {
+                    stroke-width: 2;
+                }
+
+                path {
+                    stroke-width: 2;
+                }
+            }
+
+            &:hover {
+                color: $white-color;
+            }
+        }
+
+        &_lang {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border: none;
+            color: $white-color;
+            border-radius: 100%;
+            font-weight: bold;
+
+            &:hover {
+                color: $black-color;
+                background-color: $white-color;
+            }
+        }
+    }
+}
+
+@media(max-width: 760px) {
+    .header {
+        &__nav {
+            height: 45px;
+
+            &_link {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+@import '../../../assets/style/variables.scss';
+
+.profile_sidebar_basic {
+  background: $light-grey-color;
+  padding: 30px 40px 80px 40px;
+  .account-img {
+    width: 122px;
+    height: 122px;
+    border-radius: 50%;
+    border: 1px solid $black-color;
+    background: $black-color;
+    margin-right: 20px;
+  }
+  .profile_sidebar_name {
+    margin: 0;
+    word-wrap: break-word;
+  }
+}
+
+.profile-sidebar_info {
+  .padding-right {
+    padding-right: 10px;
+  }
+  .uk-divider-vertical {
+    height: 18px;
+    width: 10px;
+    border-left: 1px solid $black-color;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+

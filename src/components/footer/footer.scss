@@ -1,0 +1,61 @@
+@import "src/assets/style/variables.scss";
+
+.footer {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    padding-bottom: 30px;
+
+    &_container {
+        margin-top: 5%;
+        max-width: 1230px;
+
+        .uk-flex {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__item {
+        color: $black-color;
+
+        &:hover {
+            color: $black-color;
+            text-decoration: none;
+        }
+
+        &:first-child {
+            font-weight: 400;
+            padding-left: 0;
+        }
+    }
+
+    .rsschool {
+        &_drop {
+            a {
+                color: $black-color;
+                display: block;
+            }
+        }
+
+        img {
+            width: 60px;
+        }
+    }
+}
+
+@media(max-width: 760px) {
+    .footer {
+        &_container {
+            .uk-flex {
+                flex-direction: column;
+                row-gap: 10px;
+            }
+        }
+
+        &__item {
+            &:first-child {
+                padding-left: 30px;
+            }
+        }
+    }
+}

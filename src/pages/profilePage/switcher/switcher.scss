@@ -1,0 +1,227 @@
+@import '../../../assets/style/variables.scss';
+
+.switcher_wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.margin_reset {
+  margin: 0;
+}
+
+.uk-tab > * > .tabs_padding {
+  padding: 30px 40px;
+  background: $light-grey-color;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.31;
+}
+
+.uk-tab > .uk-active > a {
+  border-left: 6px solid $black-color;
+  background: $white-color;
+}
+
+.profile_tabs {
+  width: 33.33333333%;
+  position: sticky;
+  top: 64px;
+  min-height: calc(100vh - 64px);
+  height: 100%;
+}
+
+@media(max-width: 1070px) {
+
+  .activities_stats {
+    padding: 30px 10px 40px;
+}
+
+}
+
+@media(max-width: 960px) {
+
+  .activities_stats {
+    padding: 30px 20px 40px;
+}
+
+.uk-tab > * > .tabs_padding {
+  padding: 20px 10px;
+  font-size: 14px;
+  height: 100%;
+}
+
+.profile_tabs {
+  width: 100%;
+  min-height: 0;
+  position: relative;
+  top: 0;
+  height: auto;
+}
+
+.profile_sidebar_basic {
+  align-items: center;
+  gap: 5px;
+}
+
+.btn_logout_container {
+  display: flex;
+  justify-content: center;
+}
+  
+.uk-tab > .uk-active > a {
+  border: none;
+  border-top: 3px solid $black-color;
+}
+
+.uk-tab {
+  justify-content: center;
+}
+
+.uk-tab > * {
+  padding-left: 0;
+  width: 33.33333333333%;
+}
+
+.accountDelete_wrapper {
+  padding-left: 20px;
+}
+
+.account_wrapper {
+  padding-left: 20px;
+}
+
+.activities_wrapper {
+  padding: 0 20px;
+}
+
+.activities_month {
+  padding: 0 20px;
+}
+
+.uk-tab-right {
+  flex-direction: row;
+}
+
+.uk-tab-right > * > a {
+  justify-content: center;
+}
+
+}
+
+@media(max-width: 760px) {
+
+  .activities_stats {
+    flex-wrap: wrap;
+  }
+
+  .activities_stats .activities_stats_item {
+    padding: 0 15px;
+    width: 50%;
+}
+
+.activities_stats .uk-divider-vertical {
+  display: none;
+}
+
+.account_paragraph {
+  font-size: 14px;
+}
+
+.form_row_margin {
+  flex-wrap: wrap;
+  .form_row_half {
+    width: 100%;
+  }
+}
+
+.form_row {
+  flex-wrap: wrap;
+  .form_row_half {
+    width: 100%;
+  }
+}
+
+.radio_button_gap {
+  flex-wrap: wrap;
+}
+
+}
+
+@media(max-width: 680px) {
+
+.btn_logout_container .btn_logout {
+  padding: 0 25px 2px;
+ 
+}
+
+.form_row_half {
+  width: 100%;
+}
+
+.account_delete_reason {
+  font-size: 12px;
+}
+
+.accountDelete_wrapper {
+  padding: 60px 20px;
+}
+
+}
+
+@media(max-width: 550px) {
+
+  .invisible_col {
+  display: none;
+}
+
+.activities_month_items,
+.activities_month_total  {
+  grid-template-columns: 1fr;
+}
+
+}
+
+@media(max-width: 470px) {
+
+.uk-tab > * > .tabs_padding {
+    padding: 20px 0;
+    font-size: 11px;
+}
+
+.activities_stats .activities_stats_item {
+  padding:0;
+}
+
+.activities_stats .activities_stats_item .activity_value {
+  font-size: 16px;
+}
+
+.activities_stats .activities_stats_item .activities_cathegory {
+  font-size: 12px;
+}
+
+.button_save {
+  font-size: 14px;
+}
+
+.account-img_wrapper .account-img {
+  width: 50px;
+  height: 50px;
+}
+
+.account-img_wrapper {
+  gap: 10px;
+  font-size: 13px;
+}
+
+.account_delete_reason {
+  padding: 0 5px;
+}
+
+}
+
+
+
+
+

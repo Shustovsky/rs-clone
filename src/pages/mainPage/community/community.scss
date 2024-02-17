@@ -1,0 +1,52 @@
+@import "src/assets/style/variables.scss";
+
+.community {
+    margin-top: 80px;
+    text-align: center;
+
+    h4 {
+        margin-bottom: 0;
+    }
+
+    a {
+        padding: 0;
+
+
+    }
+
+    img {
+        height: 250px;
+        min-width: 230px;
+        object-fit: cover;
+        cursor: url(../../../../src/assets/icons/zoom.png) 20 20, pointer;
+
+    }
+}
+
+.modal__container {
+
+
+    &_img {
+        max-width: 500px;
+
+        &:before {
+            display: none;
+        }
+    }
+
+    &_dscsr {
+        padding: 5% 0;
+    }
+
+    &_button {
+        button {
+            margin: 10%;
+            min-width: 200px;
+            text-transform: uppercase;
+        }
+    }
+}
+
+@media(max-width: 1000px) {
+
+}
